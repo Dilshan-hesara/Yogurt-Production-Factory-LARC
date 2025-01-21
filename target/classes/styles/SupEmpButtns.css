@@ -1,0 +1,277 @@
+
+#DeleteButt {
+    -fx-background-color: #000000;
+}
+
+.DeleteButt {
+    -fx-border-color: lime;
+    -fx-border-width: 1px;
+    -fx-border-radius: 1px;
+    -fx-padding: 4px;
+}
+
+.DeleteButt {
+    -fx-background-color: #1a3b10;
+    -fx-text-fill: #dddddd;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-border-color: #f3fff5;
+    -fx-font-family: 'Malgun Gothic';
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-padding: 4px 8px;
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s ease;
+}
+
+
+.DeleteButt:hover {
+    -fx-background-color: #959595;
+    -fx-text-fill: rgba(74, 5, 5, 0.78);
+    -fx-effect: dropshadow(three-pass-box, rgba(120, 120, 115, 0.58), 10, 0.5, 0, 0);
+    -fx-border-color: rgb(255, 0, 0);
+    -fx-transition: all 0.3s ease;
+}
+
+.DeleteButt:pressed {
+    -fx-background-color: #000000;
+    -fx-text-fill: #0a449f;
+    -fx-effect: dropshadow(three-pass-box, rgba(179, 89, 56, 0.56), 12, 0.5, 0, 0);
+    -fx-border-color: rgba(13, 170, 141, 0.88);
+    -fx-border-width: 1px;
+    -fx-transition: all 0.3s ease;
+}
+
+
+
+#ResetButt {
+    -fx-background-color: #000000;
+}
+
+.ResetButt {
+    -fx-border-color: lime;
+    -fx-border-width: 1px;
+    -fx-border-radius: 1px;
+    -fx-padding: 4px;
+}
+
+.ResetButt {
+    -fx-background-color: #1a3b10;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-border-color: #f3fff5;
+    -fx-font-family: 'Malgun Gothic';
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-padding: 4px 8px;
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s ease;
+}
+
+
+.ResetButt:hover {
+    -fx-background-color: #959595;
+    -fx-text-fill: rgba(74, 5, 5, 0.78);
+    -fx-effect: dropshadow(three-pass-box, rgba(120, 120, 115, 0.58), 10, 0.5, 0, 0);
+    -fx-border-color: rgb(213, 194, 97);
+    -fx-transition: all 0.3s ease;
+}
+
+.ResetButt:pressed {
+    -fx-background-color: #000000;
+    -fx-text-fill: #0a449f;
+    -fx-effect: dropshadow(three-pass-box, rgba(179, 89, 56, 0.56), 12, 0.5, 0, 0);
+    -fx-border-color: rgba(13, 170, 141, 0.88);
+    -fx-border-width: 1px;
+    -fx-transition: all 0.3s ease;
+}
+
+
+#UpdatButt {
+    -fx-background-color: #000000;
+}
+
+.UpdatButt {
+    -fx-border-color: lime;
+    -fx-border-width: 1px;
+    -fx-border-radius: 1px;
+    -fx-padding: 4px;
+}
+
+.UpdatButt {
+    -fx-background-color: #1a3b10;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-border-color: #f3fff5;
+    -fx-font-family: 'Malgun Gothic';
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-padding: 4px 8px;
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s ease;
+}
+
+
+.UpdatButt:hover {
+    -fx-background-color: #959595;
+    -fx-text-fill: rgba(74, 5, 5, 0.78);
+    -fx-effect: dropshadow(three-pass-box, rgba(120, 120, 115, 0.58), 10, 0.5, 0, 0);
+    -fx-border-color: rgb(213, 194, 97);
+    -fx-transition: all 0.3s ease;
+}
+
+.UpdatButt:pressed {
+    -fx-background-color: #000000;
+    -fx-text-fill: #0a449f;
+    -fx-effect: dropshadow(three-pass-box, rgba(179, 89, 56, 0.56), 12, 0.5, 0, 0);
+    -fx-border-color: rgba(13, 170, 141, 0.88);
+    -fx-border-width: 1px;
+    -fx-transition: all 0.3s ease;
+}
+
+
+
+#SendMailButt {
+    -fx-background-color: #000000;
+}
+
+.SendMailButt {
+    -fx-border-color: lime;
+    -fx-border-width: 1px;
+    -fx-border-radius: 1px;
+    -fx-padding: 4px;
+}
+
+.SendMailButt {
+    -fx-background-color: #1a3b10;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-border-color: #f3fff5;
+    -fx-font-family: 'Malgun Gothic';
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-padding: 4px 8px;
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s ease;
+}
+
+
+.SendMailButt:hover {
+    -fx-background-color: #959595;
+    -fx-text-fill: rgba(74, 5, 5, 0.78);
+    -fx-effect: dropshadow(three-pass-box, rgba(120, 120, 115, 0.58), 10, 0.5, 0, 0);
+    -fx-border-color: rgb(213, 194, 97);
+    -fx-transition: all 0.3s ease;
+}
+
+.SendMailButt:pressed {
+    -fx-background-color: #000000;
+    -fx-text-fill: #303030;
+    -fx-effect: dropshadow(three-pass-box, rgba(49, 127, 223, 0.56), 12, 0.5, 0, 0);
+    -fx-border-color: rgba(59, 121, 237, 0.88);
+    -fx-border-width: 1px;
+    -fx-transition: all 0.3s ease;
+}
+
+
+
+#AddEmpButt {
+    -fx-background-color: #000000;
+}
+
+.AddEmpButt {
+    -fx-border-color: lime;
+    -fx-border-width: 1px;
+    -fx-border-radius: 1px;
+    -fx-padding: 4px;
+}
+
+.AddEmpButt {
+    -fx-background-color: #1a3b10;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-border-color: #f3fff5;
+    -fx-font-family: 'Malgun Gothic';
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-padding: 4px 8px;
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s ease;
+}
+
+
+.AddEmpButt:hover {
+    -fx-background-color: #959595;
+    -fx-text-fill: rgba(74, 5, 5, 0.78);
+    -fx-effect: dropshadow(three-pass-box, rgba(120, 120, 115, 0.58), 10, 0.5, 0, 0);
+    -fx-border-color: rgb(213, 194, 97);
+    -fx-transition: all 0.3s ease;
+}
+
+.AddEmpButt:pressed {
+    -fx-background-color: #000000;
+    -fx-text-fill: #0a449f;
+    -fx-effect: dropshadow(three-pass-box, rgb(99, 216, 220), 12, 0.5, 0, 0);
+    -fx-border-color: rgba(13, 170, 141, 0.88);
+    -fx-border-width: 1px;
+    -fx-transition: all 0.3s ease;
+}
+
+
+
+
+#ReportEmpButt {
+    -fx-background-color: #000000;
+}
+
+.ReportEmpButt {
+    -fx-border-color: lime;
+    -fx-border-width: 1px;
+    -fx-border-radius: 1px;
+    -fx-padding: 4px;
+}
+
+.ReportEmpButt {
+    -fx-background-color: #1a3b10;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-border-color: #f3fff5;
+    -fx-font-family: 'Malgun Gothic';
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-padding: 4px 8px;
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s ease;
+}
+
+
+.ReportEmpButt:hover {
+    -fx-background-color: #959595;
+    -fx-text-fill: rgba(14, 14, 14, 0.78);
+    -fx-effect: dropshadow(three-pass-box, rgba(120, 120, 115, 0.58), 10, 0.5, 0, 0);
+    -fx-border-color: rgb(213, 194, 97);
+    -fx-transition: all 0.3s ease;
+}
+
+.ReportEmpButt:pressed {
+    -fx-background-color: #000000;
+    -fx-text-fill: #323232;
+    -fx-effect: dropshadow(three-pass-box, rgb(110, 110, 110), 12, 0.5, 0, 0);
+    -fx-border-color: rgba(108, 108, 108, 0.88);
+    -fx-border-width: 1px;
+    -fx-transition: all 0.3s ease;
+}
+
+
+

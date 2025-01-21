@@ -1,0 +1,84 @@
+#dashBoadButns {
+    -fx-background-color: #000000;
+}
+
+.dashBoadButns {
+    -fx-border-color: lime;
+    -fx-border-width: 2px;
+    -fx-border-radius: 8px;
+    -fx-padding: 10px;
+}
+
+.dashBoadButns {
+    -fx-background-color: #1a3b10;
+    -fx-text-fill: #050505;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
+    -fx-border-color: #f3fff5;
+    -fx-font-family: 'Malgun Gothic';
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-padding: 8px 16px;
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s ease;
+}
+
+
+.dashBoadButns:hover {
+    -fx-background-color: #a83232;
+    -fx-text-fill: rgba(74, 5, 5, 0.78);
+    -fx-effect: dropshadow(three-pass-box, rgba(213, 200, 57, 0.58), 10, 0.5, 0, 0);
+    -fx-border-color: rgb(255, 0, 0);
+    -fx-transition: all 0.3s ease;
+}
+
+.dashBoadButns:pressed {
+    -fx-background-color: #000000;
+    -fx-text-fill: #0a449f;
+   -fx-effect: dropshadow(three-pass-box, rgba(179, 89, 56, 0.56), 12, 0.5, 0, 0);
+    -fx-border-color: rgba(13, 170, 141, 0.88);
+    -fx-border-width: 3px;
+    -fx-transition: all 0.3s ease;
+}
+
+
+.logOUT {
+    -fx-border-color: lime;
+    -fx-border-width: 1px;
+    -fx-border-radius: 1px;
+    -fx-padding: 1px;
+}
+
+.logOUT {
+    -fx-background-color: #00000;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 2px;
+    -fx-border-radius: 1px;
+    -fx-border-width: 0px;
+    -fx-border-color: #f3fff5;
+    -fx-font-family: 'Malgun Gothic';
+    -fx-font-weight: bold;
+    -fx-font-size: 10px;
+    -fx-padding: 4px 6px;
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s ease;
+}
+
+
+.logOUT:hover {
+    -fx-background-color: #00000;
+    -fx-text-fill: rgba(206, 227, 157, 0.69);
+    -fx-effect: dropshadow(three-pass-box, rgba(207, 213, 40, 0.6), 10, 0.5, 0, 0);
+    -fx-border-color: rgb(106, 105, 105);
+    -fx-transition: all 0.3s ease;
+}
+
+.logOUT:pressed {
+    -fx-background-color: #00000;
+    -fx-text-fill: #e3db39;
+    -fx-effect: dropshadow(three-pass-box, rgba(225, 151, 112, 0.82), 12, 0.5, 0, 0);
+    -fx-border-color: #0000;
+    -fx-border-width: 0px;
+    -fx-transition: all 0.3s ease;
+}

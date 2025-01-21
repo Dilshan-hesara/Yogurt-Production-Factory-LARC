@@ -1,0 +1,151 @@
+<!-- Created with Jaspersoft Studio version 7.0.0.final using JasperReports Library version 7.0.0-b478feaa9aab4375eba71de77b4ca138ad2f62aa  -->
+<jasperReport name="production_mix_recip" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6bb81b47-d14b-4a59-94dd-4699160f5fd2">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (4)"/>
+	<query language="SQL"><![CDATA[ select * from production_mix_recip]]></query>
+	<field name="Prod_Name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Prod_Name"/>
+		<property name="com.jaspersoft.studio.field.label" value="Prod_Name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="production_mix_recip"/>
+	</field>
+	<field name="Milk_qty" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Milk_qty"/>
+		<property name="com.jaspersoft.studio.field.label" value="Milk_qty"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="production_mix_recip"/>
+	</field>
+	<field name="Sugur_qty" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Sugur_qty"/>
+		<property name="com.jaspersoft.studio.field.label" value="Sugur_qty"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="production_mix_recip"/>
+	</field>
+	<field name="Jeliy_qty" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Jeliy_qty"/>
+		<property name="com.jaspersoft.studio.field.label" value="Jeliy_qty"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="production_mix_recip"/>
+	</field>
+	<variable name="Prod_Name1" resetType="Column" calculation="Count" class="java.lang.Integer">
+		<expression><![CDATA[$F{Prod_Name}]]></expression>
+	</variable>
+	<variable name="Milk_qty1" resetType="Column" calculation="Count" class="java.lang.Integer">
+		<expression><![CDATA[$F{Milk_qty}]]></expression>
+	</variable>
+	<group name="Prod_Name">
+		<expression><![CDATA[$F{Prod_Name}]]></expression>
+	</group>
+	<group name="Milk_qty">
+		<expression><![CDATA[$F{Milk_qty}]]></expression>
+	</group>
+	<group name="Sugur_qty">
+		<expression><![CDATA[$F{Sugur_qty}]]></expression>
+	</group>
+	<group name="Jeliy_qty">
+		<expression><![CDATA[$F{Jeliy_qty}]]></expression>
+	</group>
+	<background splitType="Stretch"/>
+	<title height="86" splitType="Stretch">
+		<element kind="staticText" uuid="0c48bd2e-3129-40b0-b624-ab8869d6b016" x="0" y="0" width="550" height="86" fontSize="25.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[ YOUGUERT RECIPES]]></text>
+			<box>
+				<pen lineWidth="1.0"/>
+			</box>
+		</element>
+	</title>
+	<pageHeader height="35" splitType="Stretch"/>
+	<columnHeader height="61" splitType="Stretch">
+		<element kind="staticText" uuid="0acaaa81-c53c-465d-9ad7-ad5f4108388d" x="0" y="0" width="141" height="30" fontSize="12.0" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[RESEPE NAME]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c271935d-4371-4fda-89b3-bfdf30cd26f6"/>
+			<box>
+				<pen lineWidth="1.25"/>
+				<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+			</box>
+		</element>
+		<element kind="staticText" uuid="b4258261-e457-4c34-b73f-a21e770eafbd" x="141" y="0" width="138" height="30" fontSize="12.0" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[MILK (L)]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4dd418cd-8664-4ac9-97cd-853dc589523a"/>
+			<box>
+				<pen lineWidth="1.25"/>
+				<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+			</box>
+		</element>
+		<element kind="staticText" uuid="ddb120ec-084f-45ed-8ec0-155e80df788d" x="279" y="0" width="138" height="30" fontSize="12.0" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[SUGUER(K)]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6bd3ea99-ab4a-4a06-bded-b9e386efdf24"/>
+			<box>
+				<pen lineWidth="1.25"/>
+				<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+			</box>
+		</element>
+		<element kind="staticText" uuid="cc15b7c7-ea59-45df-94e2-348020449f76" x="417" y="0" width="138" height="30" fontSize="12.0" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[GELETIN(G)]]></text>
+			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a51d4c2b-21f9-41d2-a58a-aa0387b9ce08"/>
+			<box>
+				<pen lineWidth="1.25"/>
+				<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+			</box>
+		</element>
+	</columnHeader>
+	<detail>
+		<band height="33" splitType="Stretch">
+			<element kind="textField" uuid="7b9ef44a-60f4-44f9-86bf-3eafbfe8693c" x="0" y="0" width="141" height="30" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{Prod_Name}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c271935d-4371-4fda-89b3-bfdf30cd26f6"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+			</element>
+			<element kind="textField" uuid="60414f01-0094-4e38-bacc-6d6f5427a9bd" x="141" y="0" width="138" height="30" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{Milk_qty}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4dd418cd-8664-4ac9-97cd-853dc589523a"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+			</element>
+			<element kind="textField" uuid="374f098c-0bda-4e81-89ab-0f259a1a0bdf" x="279" y="0" width="138" height="30" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{Sugur_qty}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6bd3ea99-ab4a-4a06-bded-b9e386efdf24"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+			</element>
+			<element kind="textField" uuid="092d8d17-f5af-4dfc-a111-6332f85d0d2f" x="417" y="0" width="138" height="30" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{Jeliy_qty}]]></expression>
+				<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a51d4c2b-21f9-41d2-a58a-aa0387b9ce08"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+			</element>
+		</band>
+	</detail>
+	<columnFooter height="45" splitType="Stretch"/>
+	<pageFooter height="54" splitType="Stretch"/>
+	<summary height="42" splitType="Stretch"/>
+</jasperReport>

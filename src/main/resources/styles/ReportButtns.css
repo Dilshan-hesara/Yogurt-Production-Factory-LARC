@@ -1,0 +1,44 @@
+#Reportbuttnd {
+    -fx-background-color: #000000;
+}
+
+.Reportbuttnd {
+    -fx-border-color: lime;
+    -fx-border-width: 2px;
+    -fx-border-radius: 8px;
+    -fx-padding: 8px;
+}
+
+.Reportbuttnd {
+    -fx-background-color: #1a3b10;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
+    -fx-border-color: #f3fff5;
+    -fx-font-family: 'Malgun Gothic';
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-padding: 2px 8px;
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s ease;
+}
+
+
+.Reportbuttnd:hover {
+    -fx-background-color: #bdbaba;
+    -fx-text-fill: rgba(0, 0, 0, 0.69);
+    -fx-effect: dropshadow(three-pass-box, rgba(226, 230, 60, 0.6), 10, 0.5, 0, 0);
+    -fx-border-color: rgb(101, 184, 227);
+    -fx-transition: all 0.3s ease;
+}
+
+.Reportbuttnd:pressed {
+    -fx-background-color: #aaa8a8;
+    -fx-text-fill: #a9e8b2;
+    -fx-effect: dropshadow(three-pass-box, rgba(138, 191, 186, 0.7), 12, 0.5, 0, 0);
+    -fx-border-color: #878484;
+    -fx-border-width: 2px;
+    -fx-transition: all 0.3s ease;
+}
+

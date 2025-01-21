@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="nextAcc" prefHeight="496.0" prefWidth="399.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.edu.yogurtproduction.yogurtproductionitsolution.controller.CreatAccController">
+    <children>
+        <Label layoutX="24.0" layoutY="24.0" prefHeight="26.0" prefWidth="107.0" text="Create Acc">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+        <HBox alignment="CENTER_LEFT" layoutX="85.0" layoutY="234.0" />
+        <HBox alignment="CENTER_LEFT" layoutX="85.0" layoutY="234.0" />
+        <TextField fx:id="txtEmail" layoutX="15.0" layoutY="312.0" prefHeight="26.0" prefWidth="368.0" promptText="employee@gmail.com" style="-fx-background-color: #fff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+        <TextField fx:id="txtUserName" layoutX="15.0" layoutY="126.0" prefHeight="26.0" prefWidth="368.0" promptText="User Name" style="-fx-background-color: #fff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+        <TextField fx:id="txtREEnterPassWord" layoutX="16.0" layoutY="244.0" prefHeight="26.0" prefWidth="368.0" promptText="Re Enter Password" style="-fx-background-color: #fff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+        <Button fx:id="btnSave" layoutX="295.0" layoutY="444.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSaveAcc" prefWidth="80.0" style="-fx-background-color: #2ecc71;" text="Save" textFill="WHITE">
+            <cursor>
+                <Cursor fx:constant="CLOSED_HAND" />
+            </cursor>
+        </Button>
+      <TextField fx:id="txtPassWord" layoutX="16.0" layoutY="190.0" prefHeight="26.0" prefWidth="368.0" promptText="PassWord" style="-fx-background-color: #fff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <Label layoutX="24.0" layoutY="54.0" prefHeight="26.0" prefWidth="229.0" text="Enter Youer Details Create Acc">
+         <font>
+            <Font name="System Italic" size="9.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="349.0" layoutY="126.0">
+         <image>
+            <Image url="@../images/16-user.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="16.0" layoutY="99.0" prefHeight="26.0" prefWidth="229.0" text="User Name">
+         <font>
+            <Font name="System Italic" size="9.0" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>

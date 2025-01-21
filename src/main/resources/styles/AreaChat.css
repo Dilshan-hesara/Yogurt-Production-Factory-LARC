@@ -1,0 +1,15 @@
+
+.chart {
+    -fx-background-color: #0000;
+}
+
+
+.chart-plot-background {
+    -fx-background-color:  #0000;
+}
+
+
+.chart-grid-lines {
+    -fx-stroke: #444444;
+}
+

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainAn" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.edu.yogurtproduction.yogurtproductionitsolution.controller.DashBoad">
+   <children>
+      <ImageView fitHeight="720.0" fitWidth="1280.0">
+         <image>
+            <Image url="@../images/8-bacground.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="160.0" prefHeight="600.0" prefWidth="870.0" style="-fx-background-color: #0000;">
+         <children>
+            <AnchorPane layoutX="-168.0" opacity="0.34" prefHeight="720.0" prefWidth="166.0" style="-fx-background-color: #feca57;" />
+            <AnchorPane fx:id="nextPage" layoutX="-15.0" prefHeight="720.0" prefWidth="1130.0">
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="19.0" layoutX="138.0" layoutY="368.0">
+                     <image>
+                        <Image url="@../images/36.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="20.0" fitWidth="19.0" layoutX="280.0" layoutY="292.0">
+                     <image>
+                        <Image url="@../images/37.png" />
+                     </image>
+                  </ImageView>
+               </children></AnchorPane>
+         </children></AnchorPane>
+      <AnchorPane prefHeight="720.0" prefWidth="150.0">
+         <children>
+            <Label layoutX="41.0" layoutY="22.0" prefHeight="28.0" prefWidth="94.0" text="Prodrion">
+               <font>
+                  <Font name="Bauhaus 93" size="23.0" />
+               </font>
+            </Label>
+            <Label prefHeight="18.0" prefWidth="83.0" text="  Yogurt">
+               <font>
+                  <Font name="Bauhaus 93" size="23.0" />
+               </font>
+            </Label>
+            <AnchorPane prefHeight="720.0" prefWidth="150.0">
+               <children>
+                  <Button layoutX="14.0" layoutY="197.0" mnemonicParsing="false" onAction="#emploButt" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: #0000; -fx-border-color: #ff9f43; -fx-border-width: 3; -fx-border-image-slice: ;" styleClass="dashBoadButns" stylesheets="@../styles/DashBoadButtns.css" text="      Employee">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="14.0" layoutY="304.0" mnemonicParsing="false" onAction="#cashBookButt" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: #0000; -fx-border-color: #ff9f43; -fx-border-width: 3; -fx-border-image-slice: ;" styleClass="dashBoadButns" stylesheets="@../styles/DashBoadButtns.css" text="      Cash Book">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="14.0" layoutY="249.0" mnemonicParsing="false" onAction="#supplierButt" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: #0000; -fx-border-color: #ff9f43; -fx-border-width: 3; -fx-border-image-slice: ;" styleClass="dashBoadButns" stylesheets="@../styles/DashBoadButtns.css" text="     Supplier">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="14.0" layoutY="459.0" mnemonicParsing="false" onAction="#PackingButt" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: #0000; -fx-border-color: #ff9f43; -fx-border-width: 3; -fx-border-image-slice: ;" styleClass="dashBoadButns" stylesheets="@../styles/DashBoadButtns.css" text="    Packing">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="14.0" layoutY="356.0" mnemonicParsing="false" onAction="#invetroyButt" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: #0000; -fx-border-color: #ff9f43; -fx-border-width: 3; -fx-border-image-slice: ;" styleClass="dashBoadButns" stylesheets="@../styles/DashBoadButtns.css" text="    Inventry">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="14.0" layoutY="406.0" mnemonicParsing="false" onAction="#prodtionButt" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: #0000; -fx-border-color: #ff9f43; -fx-border-width: 3; -fx-border-image-slice: ;" styleClass="dashBoadButns" stylesheets="@../styles/DashBoadButtns.css" text="    Prodtion">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="14.0" layoutY="512.0" mnemonicParsing="false" onAction="#stockButt" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: #0000; -fx-border-color: #ff9f43; -fx-border-width: 3; -fx-border-image-slice: ;" styleClass="dashBoadButns" stylesheets="@../styles/DashBoadButtns.css" text=" Stock">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="39.0" layoutY="655.0" mnemonicParsing="false" onAction="#logOut" prefHeight="28.0" prefWidth="76.0" style="-fx-background-color: #222f3e;" styleClass="logOUT" stylesheets="@../styles/DashBoadButtns.css" text="Log Out     " textFill="#c8d6e5">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="20.0" fitWidth="26.0" layoutX="13.0" layoutY="28.0">
+                     <image>
+                        <Image url="@../images/7-app_icon.png" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="13.0" layoutY="140.0" mnemonicParsing="false" onAction="#dashBoadButt" prefHeight="40.0" prefWidth="125.0" style="-fx-background-color: #0000; -fx-border-color: #ff9f43; -fx-border-width: 3; -fx-border-image-slice: ;" styleClass="dashBoadButns" stylesheets="@../styles/DashBoadButtns.css" text="       DashBoad">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="28.0" fitWidth="32.0" layoutX="23.0" layoutY="146.0">
+                     <image>
+                        <Image url="@../images/28.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="28.0" fitWidth="32.0" layoutX="24.0" layoutY="203.0">
+                     <image>
+                        <Image url="@../images/29.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="28.0" fitWidth="32.0" layoutX="26.0" layoutY="253.0">
+                     <image>
+                        <Image url="@../images/30.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="20.0" fitWidth="26.0" layoutX="26.0" layoutY="314.0">
+                     <image>
+                        <Image url="@../images/31.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="20.0" fitWidth="26.0" layoutX="26.0" layoutY="366.0">
+                     <image>
+                        <Image url="@../images/32.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="20.0" fitWidth="26.0" layoutX="26.0" layoutY="416.0">
+                     <image>
+                        <Image url="@../images/33.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="20.0" fitWidth="26.0" layoutX="29.0" layoutY="469.0">
+                     <image>
+                        <Image url="@../images/34.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="20.0" fitWidth="19.0" layoutX="89.0" layoutY="659.0">
+                     <image>
+                        <Image url="@../images/39.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="20.0" fitWidth="26.0" layoutX="27.0" layoutY="522.0">
+                     <image>
+                        <Image url="@../images/46.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

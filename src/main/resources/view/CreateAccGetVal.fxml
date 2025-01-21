@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="nextAcc" prefHeight="496.0" prefWidth="399.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.edu.yogurtproduction.yogurtproductionitsolution.controller.CreateAccGetValController">
+    <children>
+        <Label layoutX="24.0" layoutY="24.0" prefHeight="26.0" prefWidth="107.0" text="Create Acc">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+        <HBox alignment="CENTER_LEFT" layoutX="85.0" layoutY="234.0" />
+        <HBox alignment="CENTER_LEFT" layoutX="85.0" layoutY="234.0" />
+        <TextField fx:id="txtEmail" layoutX="15.0" layoutY="345.0" prefHeight="26.0" prefWidth="368.0" promptText="employee@gmail.com" style="-fx-background-color: #fff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+        <TextField fx:id="txtUserName" layoutX="15.0" layoutY="126.0" prefHeight="26.0" prefWidth="368.0" promptText="User Name" style="-fx-background-color: #fff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+        <Button fx:id="btnSave" layoutX="295.0" layoutY="444.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSaveAcc" prefHeight="26.0" prefWidth="80.0" style="-fx-background-color: #2ecc71;" styleClass="nextButt" stylesheets="@../styles/Userbutt.css" text="Next" textFill="WHITE">
+            <cursor>
+                <Cursor fx:constant="CLOSED_HAND" />
+            </cursor>
+        </Button>
+        <Label layoutX="24.0" layoutY="54.0" prefHeight="26.0" prefWidth="229.0" text="Enter Youer Details Create Acc">
+            <font>
+                <Font name="System Italic" size="9.0" />
+            </font>
+        </Label>
+      <PasswordField fx:id="txtPassWord" layoutX="15.0" layoutY="210.0" prefHeight="26.0" prefWidth="368.0" promptText="PassWord" style="-fx-background-color: #fff; -fx-border-width: 0 0 1px 0; -fx-border-color: #7367F0;" />
+      <PasswordField fx:id="txtREEnterPassWord" layoutX="15.0" layoutY="259.0" prefHeight="26.0" prefWidth="368.0" promptText="Re Enter Password" style="-fx-background-color: #fff; -fx-border-width: 0 0 1px 0; -fx-border-color: #7367F0;" />
+      <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="353.0" layoutY="127.0">
+         <image>
+            <Image url="@../images/16-user.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="20.0" layoutY="100.0" prefHeight="26.0" prefWidth="229.0" text="Enter Your  Name">
+         <font>
+            <Font name="System Italic" size="9.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="18.0" fitWidth="26.0" layoutX="353.0" layoutY="214.0">
+         <image>
+            <Image url="@../images/17pass.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="18.0" fitWidth="26.0" layoutX="353.0" layoutY="263.0">
+         <image>
+            <Image url="@../images/17pass.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="16.0" layoutY="176.0" prefHeight="26.0" prefWidth="229.0" text="Enter Your  Password">
+         <font>
+            <Font name="System Italic" size="9.0" />
+         </font>
+      </Label>
+      <Label layoutX="16.0" layoutY="318.0" prefHeight="26.0" prefWidth="229.0" text="Enter Your Mail">
+         <font>
+            <Font name="System Italic" size="9.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="357.0" layoutY="349.0">
+         <image>
+            <Image url="@../images/18mail.png" />
+         </image>
+      </ImageView>
+    </children>
+</AnchorPane>

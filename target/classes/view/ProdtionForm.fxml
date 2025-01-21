@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.SepiaTone?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1088.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.edu.yogurtproduction.yogurtproductionitsolution.controller.ProdtionCon">
+   <children>
+      <ImageView fitHeight="720.0" fitWidth="1100.0">
+         <image>
+            <Image url="@../images/11-bluer.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="428.0" layoutY="14.0" prefHeight="50.0" prefWidth="327.0" text="MANGE  PRODUCTION">
+         <font>
+            <Font name="Impact" size="39.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tblProdtion" layoutX="52.0" layoutY="344.0" prefHeight="353.0" prefWidth="1030.0" style="-fx-background-color: #0000; -fx-border-color: #F89425;" stylesheets="@../styles/Tables.css">
+         <columns>
+            <TableColumn fx:id="colProdID" prefWidth="75.0" text="Pro ID" />
+            <TableColumn fx:id="colProName" prefWidth="75.0" text="Pro  NAME" />
+            <TableColumn fx:id="colQty" prefWidth="75.0" text="QTY" />
+            <TableColumn fx:id="colRecipe" prefWidth="75.0" text="Recipe  NAME" />
+         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+         <effect>
+            <SepiaTone level="0.24" />
+         </effect>
+         <styleClass>
+            <String fx:value="table-cell" />
+            <String fx:value="table-row-cell" />
+         </styleClass>
+      </TableView>
+      <Label layoutX="51.0" layoutY="87.0" prefHeight="30.0" prefWidth="138.0" text="PRO ID         :">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblProdID" layoutX="196.0" layoutY="87.0" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="137.0" text="P001">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="51.0" layoutY="129.0" prefHeight="30.0" prefWidth="138.0" text="PRO NAME  :">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="51.0" layoutY="179.0" prefHeight="30.0" prefWidth="124.0" text="QTY              :">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtQty" layoutX="189.0" layoutY="181.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="150.0" promptText="0" style="-fx-background-color: #ffffff; -fx-border-width: 0 0 1px 0; -fx-border-color: #000;" />
+      <Button fx:id="btnAddProdt" layoutX="895.0" layoutY="289.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnAddPro" prefHeight="38.0" prefWidth="148.0" style="-fx-background-color: #3498db;" styleClass="Prodtionbuttn" stylesheets="@../styles/PackProdtionButtns.css" text="ADD" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+      </Button>
+      <ComboBox fx:id="cmbProdt" layoutX="492.0" layoutY="131.0" onAction="#cmbProdtOnAction" prefWidth="150.0" promptText="Select Recipe" style="-fx-background-color: #ffffff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <TextField fx:id="txtProdtName" layoutX="189.0" layoutY="131.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="150.0" promptText="Yougurt" style="-fx-background-color: #ffffff; -fx-border-width: 0 0 1px 0; -fx-border-color: #000;" />
+      <Label layoutX="359.0" layoutY="129.0" prefHeight="30.0" prefWidth="138.0" text="PROD RESIP  :">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="682.0" layoutY="150.0" prefHeight="18.0" prefWidth="58.0" text="Milk    (L)" />
+      <Label layoutX="682.0" layoutY="185.0" prefHeight="18.0" prefWidth="66.0" text="Sugar  (K) " />
+      <Label layoutX="678.0" layoutY="221.0" prefHeight="18.0" prefWidth="66.0" text="Gelatin (G) " />
+      <Label fx:id="lblMilk" layoutX="746.0" layoutY="151.0" opacity="0.49" prefHeight="18.0" prefWidth="30.0" text="0000" />
+      <Label fx:id="jeliy" layoutX="746.0" layoutY="221.0" opacity="0.46" prefHeight="18.0" prefWidth="30.0" text="0000" />
+      <Label fx:id="lblsuguer" layoutX="746.0" layoutY="185.0" opacity="0.46" prefHeight="18.0" prefWidth="30.0" text="0000" />
+      <Label fx:id="lblMilkAV" layoutX="806.0" layoutY="149.0" opacity="0.43" prefHeight="18.0" prefWidth="30.0" text="0000" />
+      <Label fx:id="lblgeliyAV" layoutX="806.0" layoutY="221.0" opacity="0.49" prefHeight="18.0" prefWidth="30.0" text="0000" />
+      <Label fx:id="lblsuguerAV" layoutX="806.0" layoutY="184.0" opacity="0.42" prefHeight="18.0" prefWidth="30.0" text="0000" />
+      <Label layoutX="806.0" layoutY="120.0" prefHeight="18.0" prefWidth="58.0" text="available" />
+      <Label layoutX="739.0" layoutY="120.0" prefHeight="18.0" prefWidth="43.0" text="Recepi" />
+      <Label layoutX="694.0" layoutY="120.0" prefHeight="18.0" prefWidth="43.0" text="Qty">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnAddResipe" layoutX="493.0" layoutY="180.0" mnemonicParsing="false" onAction="#btnAddResipe" prefHeight="27.0" prefWidth="148.0" style="-fx-background-color: #0000; -fx-border-color: #29ac98;" styleClass="AddMat" stylesheets="@../styles/PackProdtionButtns.css" text="Add Resipe" textFill="#29ac98">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="795.0" layoutY="293.0" mnemonicParsing="false" onAction="#btnALLReportResip" prefHeight="30.0" prefWidth="82.0" style="-fx-background-color: #95a5a6;" styleClass="ReportEmpButt" stylesheets="@../styles/SupEmpButtns.css" text="RECIPES " textFill="#080d0d">
+         <font>
+            <Font name="Berlin Sans FB" size="12.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="18.0" fitWidth="15.0" layoutX="506.0" layoutY="185.0">
+         <image>
+            <Image url="@../images/24.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
