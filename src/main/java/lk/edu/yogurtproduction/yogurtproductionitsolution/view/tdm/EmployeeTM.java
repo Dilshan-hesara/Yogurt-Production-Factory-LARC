@@ -1,5 +1,4 @@
-package lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM;
-import javafx.fxml.FXML;
+package lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm;
 import lombok.*;
 @Getter
 @Setter

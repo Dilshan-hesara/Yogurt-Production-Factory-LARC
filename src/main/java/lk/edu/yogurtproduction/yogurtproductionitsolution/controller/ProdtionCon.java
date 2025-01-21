@@ -17,7 +17,7 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.InventroyDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialUsageDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdMixDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdtionDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.ProdtionTM;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.ProdtionTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.InventroyModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatirialUsageModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.ProdMixModel;

@@ -1,7 +1,7 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdMixDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class ProdMixModel {
     public boolean saveProdtMaix(ProdMixDto prodMixDto) throws SQLException {
 
-        boolean isSaved =  CrudUtil.execute(
+        boolean isSaved =  SQLUtil.execute(
                 "insert into production_mix_recip values (?,?,?,?)",
 
                 prodMixDto.getProdName(),
@@ -23,7 +23,7 @@ public class ProdMixModel {
 
     public ArrayList<String> getAllProdName() throws SQLException {
 
-        ResultSet rst = CrudUtil.execute("select Prod_Name from production_mix_recip");
+        ResultSet rst = SQLUtil.execute("select Prod_Name from production_mix_recip");
 
         ArrayList<String> prodtName = new ArrayList<>();
 
@@ -37,7 +37,7 @@ public class ProdMixModel {
 
     public ProdMixDto findbyname(String selectProd) throws SQLException {
 
-        ResultSet rst = CrudUtil.execute("select * from production_mix_recip where Prod_Name=?", selectProd);
+        ResultSet rst = SQLUtil.execute("select * from production_mix_recip where Prod_Name=?", selectProd);
 
         if (rst.next()) {
             return new ProdMixDto(
@@ -53,7 +53,7 @@ public class ProdMixModel {
 
     public ArrayList<ProdMixDto> getAllInventoryData() throws SQLException {
 
-        ResultSet rst = CrudUtil.execute("select * from production_mix_recip");
+        ResultSet rst = SQLUtil.execute("select * from production_mix_recip");
 
         ArrayList<ProdMixDto> prodMixDTOS = new ArrayList<>();
 
@@ -72,7 +72,7 @@ public class ProdMixModel {
     }
 
     public boolean updateQuantities(String prodName, int milk, int suguer, int jeliy) throws SQLException {
-        return CrudUtil.execute(
+        return SQLUtil.execute(
                 "update production_mix_recip set Milk_qty = ?, Sugur_qty = ?, Jeliy_qty = ? where Prod_Name = ?",
                 milk,
                 suguer,
@@ -82,7 +82,7 @@ public class ProdMixModel {
     }
 
     public boolean deleteRecipe(String prodName) throws SQLException {
-        return CrudUtil.execute("delete from production_mix_recip where Prod_Name = ?", prodName);
+        return SQLUtil.execute("delete from production_mix_recip where Prod_Name = ?", prodName);
     }
 
 }

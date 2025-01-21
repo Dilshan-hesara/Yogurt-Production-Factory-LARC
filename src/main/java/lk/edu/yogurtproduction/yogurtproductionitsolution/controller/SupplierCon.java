@@ -15,13 +15,12 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SuplierDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.EmployeeTM;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.SuplierTM;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.EmployeeTM;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.SuplierTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.SuplierModel;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.view.JasperViewer;
 
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;

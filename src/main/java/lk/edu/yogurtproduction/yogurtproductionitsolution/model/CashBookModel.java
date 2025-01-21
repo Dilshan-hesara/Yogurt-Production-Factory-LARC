@@ -2,7 +2,7 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CashBookDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -20,7 +20,7 @@ public class CashBookModel {
         try {
             connection.setAutoCommit(false);
 
-            boolean isRecpSaved = CrudUtil.execute(
+            boolean isRecpSaved = SQLUtil.execute(
                     "insert into Cash_Book values (?, ?, ?, ?, ?, ?, ?, ?)",
                     cashBookDto.getCBNo(),
                     cashBookDto.getSupId(),
@@ -65,7 +65,7 @@ public class CashBookModel {
 
 
     public int getAllPayAmount() throws SQLException {
-        ResultSet resultSet = CrudUtil.execute("select sum(Amount) as Total_Amount from cash_book");
+        ResultSet resultSet = SQLUtil.execute("select sum(Amount) as Total_Amount from cash_book");
 
         if (resultSet.next()) {
             return resultSet.getInt("Total_Amount");
@@ -75,7 +75,7 @@ public class CashBookModel {
 
 
     public String getNextCBNId() throws SQLException {
-        ResultSet rst = CrudUtil.execute("select CB_No from Cash_Book order by CB_No desc limit 1");
+        ResultSet rst = SQLUtil.execute("select CB_No from Cash_Book order by CB_No desc limit 1");
         if (rst.next()) {
             String lastId = rst.getString(1);
             String substring = lastId.substring(3);
@@ -89,7 +89,7 @@ public class CashBookModel {
 
     public ArrayList<CashBookDto> getAllCustomers() throws SQLException {
 
-        ResultSet rst = CrudUtil.execute("select * from Cash_Book");
+        ResultSet rst = SQLUtil.execute("select * from Cash_Book");
 
         ArrayList<CashBookDto> cashBookDTOS = new ArrayList<>();
 

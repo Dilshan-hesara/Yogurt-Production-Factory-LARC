@@ -17,7 +17,7 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CustomerDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.OrderDetailsDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.OrdersDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.StockDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.CartTM;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.CartTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.CustomerModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.OrderModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.StockModel;

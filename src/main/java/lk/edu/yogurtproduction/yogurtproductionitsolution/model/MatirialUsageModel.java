@@ -1,7 +1,7 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialUsageDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,7 +26,7 @@ public class MatirialUsageModel {
 
     private boolean saveMatUsage(MatirialUsageDto matirialUsageDTO) throws SQLException {
 
-        return   CrudUtil.execute(
+        return   SQLUtil.execute(
                 "insert into material_usage values (?, ?, ?, ?, ?)",
                 matirialUsageDTO.getMatUs_ID(),
                 matirialUsageDTO.getProd_ID(),
@@ -39,7 +39,7 @@ public class MatirialUsageModel {
     }
     public String getmatirialUsageId() throws SQLException {
 
-        ResultSet rst = CrudUtil.execute("select MatUs_ID from material_usage order by MatUs_ID desc limit 1");
+        ResultSet rst = SQLUtil.execute("select MatUs_ID from material_usage order by MatUs_ID desc limit 1");
         if (rst.next()) {
             String lastId = rst.getString(1);
             String substring = lastId.substring(4);
@@ -51,7 +51,7 @@ public class MatirialUsageModel {
         }
 
     public ArrayList<MatirialUsageDto> getAllMatUsageData() throws SQLException {
-        ResultSet rst = CrudUtil.execute("select * from material_usage");
+        ResultSet rst = SQLUtil.execute("select * from material_usage");
 
         ArrayList<MatirialUsageDto> matirialUsageDTOS = new ArrayList<>();
 
@@ -72,7 +72,7 @@ public class MatirialUsageModel {
 
     public int getAllUsageAvg() throws SQLException {
 
-        ResultSet resultSet = CrudUtil.execute("select(sum(Mat_Milk)+sum(Mat_Suguer)+sum(Mat_Gelatin)) / (count(*) * 3) as AllAvg from material_usage;");
+        ResultSet resultSet = SQLUtil.execute("select(sum(Mat_Milk)+sum(Mat_Suguer)+sum(Mat_Gelatin)) / (count(*) * 3) as AllAvg from material_usage;");
 
         if (resultSet.next()) {
             return resultSet.getInt("AllAvg");

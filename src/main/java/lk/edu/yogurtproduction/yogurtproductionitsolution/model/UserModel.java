@@ -3,7 +3,7 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CreteAccDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.UserDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,7 +14,7 @@ public class UserModel {
     public static boolean createUser(UserDto user) throws SQLException {
 
 
-        return CrudUtil.execute(
+        return SQLUtil.execute(
 
                 "insert into user values (?, ?, ?)",
                 user.getUsername(),
@@ -44,7 +44,7 @@ public class UserModel {
     public boolean updatePassword(String username, String newPassword) throws SQLException {
 
         String query = "update user set password = ? where username = ?";
-        boolean isUpdated = CrudUtil.execute(query, newPassword, username);
+        boolean isUpdated = SQLUtil.execute(query, newPassword, username);
 
         if (isUpdated) {
             return true;
@@ -55,7 +55,7 @@ public class UserModel {
     public boolean isValidUser(String username, String password) throws SQLException {
         String query = "select * from user where username = ?  and password = ?";
 
-        ResultSet resultSet = CrudUtil.execute(query, username, password);
+        ResultSet resultSet = SQLUtil.execute(query, username, password);
 
         return resultSet.next();
     }
@@ -63,13 +63,13 @@ public class UserModel {
     public boolean isValidUsername(String username) throws SQLException {
         String query = "select * from user where username = ?";
 
-        ResultSet resultSet = CrudUtil.execute(query, username);
+        ResultSet resultSet = SQLUtil.execute(query, username);
 
         return resultSet.next();
     }
 
     public boolean creatUser(CreteAccDto creteAccDto) throws SQLException {
-        return CrudUtil.execute(
+        return SQLUtil.execute(
 
                 "insert into user values (?, ?, ?)",
 
@@ -84,7 +84,7 @@ public class UserModel {
     public String GetUserMail(String username) throws SQLException {
 
         try {
-            ResultSet resultSet = CrudUtil.execute("select email from user where username = ?", username);
+            ResultSet resultSet = SQLUtil.execute("select email from user where username = ?", username);
 
             if (resultSet.next()) {
                 return resultSet.getString("email");
@@ -97,7 +97,7 @@ public class UserModel {
 
 
     public boolean UpdateUser(String usename, String newpass) throws SQLException {
-        return CrudUtil.execute(
+        return SQLUtil.execute(
                 "update user set password = ? where username = ?",
                 newpass,
                 usename

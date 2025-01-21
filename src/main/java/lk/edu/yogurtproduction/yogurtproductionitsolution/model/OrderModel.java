@@ -2,7 +2,7 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.OrdersDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class OrderModel {
     public String getNextOrderId() throws SQLException {
 
-        ResultSet rst = CrudUtil.execute("select order_id from orders order by order_id desc limit 1");
+        ResultSet rst = SQLUtil.execute("select order_id from orders order by order_id desc limit 1");
 
         if (rst.next()) {
             String lastId = rst.getString(1);
@@ -31,7 +31,7 @@ public class OrderModel {
         try {
             connection.setAutoCommit(false);
 
-            boolean isOrderSaved = CrudUtil.execute(
+            boolean isOrderSaved = SQLUtil.execute(
                     "insert into orders values (?,?,?)",
                     orderDTO.getOrderId(),
                     orderDTO.getCustomerId(),

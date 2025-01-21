@@ -2,7 +2,7 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SuplierDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -87,12 +87,12 @@ public class SuplierModel {
     }
 
     public boolean deleteCustomer(String supId) throws SQLException {
-        return CrudUtil.execute("delete from supplier where Sup_ID=?", supId);
+        return SQLUtil.execute("delete from supplier where Sup_ID=?", supId);
 
     }
 
     public ArrayList<String> getAllSupIds() throws SQLException {
-        ResultSet rst = CrudUtil.execute("SELECT Sup_ID FROM supplier");
+        ResultSet rst = SQLUtil.execute("SELECT Sup_ID FROM supplier");
 
         ArrayList<String> itemIds = new ArrayList<>();
 
@@ -107,7 +107,7 @@ public class SuplierModel {
 
     public SuplierDto findById(String selectID) throws SQLException {
 
-        ResultSet rst = CrudUtil.execute("select * from supplier where Sup_ID=?",selectID);
+        ResultSet rst = SQLUtil.execute("select * from supplier where Sup_ID=?",selectID);
 
         while (rst.next()) {
             return new SuplierDto(

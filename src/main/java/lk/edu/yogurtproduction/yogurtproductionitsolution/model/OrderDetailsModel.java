@@ -1,7 +1,7 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.OrderDetailsDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ public class OrderDetailsModel {
 
     private boolean saveOrderDetail(OrderDetailsDto orderDetailsDTO) throws SQLException {
 
-        return CrudUtil.execute(
+        return SQLUtil.execute(
                 "insert into orderdetails values (?,?,?,?)",
                 orderDetailsDTO.getOrderId(),
                 orderDetailsDTO.getItemId(),

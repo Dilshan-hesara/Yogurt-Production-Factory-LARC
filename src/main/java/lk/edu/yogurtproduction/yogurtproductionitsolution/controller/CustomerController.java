@@ -9,7 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CustomerDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.CustomerTM;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.CustomerTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.CustomerModel;
 
 import java.net.URL;

@@ -2,7 +2,7 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.PckingDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -16,7 +16,7 @@ public class PackingModel {
         try {
             connection.setAutoCommit(false);
 
-            boolean isRecpSaved = CrudUtil.execute(
+            boolean isRecpSaved = SQLUtil.execute(
                     "insert into packing values (?, ?, ?, ?, ?, ?, ?,?)",
                     pckingDtos.getPac_ID(),
                     pckingDtos.getProd_ID(),
@@ -65,7 +65,7 @@ public class PackingModel {
 
     public String getPackId() throws SQLException {
 
-        ResultSet rst = CrudUtil.execute("select Pac_ID from packing order by Pac_ID desc limit 1");
+        ResultSet rst = SQLUtil.execute("select Pac_ID from packing order by Pac_ID desc limit 1");
         if (rst.next()) {
             String lastId = rst.getString(1);
             String substring = lastId.substring(3);

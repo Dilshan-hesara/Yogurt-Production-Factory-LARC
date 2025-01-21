@@ -10,7 +10,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdMixDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.ProdMixTM;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.ProdMixTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.ProdMixModel;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.view.JasperViewer;

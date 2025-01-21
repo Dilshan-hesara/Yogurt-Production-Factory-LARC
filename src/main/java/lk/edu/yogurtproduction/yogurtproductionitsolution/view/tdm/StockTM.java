@@ -1,4 +1,4 @@
-package lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM;
+package lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm;
 import lombok.*;
 
 

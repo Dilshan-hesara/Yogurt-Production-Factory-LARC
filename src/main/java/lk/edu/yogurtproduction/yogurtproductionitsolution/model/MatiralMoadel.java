@@ -3,7 +3,7 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CashBookDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -75,7 +75,7 @@ public class MatiralMoadel {
 
     public MatirialDto findById(String selectID) throws SQLException {
 
-        ResultSet rst = CrudUtil.execute("select * from material where Mat_ID=?", selectID);
+        ResultSet rst = SQLUtil.execute("select * from material where Mat_ID=?", selectID);
 
         if (rst.next()) {
             return new MatirialDto(
@@ -91,7 +91,7 @@ public class MatiralMoadel {
     public ArrayList<String> getAllItemIds() throws SQLException {
 
 
-        ResultSet rst = CrudUtil.execute("select Mat_ID from material");
+        ResultSet rst = SQLUtil.execute("select Mat_ID from material");
 
         ArrayList<String> itemIds = new ArrayList<>();
 
@@ -103,7 +103,7 @@ public class MatiralMoadel {
     }
 
     public boolean updatedMatirialReduceQty(CashBookDto cashBookDto) throws SQLException {
-        return CrudUtil.execute(
+        return SQLUtil.execute(
                 "update material set Qty = Qty - ? where Mat_ID = ?",
                 cashBookDto.getQty(),
                 cashBookDto.getMatID()

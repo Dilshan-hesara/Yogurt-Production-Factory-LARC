@@ -2,7 +2,7 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.OrderDetailsDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.StockDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,7 +12,7 @@ public class StockModel {
 
     public String getStockId() throws SQLException {
 
-        ResultSet rst = CrudUtil.execute("select Stock_ID from Stock order by Stock_ID desc limit 1");
+        ResultSet rst = SQLUtil.execute("select Stock_ID from Stock order by Stock_ID desc limit 1");
         if (rst.next()) {
             String lastId = rst.getString(1);
             String substring = lastId.substring(3);
@@ -37,7 +37,7 @@ public class StockModel {
     }
 
     private boolean savedStock(StockDto stockDTO) throws SQLException {
-        return   CrudUtil.execute(
+        return   SQLUtil.execute(
 
                 "insert into Stock values (?, ?, ?, ?,?,?,?,?)",
                 stockDTO.getStock_ID(),
@@ -54,7 +54,7 @@ public class StockModel {
     }
 
     public ArrayList<StockDto> getAllStockData() throws SQLException {
-        ResultSet rst = CrudUtil.execute("select * from Stock");
+        ResultSet rst = SQLUtil.execute("select * from Stock");
 
         ArrayList<StockDto> stockDTOS = new ArrayList<>();
 
@@ -74,7 +74,7 @@ public class StockModel {
         return stockDTOS;
     }
     public Object getAllProdAvg() throws SQLException {
-        ResultSet resultSet = CrudUtil.execute("select sum(Daily_Avg) as Total_Avg from ( select avg(Qty) as Daily_Avg from Stock group by Manfac_date ) as DailyAvgs;");
+        ResultSet resultSet = SQLUtil.execute("select sum(Daily_Avg) as Total_Avg from ( select avg(Qty) as Daily_Avg from Stock group by Manfac_date ) as DailyAvgs;");
 
         if (resultSet.next()) {
             return resultSet.getInt("Total_Avg");
@@ -84,7 +84,7 @@ public class StockModel {
 
 
     public ArrayList<String> getAllProdIds() throws SQLException {
-        ResultSet rst = CrudUtil.execute("select Stock_ID from Stock");
+        ResultSet rst = SQLUtil.execute("select Stock_ID from Stock");
 
         ArrayList<String> stockds = new ArrayList<>();
 
@@ -97,7 +97,7 @@ public class StockModel {
     }
 
     public StockDto findById(String selectedProdt) throws SQLException {
-        ResultSet rst = CrudUtil.execute("select * from stock where Stock_ID =?", selectedProdt);
+        ResultSet rst = SQLUtil.execute("select * from stock where Stock_ID =?", selectedProdt);
 
         if (rst.next()) {
             return new StockDto(
@@ -121,7 +121,7 @@ public class StockModel {
 
     public boolean onOderRedQty(OrderDetailsDto orderDetailsDTO) throws SQLException {
 
-        return CrudUtil.execute(
+        return SQLUtil.execute(
                 "update stock set Qty = Qty - ? where Stock_ID = ?",
                 orderDetailsDTO.getQuantity(),
                 orderDetailsDTO.getItemId()

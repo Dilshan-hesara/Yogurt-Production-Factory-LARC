@@ -22,7 +22,7 @@ import javafx.util.Duration;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.CashBookModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatirialUsageModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.StockModel;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.UserName;
 import lombok.SneakyThrows;
 
@@ -170,7 +170,7 @@ public class DashBoadMain implements Initializable {
         try {
             String query = "select Item_Type, sum(Qty) as TotalQty from inventory where Item_Type in ('Raw', 'UN Packed', 'END Prodt') group by Item_Type";
 
-            ResultSet rs = CrudUtil.execute(query);
+            ResultSet rs = SQLUtil.execute(query);
 
             ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
 
@@ -218,7 +218,7 @@ public class DashBoadMain implements Initializable {
                     "GROUP BY Manfac_date " +
                     "ORDER BY Manfac_date";
 
-            ResultSet rs = CrudUtil.execute(Qury);
+            ResultSet rs = SQLUtil.execute(Qury);
 
             CategoryAxis xAxis = new CategoryAxis();
             NumberAxis yAxis = new NumberAxis(0, 12, 1);

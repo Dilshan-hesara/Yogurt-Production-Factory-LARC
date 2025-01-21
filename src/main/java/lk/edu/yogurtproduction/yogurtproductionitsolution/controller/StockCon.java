@@ -10,12 +10,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.StockDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.StockTM;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.StockTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.StockModel;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.view.JasperViewer;
 
-import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;

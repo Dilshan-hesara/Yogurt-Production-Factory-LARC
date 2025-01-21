@@ -2,9 +2,7 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.EmployeeTM;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -100,13 +98,13 @@ public class EmployeeModel {
 
 
     public boolean deleteCustomer(String empId) throws SQLException {
-        return CrudUtil.execute("delete from employee where Emp_ID=?", empId);
+        return SQLUtil.execute("delete from employee where Emp_ID=?", empId);
 
     }
 
     public ArrayList<String> getAllEmpIds() throws SQLException {
 
-        ResultSet rst = CrudUtil.execute("select Emp_ID from Employee");
+        ResultSet rst = SQLUtil.execute("select Emp_ID from Employee");
 
         ArrayList<String> EmpIds = new ArrayList<>();
 
@@ -120,7 +118,7 @@ public class EmployeeModel {
     public EmployeeDto findByID(String cmbEmpSelected) throws SQLException {
 
 
-        ResultSet rst = CrudUtil.execute("select * from Employee where Emp_ID=?", cmbEmpSelected);
+        ResultSet rst = SQLUtil.execute("select * from Employee where Emp_ID=?", cmbEmpSelected);
 
         if (rst.next()) {
             return new EmployeeDto(

@@ -2,7 +2,7 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdtionDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -14,7 +14,7 @@ public class ProdtionModel {
 
     InventroyModel inventoryModel = new InventroyModel();
     public String getNextProdtID() throws SQLException {
-        ResultSet rst = CrudUtil.execute("select Prod_ID from production order by Prod_ID desc limit 1");
+        ResultSet rst = SQLUtil.execute("select Prod_ID from production order by Prod_ID desc limit 1");
         if (rst.next()){
             String lastId = rst.getString(1);
             String substring = lastId.substring(1);
@@ -32,7 +32,7 @@ public class ProdtionModel {
         try {
             connection.setAutoCommit(false);
 
-            boolean isProdtSaved = CrudUtil.execute(
+            boolean isProdtSaved = SQLUtil.execute(
                     "insert into production values (?,?,?,?)",
                     prodtionDto.getProd_ID(),
                     prodtionDto.getPro_Name(),
@@ -73,7 +73,7 @@ public class ProdtionModel {
     }
 
     public ArrayList<String> getAllProdtIds() throws SQLException {
-        ResultSet rst = CrudUtil.execute("SELECT * FROM production LIMIT 1000;");
+        ResultSet rst = SQLUtil.execute("SELECT * FROM production LIMIT 1000;");
 
         ArrayList<String> ProdtIds = new ArrayList<>();
 
@@ -87,7 +87,7 @@ public class ProdtionModel {
     public ProdtionDto findById(String cmbProdSelected) throws SQLException {
 
 
-        ResultSet rst = CrudUtil.execute("select * from production where Prod_ID=?", cmbProdSelected);
+        ResultSet rst = SQLUtil.execute("select * from production where Prod_ID=?", cmbProdSelected);
 
         if (rst.next()) {
             return new ProdtionDto(
@@ -105,7 +105,7 @@ public class ProdtionModel {
 
     public ArrayList<ProdtionDto> getAllProdtionData() throws SQLException {
 
-        ResultSet rst = CrudUtil.execute("select * from production");
+        ResultSet rst = SQLUtil.execute("select * from production");
 
         ArrayList<ProdtionDto> prodtionDTOS = new ArrayList<>();
 

@@ -7,15 +7,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.EmployeeTM;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.EmployeeTM;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 import java.util.regex.Pattern;
-
-import static com.sun.mail.imap.SortTerm.FROM;
 
 public class SendMailEmloyeeController {
     @FXML

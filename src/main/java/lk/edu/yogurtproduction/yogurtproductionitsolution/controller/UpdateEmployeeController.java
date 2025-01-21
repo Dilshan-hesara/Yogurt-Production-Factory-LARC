@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.EmployeeTM;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.EmployeeTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.EmployeeModel;
 
 import java.net.URL;

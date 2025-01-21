@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SuplierDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.SuplierTM;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.SuplierTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.SuplierModel;
 
 public class UpdateSuplier {

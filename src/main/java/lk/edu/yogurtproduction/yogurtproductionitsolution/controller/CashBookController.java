@@ -19,7 +19,7 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CashBookDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.InventroyDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SuplierDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.CashBookTM;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.CashBookTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.CashBookModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.InventroyModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatiralMoadel;
