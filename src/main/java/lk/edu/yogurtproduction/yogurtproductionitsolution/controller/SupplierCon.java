@@ -13,11 +13,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.SupplierDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.SupplierDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SuplierDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.EmployeeTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.SuplierTM;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.SuplierModel;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.view.JasperViewer;
 
@@ -67,7 +68,7 @@ public class SupplierCon implements Initializable {
     @FXML
     private TableColumn<EmployeeTM, String> tbSupId;
 
-    SuplierModel suplierModel = new SuplierModel();
+    SupplierDAO suplierModel = new SupplierDAOImpl();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -89,7 +90,7 @@ public class SupplierCon implements Initializable {
     }
 
     void loadSuplierTable() throws Exception {
-        ArrayList<SuplierDto>suplierDTOS =  suplierModel.getAllSuplier();
+        ArrayList<SuplierDto>suplierDTOS =  suplierModel.getAll();
         ObservableList<SuplierTM> suplierTMS = FXCollections.observableArrayList();
 
         for(SuplierDto supDto : suplierDTOS) {
@@ -213,7 +214,7 @@ public class SupplierCon implements Initializable {
 
         if (optionalButtonType.isPresent() && optionalButtonType.get() == ButtonType.YES) {
 
-            boolean isDeleted = suplierModel.deleteCustomer (supId);
+            boolean isDeleted = suplierModel.delete (supId);
             if (isDeleted) {
                 loadSuplierTable();
                 new Alert(Alert.AlertType.INFORMATION, "Suplier deleted...!").show();

@@ -14,10 +14,12 @@ public class EmployeeModel {
 
     public String getNextCustomerId() throws SQLException {
 
-        Connection connection = DBConnection.getInstance().getConnection();
-        String sql = "select Emp_ID from employee order by Emp_ID desc LIMIT 1";
-        PreparedStatement pst = connection.prepareStatement(sql);
-        ResultSet rst = pst.executeQuery();
+//        Connection connection = DBConnection.getInstance().getConnection();
+//        String sql = "select Emp_ID from employee order by Emp_ID desc LIMIT 1";
+//        PreparedStatement pst = connection.prepareStatement(sql);
+//        ResultSet rst = pst.executeQuery();
+
+        ResultSet rst =SQLUtil.execute("select Emp_ID from employee order by Emp_ID desc LIMIT 1");
 
         if (rst.next()) {
             String lastId = rst.getString(1);
@@ -35,66 +37,63 @@ public class EmployeeModel {
 
     public boolean saveEmpoyee(EmployeeDto employeeDto) throws SQLException {
 
-        Connection connection = DBConnection.getInstance().getConnection();
-        String sql = "insert into employee values (?,?,?,?,?)";
-        PreparedStatement pst = connection.prepareStatement(sql);
-        pst.setObject(1,employeeDto.getEmpId());
-        pst.setObject(2,employeeDto.getEmpName());
-        pst.setObject(3,employeeDto.getEmpNic());
-        pst.setObject(4,employeeDto.getEmpEmail());
-        pst.setObject(5,employeeDto.getEmpPhone());
-        int result = pst.executeUpdate();
-        boolean isSaved = result>0;
-        return isSaved;
+        return   SQLUtil.execute("insert into employee values (?,?,?,?,?)",
+                employeeDto.getEmpId(),employeeDto.getEmpName(),employeeDto.getEmpNic(),employeeDto.getEmpEmail(),employeeDto.getEmpPhone());
+
+
     }
-
-
-    public ArrayList<EmployeeDto> getAllEmployees() throws SQLException, ClassNotFoundException {
-        Connection connection = DBConnection.getInstance().getConnection();
-        String sql = "select * from employee";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        ResultSet rst = statement.executeQuery();
-
-        ArrayList<EmployeeDto> employeeDtos = new ArrayList<>();
-
-        while (rst.next()) {
-            EmployeeDto employeeDto = new EmployeeDto(
-                    rst.getString("Emp_ID"),
-                    rst.getString("Emp_Name"),
-                    rst.getString("Emp_Nic"),
-                    rst.getString("Emp_Email"),
-                    rst.getString("Emp_Phone")
-            );
-            employeeDtos.add(employeeDto);
-        }
-
-        return employeeDtos;
-    }
-
 
 
     public boolean updateCustomer(EmployeeDto employeeDto) throws SQLException, ClassNotFoundException{
-        String sql = "update employee set Emp_Name = ?, Emp_Nic = ?, Emp_Email = ?, Emp_Phone = ? where Emp_ID = ?";
 
-        Connection connection = DBConnection.getInstance().getConnection();
-        PreparedStatement statement = connection.prepareStatement(sql); {
+        PreparedStatement statement;
 
-            statement.setString(1, employeeDto.getEmpName());
-            statement.setString(2, employeeDto.getEmpNic());
-            statement.setString(3, employeeDto.getEmpEmail());
-            statement.setString(4, employeeDto.getEmpPhone());
-            statement.setString(5, employeeDto.getEmpId());
-
-            int rowsAffected = statement.executeUpdate();
-            return rowsAffected > 0;
-
-
-        }
+        return SQLUtil.execute("update employee set Emp_Name = ?, Emp_Nic = ?, Emp_Email = ?, Emp_Phone = ? where Emp_ID = ?"
+                ,employeeDto.getEmpName(),employeeDto.getEmpNic(),employeeDto.getEmpEmail(),employeeDto.getEmpPhone(),employeeDto.getEmpId());
 
     }
 
+    public ArrayList<EmployeeDto> getAllEmployees() throws SQLException, ClassNotFoundException {
+//        Connection connection = DBConnection.getInstance().getConnection();
+//        String sql = "select * from employee";
+//        PreparedStatement statement = connection.prepareStatement(sql);
+//        ResultSet rst = statement.executeQuery();
 
+        ResultSet rst =SQLUtil.execute("select * from employee");
+        ArrayList<EmployeeDto> employeeDtos = new ArrayList<>();
 
+        while (rst.next()) {
+            employeeDtos.add(new EmployeeDto(  rst.getString("Emp_ID"),
+                    rst.getString("Emp_Name"),
+                    rst.getString("Emp_Nic"),
+                    rst.getString("Emp_Email"),
+                    rst.getString("Emp_Phone")));
+        }
+
+////        while (rst.next()) {
+////            EmployeeDto employeeDto = new EmployeeDto(
+//                    rst.getString("Emp_ID"),
+//                    rst.getString("Emp_Name"),
+//                    rst.getString("Emp_Nic"),
+//                    rst.getString("Emp_Email"),
+//                    rst.getString("Emp_Phone")
+//            );
+//            employeeDtos.add(employeeDto);
+//        }
+
+        return employeeDtos;
+    }
+//
+//    public ArrayList<Customer> getAll() throws SQLException, ClassNotFoundException {
+//        ResultSet rst= SQLUtil.execute("SELECT * FROM customer");
+//
+//        ArrayList<Customer> customerDTOArrayList = new ArrayList<>();
+//        while (rst.next()){
+//            customerDTOArrayList.add(new Customer(
+//                    rst.getString("id"),rst.getString("name"),rst.getString("address")));
+//        }
+//        return customerDTOArrayList;
+//    }
 
 
     public boolean deleteCustomer(String empId) throws SQLException {

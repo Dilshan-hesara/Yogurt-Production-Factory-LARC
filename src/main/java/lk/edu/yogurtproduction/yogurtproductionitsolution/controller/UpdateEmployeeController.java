@@ -8,9 +8,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.EmployeeDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.EmployeeDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.EmployeeTM;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.EmployeeModel;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -41,7 +42,7 @@ public class UpdateEmployeeController implements Initializable {
 
     private EmployeeController employeeFormController;
 
-    EmployeeModel employeeModel = new EmployeeModel();
+    EmployeeDAO employeeModel = new EmployeeDAOImpl();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -111,7 +112,7 @@ public class UpdateEmployeeController implements Initializable {
             );
 
 
-            boolean isUpdate = employeeModel.updateCustomer(employeeDto);
+            boolean isUpdate = employeeModel.update(employeeDto);
             if (isUpdate) {
 
                 new Alert(Alert.AlertType.INFORMATION, "Employee update...!").show();

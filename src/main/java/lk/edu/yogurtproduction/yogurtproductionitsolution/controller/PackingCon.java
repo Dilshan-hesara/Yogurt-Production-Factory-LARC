@@ -6,12 +6,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.EmployeeDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.EmployeeDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.*;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.*;
 
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -299,7 +300,8 @@ public class PackingCon {
 
     }
 
-    EmployeeModel employeeModel = new EmployeeModel();
+   // EmployeeModel employeeModel = new EmployeeModel();
+    EmployeeDAO employeeModel = new EmployeeDAOImpl();
     ProdtionModel prodtionModel = new ProdtionModel();
 
     private void loadEmpId() throws SQLException {

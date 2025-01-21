@@ -14,6 +14,8 @@ import javafx.stage.Stage;
 
 import javafx.event.ActionEvent;
 
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.SupplierDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.SupplierDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CashBookDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.InventroyDto;
@@ -23,7 +25,6 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.CashBookTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.CashBookModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.InventroyModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatiralMoadel;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.SuplierModel;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.view.JasperViewer;
 
@@ -96,7 +97,8 @@ public class CashBookController {
     @FXML
     private TableView<CashBookTM> tblCashBook;
 
-    SuplierModel suplierModel = new SuplierModel();
+   // SuplierModel suplierModel = new SuplierModel();
+    SupplierDAO suplierModel = new SupplierDAOImpl();
     MatiralMoadel matiralModel = new MatiralMoadel();
     CashBookModel cashBookModel = new CashBookModel();
     InventroyModel inventroyModel = new InventroyModel();
@@ -354,7 +356,7 @@ public class CashBookController {
     void cmbSupOnAction(ActionEvent event) throws SQLException {
         String selectID = (String) cmbSupId.getSelectionModel().getSelectedItem();
 
-        SuplierDto suplierDto = suplierModel.findById(selectID);
+        SuplierDto suplierDto = suplierModel.findByID(selectID);
         if (suplierDto != null) {
             lblSupplerName.setText(suplierDto.getSupName());
         }

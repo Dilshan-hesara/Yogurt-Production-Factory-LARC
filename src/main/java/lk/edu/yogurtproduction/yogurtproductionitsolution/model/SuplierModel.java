@@ -13,10 +13,12 @@ import java.util.ArrayList;
 public class SuplierModel {
     public String getNextSuplierId() throws SQLException {
 
-        Connection connection = DBConnection.getInstance().getConnection();
-        String sql = "select Sup_ID from supplier order by Sup_ID desc limit 1";
-        PreparedStatement pst = connection.prepareStatement(sql);
-        ResultSet rst = pst.executeQuery();
+//        Connection connection = DBConnection.getInstance().getConnection();
+//        String sql = "select Sup_ID from supplier order by Sup_ID desc limit 1";
+//        PreparedStatement pst = connection.prepareStatement(sql);
+//        ResultSet rst = pst.executeQuery();
+
+        ResultSet rst = SQLUtil.execute("select Sup_ID from supplier order by Sup_ID desc limit 1");
 
         if (rst.next()) {
             String lastId = rst.getString(1);
@@ -32,59 +34,79 @@ public class SuplierModel {
 
     public boolean saveSuplier(SuplierDto suplierDTO) throws SQLException {
 
-        Connection connection = DBConnection.getInstance().getConnection();
-        String sql = "insert into  supplier values (?,?,?,?,?)";
-        PreparedStatement pst = connection.prepareStatement(sql);
+//        Connection connection = DBConnection.getInstance().getConnection();
+//        String sql = "insert into  supplier values (?,?,?,?,?)";
+//        PreparedStatement pst = connection.prepareStatement(sql);
+//
+//        pst.setObject(1, suplierDTO.getSupId());
+//        pst.setObject(2, suplierDTO.getSupName());
+//        pst.setObject(3, suplierDTO.getSupNic());
+//        pst.setObject(4, suplierDTO.getSupEmail());
+//        pst.setObject(5, suplierDTO.getSupPhone());
+//        int result = pst.executeUpdate();
+//        boolean isSaved = result > 0;
+//        return isSaved;
 
-        pst.setObject(1, suplierDTO.getSupId());
-        pst.setObject(2, suplierDTO.getSupName());
-        pst.setObject(3, suplierDTO.getSupNic());
-        pst.setObject(4, suplierDTO.getSupEmail());
-        pst.setObject(5, suplierDTO.getSupPhone());
-        int result = pst.executeUpdate();
-        boolean isSaved = result > 0;
-        return isSaved;
+      return   SQLUtil.execute("insert into  supplier values (?,?,?,?,?)",
+              suplierDTO.getSupId(),suplierDTO.getSupName(),suplierDTO.getSupNic(),suplierDTO.getSupEmail(),suplierDTO.getSupPhone());
+    }
+
+
+
+    public boolean updateSuplier(SuplierDto suplierDTO) throws SQLException {
+
+//        String sql = "update supplier set Sup_Name = ?, Sup_Nic = ?, Sup_Email = ?, Sup_Phone = ? where Sup_ID = ?";
+//
+//        Connection connection = DBConnection.getInstance().getConnection();
+//        PreparedStatement statement = connection.prepareStatement(sql);
+//        {
+//
+//            statement.setString(1, suplierDto.getSupName());
+//            statement.setString(2, suplierDto.getSupNic());
+//            statement.setString(3, suplierDto.getSupEmail());
+//            statement.setString(4, String.valueOf(suplierDto.getSupPhone()));
+//            statement.setString(5, suplierDto.getSupId());
+//
+//            int rowsAffected = statement.executeUpdate();
+//            return rowsAffected > 0;
+//
+//        }
+
+        return SQLUtil.execute("update supplier set Sup_Name = ?, Sup_Nic = ?, Sup_Email = ?, Sup_Phone = ? where Sup_ID = ?"
+              ,suplierDTO.getSupName(),suplierDTO.getSupNic(),suplierDTO.getSupEmail(),suplierDTO.getSupPhone() ,suplierDTO.getSupId());
     }
 
     public ArrayList<SuplierDto> getAllSuplier() throws SQLException {
-        Connection connection = DBConnection.getInstance().getConnection();
-        String sql = "select * from supplier";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        ResultSet rst = statement.executeQuery();
-        ArrayList<SuplierDto> suplierDtos = new ArrayList<>();
+//        Connection connection = DBConnection.getInstance().getConnection();
+//        String sql = "select * from supplier";
+//        PreparedStatement statement = connection.prepareStatement(sql);
+//        ResultSet rst = statement.executeQuery();
+//        ArrayList<SuplierDto> suplierDtos = new ArrayList<>();
+//        while (rst.next()) {
+//            SuplierDto suplierDto = new SuplierDto(
+//                    rst.getString("Sup_ID"),
+//                    rst.getString("Sup_Name"),
+//                    rst.getString("Sup_Nic"),
+//                    rst.getString("Sup_Email"),
+//                    rst.getInt("Sup_Phone")
+//            );
+//            suplierDtos.add(suplierDto);
+//        }
+//
+//        return suplierDtos;
+
+        ResultSet rst = SQLUtil.execute("select * from supplier");
+        ArrayList<SuplierDto> suplierList = new ArrayList<>();
         while (rst.next()) {
-            SuplierDto suplierDto = new SuplierDto(
-                    rst.getString("Sup_ID"),
+            suplierList.add(new SuplierDto(  rst.getString("Sup_ID"),
                     rst.getString("Sup_Name"),
                     rst.getString("Sup_Nic"),
                     rst.getString("Sup_Email"),
-                    rst.getInt("Sup_Phone")
-            );
-            suplierDtos.add(suplierDto);
+                    rst.getInt("Sup_Phone")));
         }
-
-        return suplierDtos;
+        return suplierList;
     }
 
-
-    public boolean updateSuplier(SuplierDto suplierDto) throws SQLException {
-
-        String sql = "update supplier set Sup_Name = ?, Sup_Nic = ?, Sup_Email = ?, Sup_Phone = ? where Sup_ID = ?";
-
-        Connection connection = DBConnection.getInstance().getConnection();
-        PreparedStatement statement = connection.prepareStatement(sql);{
-
-            statement.setString(1, suplierDto.getSupName());
-            statement.setString(2, suplierDto.getSupNic());
-            statement.setString(3, suplierDto.getSupEmail());
-            statement.setString(4, String.valueOf(suplierDto.getSupPhone()));
-            statement.setString(5, suplierDto.getSupId());
-
-            int rowsAffected = statement.executeUpdate();
-            return rowsAffected > 0;
-
-        }
-    }
 
     public boolean deleteCustomer(String supId) throws SQLException {
         return SQLUtil.execute("delete from supplier where Sup_ID=?", supId);
@@ -107,7 +129,7 @@ public class SuplierModel {
 
     public SuplierDto findById(String selectID) throws SQLException {
 
-        ResultSet rst = SQLUtil.execute("select * from supplier where Sup_ID=?",selectID);
+        ResultSet rst = SQLUtil.execute("select * from supplier where Sup_ID=?", selectID);
 
         while (rst.next()) {
             return new SuplierDto(

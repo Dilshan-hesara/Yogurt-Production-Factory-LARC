@@ -7,8 +7,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.EmployeeDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.EmployeeDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.EmployeeModel;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -36,7 +37,7 @@ public class AddEmployeeController implements Initializable {
     private TextField txtPhone;
 
     private EmployeeController employeeFormController;
-    EmployeeModel employeeModel = new EmployeeModel();
+    EmployeeDAO employeeModel = new EmployeeDAOImpl();
 
 
 
@@ -54,7 +55,7 @@ public class AddEmployeeController implements Initializable {
 
     void loadNextEmployeeId() throws SQLException {
 
-        String nextEmployeeId = employeeModel.getNextCustomerId();
+        String nextEmployeeId = employeeModel.getNextId();
         lblEmployeeId.setText(nextEmployeeId);
 
 
@@ -111,7 +112,7 @@ public class AddEmployeeController implements Initializable {
                     empPhone
 
             );
-            boolean isSaved = employeeModel.saveEmpoyee(customerDTO);
+            boolean isSaved = employeeModel.save(customerDTO);
             if (isSaved) {
 
                 loadNextEmployeeId();

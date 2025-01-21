@@ -6,8 +6,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.SupplierDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.SupplierDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SuplierDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.SuplierModel;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -33,7 +34,7 @@ public class AddSuplierController implements Initializable {
 
     private SupplierCon supplierCon;
 
-    SuplierModel suplierModel = new SuplierModel();
+    SupplierDAO suplierModel = new SupplierDAOImpl();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -46,7 +47,7 @@ public class AddSuplierController implements Initializable {
     }
 
     void loadNextSuplierId() throws SQLException {
-        String nextSupId = suplierModel.getNextSuplierId();
+        String nextSupId = suplierModel.getNextId();
         lblSupId.setText(nextSupId);
 
     }
@@ -122,7 +123,7 @@ public class AddSuplierController implements Initializable {
                     empPhone
 
             );
-            boolean isSaved = suplierModel.saveSuplier(suplierDTO);
+            boolean isSaved = suplierModel.save(suplierDTO);
             if (isSaved) {
                 loadNextSuplierId();
                 txtName.setText("");

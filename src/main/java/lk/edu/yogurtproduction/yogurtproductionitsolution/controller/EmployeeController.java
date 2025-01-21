@@ -13,10 +13,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.EmployeeDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.EmployeeDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.EmployeeTM;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.EmployeeModel;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.view.JasperViewer;
 
@@ -66,7 +67,8 @@ public class EmployeeController implements Initializable {
     @FXML
     private TableView<EmployeeTM> emTable;
 
-    EmployeeModel employeeModel = new EmployeeModel();
+    EmployeeDAO employeeModel = new EmployeeDAOImpl();
+
 
 
     @Override
@@ -89,7 +91,7 @@ public class EmployeeController implements Initializable {
 
     }
     void loadCustomerTable() throws SQLException, ClassNotFoundException {
-        ArrayList<EmployeeDto> employeeDTOS = employeeModel.getAllEmployees();
+        ArrayList<EmployeeDto> employeeDTOS = employeeModel.getAll();
         ObservableList<EmployeeTM> employeeTMS = FXCollections.observableArrayList();
 
         for (EmployeeDto employeeDto : employeeDTOS) {
@@ -150,7 +152,7 @@ public class EmployeeController implements Initializable {
 
         if (optionalButtonType.isPresent() && optionalButtonType.get() == ButtonType.YES) {
             System.out.println(empId);
-            boolean isDeleted = employeeModel.deleteCustomer (empId);
+            boolean isDeleted = employeeModel.delete(empId);
             if (isDeleted) {
                 loadCustomerTable();
                 new Alert(Alert.AlertType.INFORMATION, "Employee deleted...!").show();

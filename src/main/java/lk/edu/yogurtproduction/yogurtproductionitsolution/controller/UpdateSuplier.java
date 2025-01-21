@@ -6,9 +6,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.SupplierDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.SupplierDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SuplierDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.SuplierTM;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.SuplierModel;
 
 public class UpdateSuplier {
 
@@ -36,7 +37,7 @@ public class UpdateSuplier {
 
     private SupplierCon supplierCon;
 
-    SuplierModel suplierModel = new SuplierModel();
+    SupplierDAO suplierModel = new SupplierDAOImpl();
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) throws Exception {
@@ -112,7 +113,7 @@ public class UpdateSuplier {
             );
 
 
-            boolean isUpdate = suplierModel.updateSuplier(suplierDto);
+            boolean isUpdate = suplierModel.update(suplierDto);
             if (isUpdate) {
                 supplierCon.loadSuplierTable();
 
