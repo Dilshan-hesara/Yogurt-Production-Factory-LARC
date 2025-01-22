@@ -6,6 +6,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.BOFactroy;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.SupplierBO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.impl.SupplierBOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.SupplierDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.SupplierDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SuplierDto;
@@ -34,7 +37,9 @@ public class AddSuplierController implements Initializable {
 
     private SupplierCon supplierCon;
 
-    SupplierDAO suplierModel = new SupplierDAOImpl();
+    //SupplierDAO suplierModel = new SupplierDAOImpl();
+
+    SupplierBO suplierModel = (SupplierBO) BOFactroy.getInstance().getBO(BOFactroy.BOType.SUPPLIER);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

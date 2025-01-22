@@ -13,6 +13,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.BOFactroy;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.SupplierBO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.SupplierDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.SupplierDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
@@ -68,7 +70,10 @@ public class SupplierCon implements Initializable {
     @FXML
     private TableColumn<EmployeeTM, String> tbSupId;
 
-    SupplierDAO suplierModel = new SupplierDAOImpl();
+   // SupplierDAO suplierModel = new SupplierDAOImpl();
+
+    SupplierBO suplierModel = (SupplierBO) BOFactroy.getInstance().getBO(BOFactroy.BOType.SUPPLIER);
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

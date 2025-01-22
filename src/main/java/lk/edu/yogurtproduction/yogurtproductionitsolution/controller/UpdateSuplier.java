@@ -6,6 +6,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.BOFactroy;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.SupplierBO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.SupplierDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.SupplierDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SuplierDto;
@@ -37,7 +39,9 @@ public class UpdateSuplier {
 
     private SupplierCon supplierCon;
 
-    SupplierDAO suplierModel = new SupplierDAOImpl();
+   // SupplierDAO suplierModel = new SupplierDAOImpl();
+
+    SupplierBO suplierModel = (SupplierBO) BOFactroy.getInstance().getBO(BOFactroy.BOType.SUPPLIER);
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) throws Exception {
