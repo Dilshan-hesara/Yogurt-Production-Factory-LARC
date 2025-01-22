@@ -14,7 +14,9 @@ import javafx.stage.Stage;
 
 import javafx.event.ActionEvent;
 
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.MaterialDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.SupplierDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.MaterialDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.SupplierDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CashBookDto;
@@ -97,9 +99,11 @@ public class CashBookController {
     @FXML
     private TableView<CashBookTM> tblCashBook;
 
-   // SuplierModel suplierModel = new SuplierModel();
+    MaterialDAO matiralModel = new MaterialDAOImpl();
+
+    // SuplierModel suplierModel = new SuplierModel();
     SupplierDAO suplierModel = new SupplierDAOImpl();
-    MatiralMoadel matiralModel = new MatiralMoadel();
+  //  MatiralMoadel matiralModel = new MatiralMoadel();
     CashBookModel cashBookModel = new CashBookModel();
     InventroyModel inventroyModel = new InventroyModel();
 

@@ -8,6 +8,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.MaterialDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.MaterialDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.MatirialTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatiralMoadel;
@@ -56,7 +58,8 @@ public class MatirialCon implements Initializable {
 
     }
 
-    private MatiralMoadel matiralMoadel =  new MatiralMoadel();
+    MaterialDAO matiralMoadel = new MaterialDAOImpl();
+  //  private MatiralMoadel matiralMoadel =  new MatiralMoadel();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -71,6 +74,8 @@ public class MatirialCon implements Initializable {
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -79,12 +84,12 @@ public class MatirialCon implements Initializable {
     }
 
     void loadNextMatId() throws SQLException {
-        String nextMatId = matiralMoadel.getNextMatId();
+        String nextMatId = matiralMoadel.getNextId();
         lblItId.setText(nextMatId);
     }
 
-    private void loadTable() throws SQLException {
-        ArrayList<MatirialDto> matirialDTOS = matiralMoadel.getAllMatireal();
+    private void loadTable() throws SQLException, ClassNotFoundException {
+        ArrayList<MatirialDto> matirialDTOS = matiralMoadel.getAll();
 
         ObservableList<MatirialTM> matirialTMS = FXCollections.observableArrayList();
 
@@ -105,7 +110,7 @@ matTable.setItems(matirialTMS);
     }
 
     @FXML
-    void btnSave(ActionEvent event) throws SQLException {
+    void btnSave(ActionEvent event) throws SQLException, ClassNotFoundException {
 
 
         String selectedMat = cmbMatName.getValue();
@@ -184,7 +189,7 @@ matTable.setItems(matirialTMS);
 
             );
 
-            boolean isSaved = matiralMoadel.saveMatirial(matirialDto);
+            boolean isSaved = matiralMoadel.save(matirialDto);
             if (isSaved) {
                 loadNextMatId();
                 loadTable();

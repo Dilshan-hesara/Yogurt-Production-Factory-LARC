@@ -1,27 +1,26 @@
-package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
+package lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl;
 
-import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CashBookDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.MaterialDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class MatiralMoadel {
+public class MaterialDAOImpl implements MaterialDAO {
 
 
-    public String getNextgId() throws SQLException {
+
+
+    public String getNextId() throws SQLException {
 
 //        Connection connection = DBConnection.getInstance().getConnection();
 //        String sql = "select Mat_ID from material order by Mat_ID desc limit 1";
 //        PreparedStatement pst = connection.prepareStatement(sql);
 //        ResultSet rst = pst.executeQuery();
 
-        ResultSet  rst=SQLUtil.execute("select Mat_ID from material order by Mat_ID desc limit 1");
+        ResultSet rst= SQLUtil.execute("select Mat_ID from material order by Mat_ID desc limit 1");
 
         if (rst.next()) {
             String lastId = rst.getString(1);
@@ -34,7 +33,7 @@ public class MatiralMoadel {
         return "MT001";
     }
 
-    public boolean saveMatirial(MatirialDto matirialDto) throws SQLException {
+    public boolean save(MatirialDto matirialDto) throws SQLException {
 
 //        Connection connection = DBConnection.getInstance().getConnection();
 //        String sql = "insert into material values (?,?,?,?)";
@@ -48,12 +47,12 @@ public class MatiralMoadel {
 //        boolean isSaved = result>0;
 //        return isSaved;
 
-       return SQLUtil.execute("insert into material values (?,?,?,?)",
+        return SQLUtil.execute("insert into material values (?,?,?,?)",
                 matirialDto.getMatId(),matirialDto.getMatName(),matirialDto.getMatQty(),matirialDto.getMatPrice());
 
     }
 
-    public ArrayList<MatirialDto> getAllMatireal() throws SQLException {
+    public ArrayList<MatirialDto> getAll() throws SQLException {
 //        Connection connection = DBConnection.getInstance().getConnection();
 //        String sql = "select * from material";
 //        PreparedStatement statement = connection.prepareStatement(sql);
@@ -92,6 +91,7 @@ public class MatiralMoadel {
 
 //ou
 
+    @Override
     public MatirialDto findById(String selectID) throws SQLException {
 
         ResultSet rst = SQLUtil.execute("select * from material where Mat_ID=?", selectID);
@@ -107,6 +107,7 @@ public class MatiralMoadel {
         return null;
     }
 
+    @Override
     public ArrayList<String> getAllItemIds() throws SQLException {
 
 
@@ -121,15 +122,25 @@ public class MatiralMoadel {
         return itemIds;
     }
 
-    //tranaction redus matireal
-    public boolean updatedMatirialReduceQty(CashBookDto cashBookDto) throws SQLException {
-        return SQLUtil.execute(
-                "update material set Qty = Qty - ? where Mat_ID = ?",
-                cashBookDto.getQty(),
-                cashBookDto.getMatID()
-        );
+
+
+
+
+
+
+
+    @Override
+    public boolean update(MatirialDto dto) throws SQLException, ClassNotFoundException {
+        return false;
     }
 
+    @Override
+    public boolean delete(String empId) throws SQLException {
+        return false;
+    }
 
-
+    @Override
+    public MatirialDto findByID(String cmbEmpSelected) throws SQLException {
+        return null;
+    }
 }
