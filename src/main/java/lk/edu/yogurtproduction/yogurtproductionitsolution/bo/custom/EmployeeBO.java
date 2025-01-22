@@ -1,11 +1,12 @@
-package lk.edu.yogurtproduction.yogurtproductionitsolution.bo;
+package lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom;
 
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.SuperBO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface EmployeeBO extends SuperBO{
+public interface EmployeeBO extends SuperBO {
 
     public String getNextId() throws SQLException;
     public boolean save(EmployeeDto employeeDto) throws SQLException ;

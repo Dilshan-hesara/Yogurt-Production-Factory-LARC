@@ -1,5 +1,6 @@
-package lk.edu.yogurtproduction.yogurtproductionitsolution.bo;
+package lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.impl;
 
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.EmployeeBO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.DAOFactroy;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.EmployeeDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;

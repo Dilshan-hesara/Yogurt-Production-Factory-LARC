@@ -8,10 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.BOFactroy;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.EmployeeBO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.EmployeeBOImpl;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.EmployeeDAO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.EmployeeDAOImpl;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.EmployeeBO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;
 
 import java.net.URL;

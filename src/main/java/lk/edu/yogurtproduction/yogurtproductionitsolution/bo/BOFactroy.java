@@ -1,6 +1,7 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.bo;
 
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.CrudDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.impl.EmployeeBOImpl;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.impl.SupplierBOImpl;
 
 public class BOFactroy {
 
