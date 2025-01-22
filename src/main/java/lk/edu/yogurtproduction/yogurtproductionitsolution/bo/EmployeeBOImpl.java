@@ -34,8 +34,7 @@ public class EmployeeBOImpl implements EmployeeBO {
 
     public boolean update(EmployeeDto employeeDto) throws SQLException, ClassNotFoundException{
 
-        employeeDAO.update(employeeDto);
-        return false;
+       return employeeDAO.update(employeeDto);
     }
 
     public ArrayList<EmployeeDto> getAll() throws SQLException, ClassNotFoundException {
@@ -49,12 +48,6 @@ public class EmployeeBOImpl implements EmployeeBO {
 
     }
 
-//    ArrayList<CustomerDTO> customerDTOs = new ArrayList<>();
-//    ArrayList<Customer> customers = customerDAO.getAll();
-//        for (Customer customer : customers) {
-//        customerDTOs.add(new CustomerDTO(customer.getId(), customer.getName(), customer.getAddress()));
-//    }
-//        return customerDTOs;
 
     public boolean delete(String empId) throws SQLException {
 

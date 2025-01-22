@@ -13,6 +13,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.BOFactroy;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.EmployeeBO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.EmployeeDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.EmployeeDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
@@ -67,8 +69,9 @@ public class EmployeeController implements Initializable {
     @FXML
     private TableView<EmployeeTM> emTable;
 
-    EmployeeDAO employeeModel = new EmployeeDAOImpl();
+   // EmployeeDAO employeeModel = new EmployeeDAOImpl();
 
+    EmployeeBO employeeModel =  (EmployeeBO) BOFactroy.getInstance().getBO(BOFactroy.BOType.EMPLOYEE);
 
 
     @Override

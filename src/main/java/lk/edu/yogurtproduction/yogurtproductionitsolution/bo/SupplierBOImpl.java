@@ -1,4 +1,4 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.bo;
 
-public class SupplierBOImpl {
+public class SupplierBOImpl implements SupplierBO {
 }
