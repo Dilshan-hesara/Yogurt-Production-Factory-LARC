@@ -12,7 +12,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.MaterialDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.MaterialUsageDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.ResipesDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.MaterialDAOImpl;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.MaterialUsageDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.ResipesDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.InventroyDto;
@@ -323,10 +327,10 @@ ProdtionModel prodtionModel = new ProdtionModel();
     }
 
 
-    MatirialUsageModel matirialUsageModel = new MatirialUsageModel();
+    MaterialUsageDAO matirialUsageModel = new MaterialUsageDAOImpl();
     String mtID;
     public void loadNextmatirialUsageId() throws SQLException {
-        String matirialUsageId = matirialUsageModel.getmatirialUsageId();
+        String matirialUsageId = matirialUsageModel.getNextId();
         mtID = matirialUsageId;
         System.out.println(matirialUsageId);
     }

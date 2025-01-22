@@ -1,5 +1,6 @@
-package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
+package lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl;
 
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.MaterialUsageDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialUsageDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
@@ -7,11 +8,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class MatirialUsageModel {
+public class MaterialUsageDAOImpl implements MaterialUsageDAO {
 
-
-
-    public String getmatirialUsageId() throws SQLException {
+    public String getNextId() throws SQLException {
 
         ResultSet rst = SQLUtil.execute("select MatUs_ID from material_usage order by MatUs_ID desc limit 1");
         if (rst.next()) {
@@ -22,9 +21,9 @@ public class MatirialUsageModel {
             return String.format("MATU%03d", newIdIndex);
         }
         return "MATU001";
-        }
+    }
 
-    public ArrayList<MatirialUsageDto> getAllMatUsageData() throws SQLException {
+    public ArrayList<MatirialUsageDto> getAll() throws SQLException {
         ResultSet rst = SQLUtil.execute("select * from material_usage");
 
         ArrayList<MatirialUsageDto> matirialUsageDTOS = new ArrayList<>();
@@ -43,6 +42,10 @@ public class MatirialUsageModel {
 
     }
 
+
+
+
+    @Override
     public int getAllUsageAvg() throws SQLException {
 
         ResultSet resultSet = SQLUtil.execute("select(sum(Mat_Milk)+sum(Mat_Suguer)+sum(Mat_Gelatin)) / (count(*) * 3) as AllAvg from material_usage;");
@@ -55,32 +58,25 @@ public class MatirialUsageModel {
 
 
 
-    //Tranactino
 
-    public boolean saveMatUage(ArrayList<MatirialUsageDto> matirialUsageDTOS) throws SQLException {
 
-        for (MatirialUsageDto matirialUsageDTO : matirialUsageDTOS) {
-            boolean isSaved = saveMatUsage(matirialUsageDTO);
-
-            if (!isSaved) {
-                return false;
-            }
-        }
-        return true;
+    @Override
+    public boolean save(MatirialUsageDto dto) throws SQLException {
+        return false;
     }
 
-    private boolean saveMatUsage(MatirialUsageDto matirialUsageDTO) throws SQLException {
+    @Override
+    public boolean update(MatirialUsageDto dto) throws SQLException, ClassNotFoundException {
+        return false;
+    }
 
-        return   SQLUtil.execute(
-                "insert into material_usage values (?, ?, ?, ?, ?)",
-                matirialUsageDTO.getMatUs_ID(),
-                matirialUsageDTO.getProd_ID(),
-                matirialUsageDTO.getMat_Milk(),
-                matirialUsageDTO.getMat_Suguer(),
-                matirialUsageDTO.getMat_Gelatin()
+    @Override
+    public boolean delete(String empId) throws SQLException {
+        return false;
+    }
 
-        );
-
+    @Override
+    public MatirialUsageDto findByID(String cmbEmpSelected) throws SQLException {
+        return null;
     }
 }
-

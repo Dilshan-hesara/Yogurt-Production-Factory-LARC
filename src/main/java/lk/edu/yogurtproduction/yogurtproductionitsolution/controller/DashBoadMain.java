@@ -19,6 +19,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.MaterialUsageDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.MaterialUsageDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.CashBookModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatirialUsageModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.StockModel;
@@ -114,7 +116,9 @@ public class DashBoadMain implements Initializable {
         lblProdAv.setText(String.valueOf(prd));
     }
 
-    MatirialUsageModel matirialUsageModel = new MatirialUsageModel();
+    MaterialUsageDAO matirialUsageModel = new MaterialUsageDAOImpl();
+
+    //    MatirialUsageModel matirialUsageModel = new MatirialUsageModel();
     private void laodMatUsage() throws SQLException {
         Double us = (double) matirialUsageModel.getAllUsageAvg();
         String usa = us+" %";

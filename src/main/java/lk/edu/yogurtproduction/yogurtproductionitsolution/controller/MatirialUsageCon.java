@@ -7,6 +7,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.MaterialUsageDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.MaterialUsageDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialUsageDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.MatirialUsageTM;
@@ -50,15 +52,17 @@ public class MatirialUsageCon {
 
         try {
             loadTble();
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    MatirialUsageModel matirialUsageModel = new MatirialUsageModel();
-    private void loadTble() throws SQLException {
+  //  MatirialUsageModel matirialUsageModel = new MatirialUsageModel();
+  MaterialUsageDAO matirialUsageModel = new MaterialUsageDAOImpl();
 
-        ArrayList<MatirialUsageDto> matirialUsageDTOS = matirialUsageModel.getAllMatUsageData();
+    private void loadTble() throws SQLException, ClassNotFoundException {
+
+        ArrayList<MatirialUsageDto> matirialUsageDTOS = matirialUsageModel.getAll();
 
         ObservableList<MatirialUsageTM> matirialUsageTMS = FXCollections.observableArrayList();
 
