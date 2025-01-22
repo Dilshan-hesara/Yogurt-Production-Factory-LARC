@@ -16,7 +16,9 @@ public class CashBookModel {
     MatiralMoadel materialModel = new MatiralMoadel();
 
     public Boolean saveResept(CashBookDto cashBookDto) throws SQLException {
+
         Connection connection = DBConnection.getInstance().getConnection();
+
         try {
             connection.setAutoCommit(false);
 

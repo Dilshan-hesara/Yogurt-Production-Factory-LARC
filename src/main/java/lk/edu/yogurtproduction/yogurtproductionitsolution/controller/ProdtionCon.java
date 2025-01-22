@@ -12,10 +12,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.MaterialDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.MaterialUsageDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.ResipesDAO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.MaterialDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.MaterialUsageDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.ResipesDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
@@ -25,7 +23,6 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdMixDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdtionDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.ProdtionTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.InventroyModel;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatirialUsageModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.ProdtionModel;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.view.JasperViewer;
@@ -386,11 +383,11 @@ ProdtionModel prodtionModel = new ProdtionModel();
     @FXML
     void btnAddResipe(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ProdMixFrom.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ResipeFrom.fxml"));
             Parent load = loader.load();
 
 
-            ProdMixController updateResipe = loader.getController();
+            ResipeController updateResipe = loader.getController();
             updateResipe.setUpdatedResipe(this);
             Image image = new Image(getClass().getResourceAsStream("/images/24.png"));
 

@@ -110,7 +110,7 @@ public class DashBoad implements Initializable {
 
     @FXML
     void prodMixButt(ActionEvent event) {
-        navigateTo("/view/ProdMixFrom.fxml");
+        navigateTo("/view/ResipeFrom.fxml");
     }
 
 
