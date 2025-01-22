@@ -12,6 +12,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.ResipesDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.ResipesDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.InventroyDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialUsageDto;
@@ -20,7 +22,6 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdtionDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.ProdtionTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.InventroyModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatirialUsageModel;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.ProdMixModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.ProdtionModel;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.view.JasperViewer;
@@ -86,7 +87,7 @@ public class ProdtionCon {
 
 
 ProdtionModel model = new ProdtionModel();
-ProdMixModel prodMix = new ProdMixModel();
+ResipesDAO prodMix = new ResipesDAOImpl();
     public void initialize() throws SQLException {
 
         loadnextProdID();
@@ -331,7 +332,7 @@ ProdtionModel prodtionModel = new ProdtionModel();
     }
 
 
-    ProdMixModel prodMixModel = new ProdMixModel();
+    ResipesDAO prodMixModel = new ResipesDAOImpl();
     private int milk ;
     private int suguer;
     private int jeley;
@@ -340,7 +341,7 @@ ProdtionModel prodtionModel = new ProdtionModel();
     void cmbProdtOnAction(ActionEvent event) throws SQLException {
 
         String selectProd = cmbProdt.getSelectionModel().getSelectedItem();
-        ProdMixDto prodMixDto = prodMixModel.findbyname(selectProd);
+        ProdMixDto prodMixDto = prodMixModel.findByID(selectProd);
 
         if (prodMixDto != null) {
 

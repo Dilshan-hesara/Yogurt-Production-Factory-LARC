@@ -8,10 +8,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.ResipesDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.ResipesDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdMixDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.ProdMixTM;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.ProdMixModel;
+
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.view.JasperViewer;
 
@@ -65,8 +67,9 @@ public class ProdMixController implements Initializable {
     @FXML
     private Button updateBtn;
 
-    ProdMixModel prodMixModel = new ProdMixModel();
+   //ProdMixModel prodMixModel = new ProdMixModel();
 
+    ResipesDAO prodMixModel = new ResipesDAOImpl();
 
     @FXML
     void btnAddProd(ActionEvent event) {
@@ -91,7 +94,7 @@ public class ProdMixController implements Initializable {
             ProdMixDto prodMixDto = new ProdMixDto(prodName, suguer, jeliy, milk);
 
 
-            boolean isSaved = prodMixModel.saveProdtMaix(prodMixDto);
+            boolean isSaved = prodMixModel.save(prodMixDto);
 
 
             if (isSaved) {
@@ -103,7 +106,7 @@ public class ProdMixController implements Initializable {
             } else {
                 new Alert(Alert.AlertType.ERROR, "Failed to save the product mix.").show();
             }
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException | ClassNotFoundException e) {
             new Alert(Alert.AlertType.ERROR, "Quantities must be valid integers.").show();
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, "A database error occurred: " + e.getMessage()).show();
@@ -152,11 +155,13 @@ public class ProdMixController implements Initializable {
             loadTble();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 
-    private void loadTble() throws SQLException {
-        ArrayList<ProdMixDto> prodMixDTOS = prodMixModel.getAllInventoryData();
+    private void loadTble() throws SQLException, ClassNotFoundException {
+        ArrayList<ProdMixDto> prodMixDTOS = prodMixModel.getAll();
 
         ObservableList<ProdMixTM> prodMixTMS = FXCollections.observableArrayList();
 
@@ -235,7 +240,7 @@ public class ProdMixController implements Initializable {
             int suguerQty = Integer.parseInt(suguerQtyText);
             int jeliyQty = Integer.parseInt(jeliyQtyText);
 
-            boolean isUpdated = prodMixModel.updateQuantities(
+            boolean isUpdated = prodMixModel.updateRe(
                     selectedRecipe.getProdName(),
                     milkQty,
                     suguerQty,
@@ -291,7 +296,7 @@ public class ProdMixController implements Initializable {
         if (result.isPresent() && result.get() == ButtonType.YES) {
             try {
 
-                boolean isDeleted = prodMixModel.deleteRecipe(selectedRecipe.getProdName());
+                boolean isDeleted = prodMixModel.delete(selectedRecipe.getProdName());
 
                 if (isDeleted) {
                     new Alert(Alert.AlertType.INFORMATION, "Recipe deleted successfully!").show();

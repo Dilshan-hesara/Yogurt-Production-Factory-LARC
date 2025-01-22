@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class MatirialUsageModel {
+
     public boolean saveMatUage(ArrayList<MatirialUsageDto> matirialUsageDTOS) throws SQLException {
 
         for (MatirialUsageDto matirialUsageDTO : matirialUsageDTOS) {
