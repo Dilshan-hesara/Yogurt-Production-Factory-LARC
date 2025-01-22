@@ -8,8 +8,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.ResipesDAO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.ResipesDAOImpl;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.BOFactroy;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.ResipesBO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdMixDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.ProdMixTM;
@@ -22,7 +22,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.*;
 
-public class ProdMixController implements Initializable {
+public class ResipeController implements Initializable {
 
 
     @FXML
@@ -69,8 +69,9 @@ public class ProdMixController implements Initializable {
 
    //ProdMixModel prodMixModel = new ProdMixModel();
 
-    ResipesDAO prodMixModel = new ResipesDAOImpl();
+   // ResipesDAO prodMixModel = new ResipesDAOImpl();
 
+    ResipesBO prodMixModel =(ResipesBO) BOFactroy.getInstance().getBO(BOFactroy.BOType.RESIPE);
     @FXML
     void btnAddProd(ActionEvent event) {
 

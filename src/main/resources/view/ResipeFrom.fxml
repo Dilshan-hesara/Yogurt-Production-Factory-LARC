@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="614.0" prefWidth="887.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.edu.yogurtproduction.yogurtproductionitsolution.controller.ProdMixController">
+<AnchorPane prefHeight="614.0" prefWidth="887.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.edu.yogurtproduction.yogurtproductionitsolution.controller.ResipeController">
     <children>
         <ImageView fitHeight="612.0" fitWidth="887.0">
             <image>
