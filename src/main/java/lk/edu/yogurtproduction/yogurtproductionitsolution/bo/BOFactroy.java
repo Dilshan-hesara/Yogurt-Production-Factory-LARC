@@ -1,7 +1,6 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.bo;
 
-import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.impl.EmployeeBOImpl;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.impl.SupplierBOImpl;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.impl.*;
 
 public class BOFactroy {
 
@@ -12,7 +11,7 @@ public class BOFactroy {
     }
 
     public enum BOType{
-        EMPLOYEE,SUPPLIER
+        EMPLOYEE,SUPPLIER,RESIPE,MATERIAL,MATERIAL_USAGE
     }
 
     public SuperBO getBO(BOType type) {
@@ -21,6 +20,13 @@ public class BOFactroy {
                 return new EmployeeBOImpl();
                 case SUPPLIER:
                     return new SupplierBOImpl();
+                    case RESIPE:
+                        return new ResipesBOImpl();
+
+                        case MATERIAL:
+                            return new MaterialBOImpl();
+                            case MATERIAL_USAGE:
+                                return new MaterialUsageBOImpl();
                     default:
                         return null;
         }
