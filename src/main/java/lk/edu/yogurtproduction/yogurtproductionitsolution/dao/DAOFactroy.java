@@ -1,8 +1,6 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.dao;
 
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.EmployeeDAOImpl;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.QueryDAOImpl;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.SupplierDAOImpl;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.*;
 
 public class DAOFactroy {
 
@@ -13,7 +11,7 @@ public class DAOFactroy {
     }
 
     public enum DAOType {
-        EMPLOYEE,SUPPLIER,QUERY    }
+        EMPLOYEE,SUPPLIER,QUERY,RESIPE,MATERIAL,MATERIAL_USAGE    }
 
     public SuperDAO  getDAO(DAOType type) {
         switch (type) {
@@ -23,6 +21,12 @@ public class DAOFactroy {
                     return new SupplierDAOImpl();
                     case QUERY:
                         return  new QueryDAOImpl();
+                        case RESIPE:
+                            return new ResipesDAOImpl();
+                            case MATERIAL:
+                                return new MaterialDAOImpl();
+                                case MATERIAL_USAGE:
+                                    return new MaterialUsageDAOImpl();
                     default:
                         return null;
         }
