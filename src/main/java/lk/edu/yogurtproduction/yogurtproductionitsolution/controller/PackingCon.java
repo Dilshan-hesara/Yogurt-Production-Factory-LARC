@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.EmployeeDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.EmployeeDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.*;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.Employee;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.*;
 
 import java.sql.SQLException;
@@ -278,7 +279,7 @@ public class PackingCon {
     @FXML
     void cmbEmpOnAction(ActionEvent event) throws SQLException {
         String cmbEmpSelected = cmbEmpId.getSelectionModel().getSelectedItem();
-        EmployeeDto employeeDto = employeeModel.findByID(cmbEmpSelected);
+        Employee employeeDto = employeeModel.findByID(cmbEmpSelected);
         if (employeeDto != null) {
             lblEmpName.setText(employeeDto.getEmpName());
         }

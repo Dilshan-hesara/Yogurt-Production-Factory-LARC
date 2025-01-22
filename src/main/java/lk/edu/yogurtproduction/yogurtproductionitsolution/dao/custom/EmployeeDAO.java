@@ -2,11 +2,12 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.CrudDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.Employee;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface EmployeeDAO extends CrudDAO<EmployeeDto> {
+public interface EmployeeDAO extends CrudDAO<Employee> {
 
   //  public String getNextId() throws SQLException ;
 
@@ -20,5 +21,6 @@ public interface EmployeeDAO extends CrudDAO<EmployeeDto> {
    // public boolean deleteCustomer(String empId) throws SQLException ;
 
     public ArrayList<String> getAllEmpIds() throws SQLException ; // not unic
+
 
 }

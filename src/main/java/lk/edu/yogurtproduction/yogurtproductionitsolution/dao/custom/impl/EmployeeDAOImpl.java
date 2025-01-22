@@ -1,7 +1,7 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.EmployeeDAO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.Employee;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
 import java.sql.PreparedStatement;
@@ -36,16 +36,16 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
 
-    public boolean save(EmployeeDto employeeDto) throws SQLException {
+    public boolean save(Employee entity) throws SQLException {
 
         return   SQLUtil.execute("insert into employee values (?,?,?,?,?)",
-                employeeDto.getEmpId(),employeeDto.getEmpName(),employeeDto.getEmpNic(),employeeDto.getEmpEmail(),employeeDto.getEmpPhone());
+                entity.getEmpId(),entity.getEmpName(),entity.getEmpNic(),entity.getEmpEmail(),entity.getEmpPhone());
 
 
     }
 
 
-    public boolean update(EmployeeDto employeeDto) throws SQLException, ClassNotFoundException{
+    public boolean update(Employee employeeDto) throws SQLException, ClassNotFoundException{
 
         PreparedStatement statement;
 
@@ -54,47 +54,24 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     }
 
-    public ArrayList<EmployeeDto> getAll() throws SQLException, ClassNotFoundException {
-//        Connection connection = DBConnection.getInstance().getConnection();
-//        String sql = "select * from employee";
-//        PreparedStatement statement = connection.prepareStatement(sql);
-//        ResultSet rst = statement.executeQuery();
+    public ArrayList<Employee> getAll() throws SQLException, ClassNotFoundException {
+
 
         ResultSet rst =SQLUtil.execute("select * from employee");
-        ArrayList<EmployeeDto> employeeDtos = new ArrayList<>();
+        ArrayList<Employee> employeeDTOArrayList = new ArrayList<>();
 
         while (rst.next()) {
-            employeeDtos.add(new EmployeeDto(  rst.getString("Emp_ID"),
+            employeeDTOArrayList.add(new Employee(  rst.getString("Emp_ID"),
                     rst.getString("Emp_Name"),
                     rst.getString("Emp_Nic"),
                     rst.getString("Emp_Email"),
                     rst.getString("Emp_Phone")));
         }
 
-////        while (rst.next()) {
-////            EmployeeDto employeeDto = new EmployeeDto(
-//                    rst.getString("Emp_ID"),
-//                    rst.getString("Emp_Name"),
-//                    rst.getString("Emp_Nic"),
-//                    rst.getString("Emp_Email"),
-//                    rst.getString("Emp_Phone")
-//            );
-//            employeeDtos.add(employeeDto);
-//        }
 
-        return employeeDtos;
+        return employeeDTOArrayList;
     }
-//
-//    public ArrayList<Customer> getAll() throws SQLException, ClassNotFoundException {
-//        ResultSet rst= SQLUtil.execute("SELECT * FROM customer");
-//
-//        ArrayList<Customer> customerDTOArrayList = new ArrayList<>();
-//        while (rst.next()){
-//            customerDTOArrayList.add(new Customer(
-//                    rst.getString("id"),rst.getString("name"),rst.getString("address")));
-//        }
-//        return customerDTOArrayList;
-//    }
+
 
 
     public boolean delete(String empId) throws SQLException {
@@ -115,13 +92,13 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         return EmpIds;
     }
 
-    public EmployeeDto findByID(String cmbEmpSelected) throws SQLException {
+    public Employee findByID(String cmbEmpSelected) throws SQLException {
 
 
         ResultSet rst = SQLUtil.execute("select * from Employee where Emp_ID=?", cmbEmpSelected);
 
         if (rst.next()) {
-            return new EmployeeDto(
+            return new Employee(
                     rst.getString(1),
                     rst.getString(2),
                     rst.getString(3),
