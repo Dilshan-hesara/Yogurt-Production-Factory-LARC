@@ -8,6 +8,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.BOFactroy;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.MaterialBO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.MaterialDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.MaterialDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
@@ -58,7 +60,9 @@ public class MatirialCon implements Initializable {
 
     }
 
-    MaterialDAO matiralMoadel = new MaterialDAOImpl();
+    MaterialBO matiralMoadel = (MaterialBO) BOFactroy.getInstance().getBO(BOFactroy.BOType.MATERIAL);
+
+  //  MaterialDAO matiralMoadel = new MaterialDAOImpl();
   //  private MatiralMoadel matiralMoadel =  new MatiralMoadel();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
