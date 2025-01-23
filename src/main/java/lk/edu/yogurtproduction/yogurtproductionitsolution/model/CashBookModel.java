@@ -95,8 +95,6 @@ public class CashBookModel {
     }
 
 
-
-
 //            boolean isRecpSaved = SQLUtil.execute(
 //                    "insert into Cash_Book values (?, ?, ?, ?, ?, ?, ?, ?)",
 //                    cashBookDto.getCBNo(),

@@ -12,5 +12,5 @@ public interface ProductionDAO extends CrudDAO<ProdtionDto> {
 
     public ArrayList<String> getAllProdtIds() throws SQLException;
 
-    public ProdtionDto findById(String cmbProdSelected) throws SQLException;
+    public ProdtionDto findProdById(String cmbProdSelected) throws SQLException;
 }

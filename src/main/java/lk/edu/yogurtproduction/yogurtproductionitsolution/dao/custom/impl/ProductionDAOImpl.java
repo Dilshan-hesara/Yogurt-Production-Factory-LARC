@@ -66,7 +66,7 @@ public class ProductionDAOImpl implements ProductionDAO {
         return ProdtIds;
     }
 
-    public ProdtionDto findById(String cmbProdSelected) throws SQLException {
+    public ProdtionDto findProdById(String cmbProdSelected) throws SQLException {
 
 
         ResultSet rst = SQLUtil.execute("select * from production where Prod_ID=?", cmbProdSelected);
