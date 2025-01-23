@@ -57,6 +57,7 @@ public class PackingCon {
     private ComboBox<String> cmbPacType;
 
 
+    PackingBO packingBO = (PackingBO) BOFactroy.getInstance().getBO(BOFactroy.BOType.PACKING);
 
 
     public  void initialize() throws SQLException {
@@ -74,15 +75,7 @@ public class PackingCon {
     String AVqtyProdtName;
 
 
-    PackingBO packingBO = (PackingBO) BOFactroy.getInstance().getBO(BOFactroy.BOType.PACKING);
 
-    InventroyDAO inventroyModel = new InventroyDAOImpl();
-    // EmployeeModel employeeModel = new EmployeeModel();
-    EmployeeDAO employeeModel = new EmployeeDAOImpl();
-    ProductionDAO prodtionModel = new ProductionDAOImpl();
-
- //   PackingDAO packingDAO = new PackingDAOImpl();
-    PackingModel packingModel = new PackingModel();
     @FXML
     void btnAddStock(ActionEvent event) throws SQLException {
 

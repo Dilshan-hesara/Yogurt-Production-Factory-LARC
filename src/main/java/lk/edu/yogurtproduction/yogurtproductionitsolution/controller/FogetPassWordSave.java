@@ -31,6 +31,9 @@ public class FogetPassWordSave {
     @FXML
     private PasswordField txtnewpassword;
 
+    UserModel userModel = new UserModel();
+
+
     @FXML
     void VeffiMail(ActionEvent event) throws SQLException {
         System.out.println(GetUseName);
@@ -90,7 +93,6 @@ public class FogetPassWordSave {
 
     }
 
-    UserModel userModel = new UserModel();
 
     String GetUseName;
     String GetMail;

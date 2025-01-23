@@ -70,7 +70,6 @@ public class SupplierCon implements Initializable {
     @FXML
     private TableColumn<EmployeeTM, String> tbSupId;
 
-   // SupplierDAO suplierModel = new SupplierDAOImpl();
 
     SupplierBO suplierModel = (SupplierBO) BOFactroy.getInstance().getBO(BOFactroy.BOType.SUPPLIER);
 

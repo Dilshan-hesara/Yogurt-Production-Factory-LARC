@@ -38,6 +38,7 @@ public class UserDetailsNewPassSave {
     @FXML
     private Label txtMailmsg;
 
+    UserModel userModel = new UserModel();
 
 
     String UserName;
@@ -87,7 +88,6 @@ public class UserDetailsNewPassSave {
     }
 
 
-    UserModel userModel = new UserModel();
     String GetEmail;
     public void setUserDetails(String userName, String password) throws SQLException {
         UserName = userName;

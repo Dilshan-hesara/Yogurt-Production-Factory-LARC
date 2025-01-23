@@ -95,12 +95,6 @@ public class ProdtionCon {
 
     ProductionBO productionBO =(ProductionBO) BOFactroy.getInstance().getBO(BOFactroy.BOType.PRODTION);
 
-    ProdtionModel prodtionModel = new ProdtionModel();
-    MaterialUsageDAO matirialUsageModel = new MaterialUsageDAOImpl();
-    ResipesDAO prodMix = new ResipesDAOImpl();
-    ProductionDAO model = new ProductionDAOImpl();
-
-    InventroyDAO inventroyModel = new InventroyDAOImpl();
 
     public void initialize() throws SQLException {
 

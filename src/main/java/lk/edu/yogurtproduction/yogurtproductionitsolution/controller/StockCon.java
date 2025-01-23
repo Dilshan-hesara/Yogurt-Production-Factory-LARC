@@ -73,7 +73,6 @@ public class StockCon implements Initializable {
             System.out.println(e.getMessage());
         }
     }
-    StockDAO stockModel = new StockDAOImpl();
 
     StockBO stockBO = (StockBO) BOFactroy.getInstance().getBO(BOFactroy.BOType.STOCK);
 

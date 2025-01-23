@@ -67,8 +67,6 @@ public class EmployeeController implements Initializable {
     @FXML
     private TableView<EmployeeTM> emTable;
 
-   // EmployeeDAO employeeModel = new EmployeeDAOImpl();
-
     EmployeeBO employeeModel =  (EmployeeBO) BOFactroy.getInstance().getBO(BOFactroy.BOType.EMPLOYEE);
 
 

@@ -129,9 +129,6 @@ public class InventryCon implements Initializable {
 
     InventroyBO inventroyBO =(InventroyBO) BOFactroy.getInstance().getBO(BOFactroy.BOType.INVENTROY);
 
-    InventroyDAO inventroyModel = new InventroyDAOImpl();
-
-    InventroyModel invModel = new InventroyModel();
     private void loadTble() throws SQLException, ClassNotFoundException {
         ArrayList<InventroyDto> inventryDTOS = inventroyBO.getAll();
 

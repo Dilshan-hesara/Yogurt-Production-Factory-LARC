@@ -67,9 +67,6 @@ public class ResipeController implements Initializable {
     @FXML
     private Button updateBtn;
 
-   //ProdMixModel prodMixModel = new ProdMixModel();
-
-   // ResipesDAO prodMixModel = new ResipesDAOImpl();
 
     ResipesBO prodMixModel =(ResipesBO) BOFactroy.getInstance().getBO(BOFactroy.BOType.RESIPE);
     @FXML

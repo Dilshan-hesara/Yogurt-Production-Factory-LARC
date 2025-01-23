@@ -38,10 +38,7 @@ public class AddEmployeeController implements Initializable {
 
     private EmployeeController employeeFormController;
 
-  //  EmployeeDAO employeeModel = new EmployeeDAOImpl();
     EmployeeBO employeeModel =  (EmployeeBO) BOFactroy.getInstance().getBO(BOFactroy.BOType.EMPLOYEE);
-
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -135,7 +132,6 @@ public class AddEmployeeController implements Initializable {
 
         }
     }
-
 
 
 

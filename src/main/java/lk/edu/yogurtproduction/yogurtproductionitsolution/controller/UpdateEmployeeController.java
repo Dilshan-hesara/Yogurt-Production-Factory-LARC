@@ -42,8 +42,6 @@ public class UpdateEmployeeController implements Initializable {
 
     private EmployeeController employeeFormController;
 
-   // EmployeeDAO employeeModel = new EmployeeDAOImpl();
-
     EmployeeBO employeeModel =  (EmployeeBO) BOFactroy.getInstance().getBO(BOFactroy.BOType.EMPLOYEE);
 
     @Override

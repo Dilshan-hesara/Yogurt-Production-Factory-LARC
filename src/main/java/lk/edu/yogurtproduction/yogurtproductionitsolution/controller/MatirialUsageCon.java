@@ -60,8 +60,6 @@ public class MatirialUsageCon {
     }
 
     MaterialUsageBO materialUsageBO =(MaterialUsageBO) BOFactroy.getInstance().getBO(BOFactroy.BOType.MATERIAL_USAGE);
-  //  MatirialUsageModel matirialUsageModel = new MatirialUsageModel();
- // MaterialUsageDAO matirialUsageModel = new MaterialUsageDAOImpl();
 
     private void loadTble() throws SQLException, ClassNotFoundException {
 

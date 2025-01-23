@@ -62,8 +62,6 @@ public class MatirialCon implements Initializable {
 
     MaterialBO matiralMoadel = (MaterialBO) BOFactroy.getInstance().getBO(BOFactroy.BOType.MATERIAL);
 
-  //  MaterialDAO matiralMoadel = new MaterialDAOImpl();
-  //  private MatiralMoadel matiralMoadel =  new MatiralMoadel();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

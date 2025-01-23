@@ -105,18 +105,8 @@ public class CashBookController {
     @FXML
     private TableView<CashBookTM> tblCashBook;
 
-    MaterialDAO matiralModel = new MaterialDAOImpl();
 
     CashBookBO cashBookBO = (CashBookBO) BOFactroy.getInstance().getBO(BOFactroy.BOType.CASHBOOK);
-    // SuplierModel suplierModel = new SuplierModel();
-  //  SupplierDAO suplierModel = new SupplierDAOImpl();
-  //  MatiralMoadel matiralModel = new MatiralMoadel();
-    //CashBookModel cashBookModel = new CashBookModel();
-
-   // CashBookDAO cashBookDAO = new CashBookDAOImpl();
-
-
-    InventroyDAO inventroyModel = new InventroyDAOImpl();
 
     @FXML
     public void initialize() throws SQLException, ClassNotFoundException {
@@ -201,10 +191,7 @@ public class CashBookController {
         System.out.println("load");
     }
 
-    @FXML
-    void test(ActionEvent event) throws SQLException, ClassNotFoundException {
-        LoadTabel();
-    }
+
 
     @FXML
     void btnPlaceIt(ActionEvent event) throws SQLException, ClassNotFoundException {
@@ -275,15 +262,7 @@ public class CashBookController {
         String itemDescription =desc;
         String prodId = "----";
         String Qty = String.valueOf(qty);
-//
-//        System.out.println(CBNo);
-//        System.out.println(SupId);
-//        System.out.println(matID);
-//        System.out.println(inID);
-//        System.out.println(desc);
-//        System.out.println(qty);
-//        System.out.println(amount);
-//        System.out.println(date);
+
 
         InventroyDto inventroyDTO  = new InventroyDto(
                 inID,
@@ -336,8 +315,6 @@ public class CashBookController {
     }
 
 
-
-
     private void loadSupplierId() throws SQLException {
         ArrayList<String> supplierIds = cashBookBO.getAllSupIds();
         ObservableList<String> observableList = FXCollections.observableArrayList(supplierIds);
@@ -349,7 +326,6 @@ public class CashBookController {
         ObservableList<String> observableList = FXCollections.observableArrayList(ItemIds);
         cmbItemd.setItems(observableList);
     }
-
 
 
     @FXML
@@ -380,9 +356,6 @@ public class CashBookController {
     public void referMat() throws SQLException {
         loadItemId();
     }
-
-
-
 
 
     private void refesh() throws SQLException, ClassNotFoundException {
@@ -429,7 +402,6 @@ public class CashBookController {
                 e.printStackTrace();
             }
         }
-
 
 
     }
