@@ -37,6 +37,9 @@ public class DAOFactroy {
 
                         case PACKING:
                             return new PackingDAOImpl();
+
+                            case PRODTION:
+                                return new ProductionDAOImpl();
                     default:
                         return null;
         }
