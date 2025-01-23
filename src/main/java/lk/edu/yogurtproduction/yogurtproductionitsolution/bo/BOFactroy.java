@@ -11,7 +11,7 @@ public class BOFactroy {
     }
 
     public enum BOType{
-        EMPLOYEE,SUPPLIER,RESIPE,MATERIAL,MATERIAL_USAGE
+        EMPLOYEE,SUPPLIER,RESIPE,MATERIAL,MATERIAL_USAGE ,INVENTROY
     }
 
     public SuperBO getBO(BOType type) {
@@ -27,6 +27,8 @@ public class BOFactroy {
                             return new MaterialBOImpl();
                             case MATERIAL_USAGE:
                                 return new MaterialUsageBOImpl();
+                                case INVENTROY:
+                                    return new InventroyBOImpl();
                     default:
                         return null;
         }
