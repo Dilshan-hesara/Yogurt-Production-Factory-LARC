@@ -11,8 +11,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.BOFactroy;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.UserBO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.UserDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.UserModel;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.util.UserUtil;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -34,7 +36,10 @@ public class CreatAccController {
     @FXML
     private TextField txtUserName;
 
-    UserModel userModel = new UserModel();
+   // UserModel userModel = new UserModel();
+
+    UserBO userModel = (UserBO) BOFactroy.getInstance().getBO(BOFactroy.BOType.USER);
+
 
     @FXML
     private AnchorPane nextAcc;

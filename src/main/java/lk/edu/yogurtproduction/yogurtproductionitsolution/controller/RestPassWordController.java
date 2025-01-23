@@ -7,7 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.UserModel;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.BOFactroy;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.UserBO;
 
 import java.sql.SQLException;
 
@@ -32,7 +33,9 @@ public class RestPassWordController {
     private AnchorPane nextPage;
 
 
-    UserModel userModel = new UserModel();
+   // UserModel userModel = new UserModel();
+
+    UserBO userModel = (UserBO) BOFactroy.getInstance().getBO(BOFactroy.BOType.USER);
 
     @FXML
     void btnSaveRestPasss(ActionEvent event) throws SQLException {

@@ -21,16 +21,13 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.BOFactroy;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.DashBoadMainBO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.StockBO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.CashBookDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.MaterialUsageDAO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.StockDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.CashBookDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.MaterialUsageDAOImpl;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.StockDAOImpl;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.util.UserName;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.util.UserUtil;
 import lombok.SneakyThrows;
 
 import java.io.IOException;
@@ -185,9 +182,9 @@ public class DashBoadMain implements Initializable {
 
     String userName;
     void displayUsername() {
-        String username = UserName.getUsername();
+        String username = UserUtil.getUsername();
         txtUser.setText(username);
-        userName = UserName.getUsername();
+        userName = UserUtil.getUsername();
     }
 
 

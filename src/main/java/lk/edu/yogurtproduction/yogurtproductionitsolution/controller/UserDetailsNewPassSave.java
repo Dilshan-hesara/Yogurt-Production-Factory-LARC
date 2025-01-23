@@ -10,8 +10,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.BOFactroy;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.UserBO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CreteAccDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.UserModel;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -38,7 +39,9 @@ public class UserDetailsNewPassSave {
     @FXML
     private Label txtMailmsg;
 
-    UserModel userModel = new UserModel();
+   // UserModel userModel = new UserModel();
+
+    UserBO userModel = (UserBO) BOFactroy.getInstance().getBO(BOFactroy.BOType.USER);
 
 
     String UserName;

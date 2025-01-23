@@ -9,8 +9,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CreteAccDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.UserModel;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.BOFactroy;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.UserBO;
+
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -38,8 +39,9 @@ public class FogetPassWordVerfyController {
     private Label txtUser;
 
 
+    UserBO userModel = (UserBO) BOFactroy.getInstance().getBO(BOFactroy.BOType.USER);
 
-    UserModel userModel = new UserModel();
+  //  UserModel userModel = new UserModel();
 
     private String generatedOtp;
     private static final String SENDER_EMAIL = "mkdhyogurtfactory@gmail.com";

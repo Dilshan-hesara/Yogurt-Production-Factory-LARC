@@ -11,7 +11,7 @@ public class BOFactroy {
     }
 
     public enum BOType{
-        EMPLOYEE,SUPPLIER,RESIPE,MATERIAL,MATERIAL_USAGE ,INVENTROY,STOCK,CASHBOOK,PACKING,PRODTION,DBMD
+        EMPLOYEE,SUPPLIER,RESIPE,MATERIAL,MATERIAL_USAGE ,INVENTROY,STOCK,CASHBOOK,PACKING,PRODTION,DBMD,USER
     }
 
     public SuperBO getBO(BOType type) {
@@ -40,6 +40,8 @@ public class BOFactroy {
                                                     return new ProductionBOImpl();
                                                     case DBMD:
                                                         return new DashBoadMainBOImpl();
+                                                        case USER:
+                                                            return new UserBOImpl();
 
 
                     default:

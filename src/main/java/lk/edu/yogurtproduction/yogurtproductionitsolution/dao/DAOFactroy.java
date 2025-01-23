@@ -11,7 +11,7 @@ public class DAOFactroy {
     }
 
     public enum DAOType {
-        EMPLOYEE,SUPPLIER,QUERY,RESIPE,MATERIAL,MATERIAL_USAGE,STOCK,INVENTROY ,CASHBOOK,PACKING,PRODTION   }
+        EMPLOYEE,SUPPLIER,QUERY,RESIPE,MATERIAL,MATERIAL_USAGE,STOCK,INVENTROY ,CASHBOOK,PACKING,PRODTION,USER   }
 
     public SuperDAO  getDAO(DAOType type) {
         switch (type) {
@@ -40,6 +40,8 @@ public class DAOFactroy {
 
                             case PRODTION:
                                 return new ProductionDAOImpl();
+                                case USER:
+                                    return new UserDAOImpl();
                     default:
                         return null;
         }

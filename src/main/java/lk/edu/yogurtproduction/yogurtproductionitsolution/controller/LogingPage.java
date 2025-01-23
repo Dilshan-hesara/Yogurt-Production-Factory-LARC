@@ -7,13 +7,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.UserModel;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.util.UserName;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.BOFactroy;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.UserBO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.util.UserUtil;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -34,8 +34,9 @@ public class LogingPage{
     private TextField txtUser;
 
 
-    private final UserModel userModel = new UserModel();
+   // private final UserModel userModel = new UserModel();
 
+    UserBO userModel = (UserBO) BOFactroy.getInstance().getBO(BOFactroy.BOType.USER);
 
 
 
@@ -50,7 +51,7 @@ public class LogingPage{
 
         if (userModel.isValidUsername(username)) {
             if (userModel.isValidUser(username, password)) {
-                UserName.setUsername(txtUser.getText());
+                UserUtil.setUsername(txtUser.getText());
 
                 logpage.getChildren().clear();
 

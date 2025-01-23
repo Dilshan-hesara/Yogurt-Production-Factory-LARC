@@ -9,8 +9,10 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.BOFactroy;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.UserBO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CreteAccDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.UserModel;
+
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -38,7 +40,10 @@ public class CreateAccGetValController {
     private PasswordField txtREEnterPassWord;
 
 
-    UserModel userModel = new UserModel();
+    //UserModel userModel = new UserModel();
+
+    UserBO userModel = (UserBO) BOFactroy.getInstance().getBO(BOFactroy.BOType.USER);
+
 
     @FXML
     void btnSaveAcc(ActionEvent event) throws IOException, SQLException {
