@@ -1,5 +1,7 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.StockDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.StockDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.PckingDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
@@ -10,7 +12,8 @@ import java.sql.SQLException;
 
 public class PackingModel {
     InventroyModel inventoryModel = new InventroyModel();
-    StockModel stockModel = new StockModel();
+   // StockModel stockModel = new StockModel();
+    StockDAO stockModel = new StockDAOImpl();
     public boolean savePacking(PckingDto pckingDtos) throws SQLException {
         Connection connection = DBConnection.getInstance().getConnection();
         try {

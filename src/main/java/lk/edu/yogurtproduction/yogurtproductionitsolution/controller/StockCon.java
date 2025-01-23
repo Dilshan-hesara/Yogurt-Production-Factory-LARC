@@ -8,6 +8,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.StockDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.StockDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.StockDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.StockTM;
@@ -65,15 +67,15 @@ public class StockCon implements Initializable {
 
         try {
             loadTble();
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
         }
     }
-    StockModel stockModel = new StockModel();
+    StockDAO stockModel = new StockDAOImpl();
 
-    private void loadTble() throws SQLException {
+    private void loadTble() throws SQLException, ClassNotFoundException {
 
-        ArrayList<StockDto> stockDTOS = stockModel.getAllStockData();
+        ArrayList<StockDto> stockDTOS = stockModel.getAll();
 
         ObservableList<StockTM> stockTMS = FXCollections.observableArrayList();
 

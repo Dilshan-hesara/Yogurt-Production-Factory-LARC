@@ -1,6 +1,6 @@
-package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
+package lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl;
 
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.OrderDetailsDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.StockDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.StockDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
@@ -8,9 +8,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class StockModel {
+public class StockDAOImpl implements StockDAO {
 
-    public String getStockId() throws SQLException {
+    public String getNextId() throws SQLException {
 
         ResultSet rst = SQLUtil.execute("select Stock_ID from Stock order by Stock_ID desc limit 1");
         if (rst.next()) {
@@ -24,17 +24,7 @@ public class StockModel {
 
     }
 
-    public boolean saveStock(ArrayList<StockDto> stockDTOS) throws SQLException {
-        for (StockDto stockDTO : stockDTOS) {
-            boolean isSaved = savedStock(stockDTO);
 
-            if (!isSaved) {
-                return false;
-            }
-        }
-
-        return true;
-    }
 
     private boolean savedStock(StockDto stockDTO) throws SQLException {
         return   SQLUtil.execute(
@@ -53,7 +43,7 @@ public class StockModel {
 
     }
 
-    public ArrayList<StockDto> getAllStockData() throws SQLException {
+    public ArrayList<StockDto> getAll() throws SQLException {
         ResultSet rst = SQLUtil.execute("select * from Stock");
 
         ArrayList<StockDto> stockDTOS = new ArrayList<>();
@@ -84,48 +74,37 @@ public class StockModel {
     }
 
 
-    public ArrayList<String> getAllProdIds() throws SQLException {
-        ResultSet rst = SQLUtil.execute("select Stock_ID from Stock");
 
-        ArrayList<String> stockds = new ArrayList<>();
+    public boolean saveStock(ArrayList<StockDto> stockDTOS) throws SQLException {
+        for (StockDto stockDTO : stockDTOS) {
+            boolean isSaved = savedStock(stockDTO);
 
-        while (rst.next()) {
-            stockds.add(rst.getString(1));
+            if (!isSaved) {
+                return false;
+            }
         }
 
-        return stockds;
-
+        return true;
     }
 
-    public StockDto findById(String selectedProdt) throws SQLException {
-        ResultSet rst = SQLUtil.execute("select * from stock where Stock_ID =?", selectedProdt);
 
-        if (rst.next()) {
-            return new StockDto(
-                    rst.getString(1),
-                    rst.getString(2),
-                    rst.getString(3),
-                    rst.getDouble(4),
-                    rst.getString(5),
-                    rst.getString(6),
-                    rst.getString(7),
-                    rst.getDouble(8)
-            );
+    @Override
+    public boolean save(StockDto dto) throws SQLException {
+        return false;
+    }
 
-        }
+    @Override
+    public boolean update(StockDto dto) throws SQLException, ClassNotFoundException {
+        return false;
+    }
 
+    @Override
+    public boolean delete(String empId) throws SQLException {
+        return false;
+    }
+
+    @Override
+    public StockDto findByID(String cmbEmpSelected) throws SQLException {
         return null;
-
-    }
-
-
-
-    public boolean onOderRedQty(OrderDetailsDto orderDetailsDTO) throws SQLException {
-
-        return SQLUtil.execute(
-                "update stock set Qty = Qty - ? where Stock_ID = ?",
-                orderDetailsDTO.getQuantity(),
-                orderDetailsDTO.getItemId()
-        );
     }
 }

@@ -20,7 +20,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.MaterialUsageDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.StockDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.MaterialUsageDAOImpl;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.StockDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.CashBookModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatirialUsageModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.StockModel;
@@ -108,7 +110,7 @@ public class DashBoadMain implements Initializable {
     @FXML
     private Label lblProdAv;
 
-    StockModel stockModel = new StockModel();
+    StockDAO stockModel = new StockDAOImpl();
 
     private void loadprod() throws SQLException {
         int pr = (int) stockModel.getAllProdAvg();

@@ -7,7 +7,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.EmployeeDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.StockDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.EmployeeDAOImpl;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.StockDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.*;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.Employee;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.*;
@@ -249,11 +251,12 @@ public class PackingCon {
 
     }
 
+    StockDAO stockDAO =new StockDAOImpl();
     StockModel stockModel = new StockModel();
 
     String stID;
     public void loadNextStockId() throws SQLException {
-        String nextStockId = stockModel.getStockId();
+        String nextStockId = stockDAO.getNextId();
          stID = nextStockId;
         System.out.println(nextStockId);
     }
