@@ -25,9 +25,7 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.StockDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.CashBookDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.MaterialUsageDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.StockDAOImpl;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.CashBookModel;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatirialUsageModel;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.StockModel;
+
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.UserName;
 import lombok.SneakyThrows;

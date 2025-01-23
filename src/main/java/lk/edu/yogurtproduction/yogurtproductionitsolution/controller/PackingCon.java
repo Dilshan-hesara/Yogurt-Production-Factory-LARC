@@ -252,12 +252,9 @@ public class PackingCon {
 
     }
 
-    StockDAO stockDAO =new StockDAOImpl();
-    StockModel stockModel = new StockModel();
-
     String stID;
     public void loadNextStockId() throws SQLException {
-        String nextStockId = stockDAO.getNextId();
+        String nextStockId = packingBO.getNextStockId();
          stID = nextStockId;
         System.out.println(nextStockId);
     }

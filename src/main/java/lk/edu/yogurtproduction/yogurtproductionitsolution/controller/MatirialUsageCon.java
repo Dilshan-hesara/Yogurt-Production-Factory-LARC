@@ -9,12 +9,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.BOFactroy;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.MaterialUsageBO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.MaterialUsageDAO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.MaterialUsageDAOImpl;
+
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialUsageDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.MatirialUsageTM;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatirialUsageModel;
+
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.view.JasperViewer;
 

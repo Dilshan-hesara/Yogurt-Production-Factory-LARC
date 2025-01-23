@@ -14,13 +14,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.BOFactroy;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.ProductionBO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.InventroyDAO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.MaterialUsageDAO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.ProductionDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.ResipesDAO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.InventroyDAOImpl;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.MaterialUsageDAOImpl;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.ProductionDAOImpl;
+
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.ResipesDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.InventroyDto;
@@ -28,8 +23,7 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialUsageDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdMixDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdtionDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.ProdtionTM;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.InventroyModel;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.ProdtionModel;
+
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.view.JasperViewer;
 

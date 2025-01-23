@@ -131,5 +131,11 @@ public class PackingBOImpl implements PackingBO {
 
     }
 
+    @Override
+    public String getNextStockId() throws SQLException {
+
+        return stockDAO.getNextId();
+    }
+
 
 }

@@ -16,23 +16,13 @@ import javafx.event.ActionEvent;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.BOFactroy;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.CashBookBO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.CashBookDAO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.InventroyDAO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.MaterialDAO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.SupplierDAO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.CashBookDAOImpl;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.InventroyDAOImpl;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.MaterialDAOImpl;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.SupplierDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CashBookDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.InventroyDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SuplierDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.CashBookTM;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.CashBookModel;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.InventroyModel;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatiralMoadel;
+
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.view.JasperViewer;
 

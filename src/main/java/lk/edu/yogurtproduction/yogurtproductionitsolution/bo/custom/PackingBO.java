@@ -27,4 +27,6 @@ public interface PackingBO extends SuperBO {
     ProdtionDto findProdById(String cmbProdSelected) throws SQLException;
 
     ArrayList<String> getAllProdtIds() throws SQLException;
+
+    String getNextStockId() throws SQLException;
 }

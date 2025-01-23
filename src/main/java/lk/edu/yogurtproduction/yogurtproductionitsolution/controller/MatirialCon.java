@@ -10,11 +10,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.BOFactroy;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.MaterialBO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.MaterialDAO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.MaterialDAOImpl;
+
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.MatirialTM;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatiralMoadel;
+
 
 import java.net.URL;
 import java.sql.SQLException;
