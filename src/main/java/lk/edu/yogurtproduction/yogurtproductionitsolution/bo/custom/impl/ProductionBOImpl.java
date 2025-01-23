@@ -20,6 +20,8 @@ public class ProductionBOImpl implements ProductionBO {
 
     ProductionDAO productionDAO = (ProductionDAO) DAOFactroy.getInstance().getDAO(DAOFactroy.DAOType.PRODTION);
 
+    ResipesDAO resipesDAO = (ResipesDAO) DAOFactroy.getInstance().getDAO(DAOFactroy.DAOType.RESIPE);
+
 
     public String getNextId() throws SQLException {
 
@@ -78,6 +80,34 @@ public class ProductionBOImpl implements ProductionBO {
             connection.setAutoCommit(true);
         }
 
+    }
+
+    public String getNextMatId() throws SQLException {
+
+        return materialUsageDAO.getNextId();
+    }
+
+    @Override
+    public ArrayList<String> getAllProdName() throws SQLException {
+
+        return resipesDAO.getAllProdName();
+    }
+
+    @Override
+    public String getNextInventroyId() throws SQLException {
+        return inventroyDAO.getNextId();
+    }
+
+    @Override
+    public ArrayList<String> getAllAvItems() throws SQLException {
+
+        ArrayList<String> avItems = new ArrayList<>();
+        ArrayList<String>stringArrayList = inventroyDAO.getAllAVItems();
+
+        for (String string : stringArrayList) {
+            avItems.add(string);
+        }
+        return avItems;
     }
 
 

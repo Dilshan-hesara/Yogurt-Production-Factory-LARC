@@ -18,4 +18,11 @@ public interface ProductionBO extends SuperBO {
     public boolean saveProdt(ProdtionDto prodtionDto) throws SQLException;
 
 
+    String getNextMatId() throws SQLException;
+
+    ArrayList<String> getAllProdName() throws SQLException;
+
+    String getNextInventroyId() throws SQLException;
+
+    ArrayList<String> getAllAvItems() throws SQLException;
 }

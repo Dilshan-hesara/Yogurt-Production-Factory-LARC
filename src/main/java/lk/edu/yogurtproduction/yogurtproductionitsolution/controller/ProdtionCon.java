@@ -12,11 +12,15 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.BOFactroy;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.ProductionBO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.InventroyDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.MaterialUsageDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.ProductionDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.ResipesDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.InventroyDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.MaterialUsageDAOImpl;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.ProductionDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.ResipesDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.InventroyDto;
@@ -89,8 +93,15 @@ public class ProdtionCon {
     private Button btnAddResipe;
 
 
-ProdtionModel model = new ProdtionModel();
-ResipesDAO prodMix = new ResipesDAOImpl();
+    ProductionBO productionBO =(ProductionBO) BOFactroy.getInstance().getBO(BOFactroy.BOType.PRODTION);
+
+    ProdtionModel prodtionModel = new ProdtionModel();
+    MaterialUsageDAO matirialUsageModel = new MaterialUsageDAOImpl();
+    ResipesDAO prodMix = new ResipesDAOImpl();
+    ProductionDAO model = new ProductionDAOImpl();
+
+    InventroyDAO inventroyModel = new InventroyDAOImpl();
+
     public void initialize() throws SQLException {
 
         loadnextProdID();
@@ -109,14 +120,14 @@ ResipesDAO prodMix = new ResipesDAOImpl();
 
         try {
             loadTble();
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
         }
     }
-ProdtionModel prodtionModel = new ProdtionModel();
-    private void loadTble() throws SQLException {
 
-        ArrayList<ProdtionDto> prodtionDTOS = prodtionModel.getAllProdtionData();
+    private void loadTble() throws SQLException, ClassNotFoundException {
+
+        ArrayList<ProdtionDto> prodtionDTOS = productionBO.getAll();
 
         ObservableList<ProdtionTM> prodtionTMS = FXCollections.observableArrayList();
 
@@ -140,8 +151,9 @@ ProdtionModel prodtionModel = new ProdtionModel();
     private int DBAVGelitin;
 
     private void loadAvelbItem() {
+
         try {
-            ArrayList<String> avbleItem = inventroyModel.getAllAVItems();
+            ArrayList<String> avbleItem = productionBO.getAllAvItems();
 
             lblgeliyAV.setText(avbleItem.get(0));
             lblMilkAV.setText(avbleItem.get(1));
@@ -161,14 +173,14 @@ ProdtionModel prodtionModel = new ProdtionModel();
 
 
     private void loadnextProdID() throws SQLException {
-        String nextProdtID = model.getNextProdtID();
+        String nextProdtID = productionBO.getNextId();
         lblProdID.setText(nextProdtID);
         System.out.println(nextProdtID);
 
 
     }
     private void loadProdName() throws SQLException {
-        ArrayList<String> prodName = prodMix.getAllProdName();
+        ArrayList<String> prodName = productionBO.getAllProdName();
         ObservableList<String> observableList = FXCollections.observableArrayList();
         observableList.addAll(prodName);
         cmbProdt.setItems(observableList);
@@ -178,7 +190,7 @@ ProdtionModel prodtionModel = new ProdtionModel();
     private TextField txtProdtName;
 
     @FXML
-    void btnAddPro(ActionEvent event) throws SQLException {
+    void btnAddPro(ActionEvent event) throws SQLException, ClassNotFoundException {
 
         String selectedProdt = cmbProdt.getSelectionModel().getSelectedItem();
 
@@ -302,7 +314,7 @@ ProdtionModel prodtionModel = new ProdtionModel();
                 matirialUsageDTOS
 
         );
-        boolean isSaved = model.saveProdt(prodtionDto);
+        boolean isSaved = productionBO.saveProdt(prodtionDto);
 
         if (isSaved) {
             new Alert(Alert.AlertType.INFORMATION, " saved..!").show();
@@ -317,19 +329,18 @@ ProdtionModel prodtionModel = new ProdtionModel();
     }
 
     String invID;
-    InventroyDAO inventroyModel = new InventroyDAOImpl();
+
 
     public void loadNextInventryId() throws SQLException {
-        String nextInventryId = inventroyModel.getNextId();
+        String nextInventryId = productionBO.getNextInventroyId();
         invID = nextInventryId;
         System.out.println(nextInventryId);
     }
 
 
-    MaterialUsageDAO matirialUsageModel = new MaterialUsageDAOImpl();
     String mtID;
     public void loadNextmatirialUsageId() throws SQLException {
-        String matirialUsageId = matirialUsageModel.getNextId();
+        String matirialUsageId = productionBO.getNextMatId();
         mtID = matirialUsageId;
         System.out.println(matirialUsageId);
     }
@@ -361,7 +372,7 @@ ProdtionModel prodtionModel = new ProdtionModel();
         }
     }
 
-    private void cleFi() throws SQLException {
+    private void cleFi() throws SQLException, ClassNotFoundException {
 
         txtProdtName.clear();
         txtQty.clear();

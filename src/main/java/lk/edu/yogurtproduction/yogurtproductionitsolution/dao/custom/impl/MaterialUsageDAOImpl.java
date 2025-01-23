@@ -57,13 +57,20 @@ public class MaterialUsageDAOImpl implements MaterialUsageDAO {
     }
 
 
+    public boolean save(MatirialUsageDto matirialUsageDTO) throws SQLException {
 
+        return   SQLUtil.execute(
+                "insert into material_usage values (?, ?, ?, ?, ?)",
+                matirialUsageDTO.getMatUs_ID(),
+                matirialUsageDTO.getProd_ID(),
+                matirialUsageDTO.getMat_Milk(),
+                matirialUsageDTO.getMat_Suguer(),
+                matirialUsageDTO.getMat_Gelatin()
 
+        );
 
-    @Override
-    public boolean save(MatirialUsageDto dto) throws SQLException {
-        return false;
     }
+
 
     @Override
     public boolean update(MatirialUsageDto dto) throws SQLException, ClassNotFoundException {
@@ -78,5 +85,18 @@ public class MaterialUsageDAOImpl implements MaterialUsageDAO {
     @Override
     public MatirialUsageDto findByID(String cmbEmpSelected) throws SQLException {
         return null;
+    }
+
+    @Override
+    public boolean UMatUage(ArrayList<MatirialUsageDto> matirialUsageDTOS) throws SQLException {
+
+        for (MatirialUsageDto matirialUsageDTO : matirialUsageDTOS) {
+            boolean isSaved = save(matirialUsageDTO);
+
+            if (!isSaved) {
+                return false;
+            }
+        }
+        return true;
     }
 }
