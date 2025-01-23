@@ -1,9 +1,12 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.InventroyDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.InventroyDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CashBookDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
+import java.io.InvalidClassException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,7 +15,7 @@ import java.util.ArrayList;
 
 public class CashBookModel {
 
-    InventroyModel inventoryModel = new InventroyModel();
+    InventroyDAO inventoryModel = new InventroyDAOImpl();
     MatiralMoadel materialModel = new MatiralMoadel();
 
     public Boolean saveResept(CashBookDto cashBookDto) throws SQLException {

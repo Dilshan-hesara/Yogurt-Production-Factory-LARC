@@ -1,17 +1,20 @@
-package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
-import java.sql.SQLException;
+package lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl;
 
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.InventroyDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.InventroyDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.PckingDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdMixDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class InventroyModel {
+public class InventroyDAOImpl implements InventroyDAO {
 
-    public String getInventroyId() throws SQLException {
+
+
+    public String getNextId() throws SQLException {
         ResultSet rst = SQLUtil.execute("select In_ID from inventory order by In_ID desc limit 1");
         if (rst.next()) {
             String lastId = rst.getString(1);
@@ -23,7 +26,7 @@ public class InventroyModel {
         return "INV001";
     }
 
-    public ArrayList<InventroyDto> getAllInventoryData() throws SQLException {
+    public ArrayList<InventroyDto> getAll() throws SQLException {
         ResultSet rst = SQLUtil.execute("select * from inventory");
 
         ArrayList<InventroyDto> inventroyDTOS = new ArrayList<>();
@@ -82,6 +85,19 @@ public class InventroyModel {
         return true;
     }
 
+    private boolean savedInventory(InventroyDto inventroyDTO) throws SQLException {
+
+        return SQLUtil.execute(
+                "insert into inventory  values (?,?,?,?,?)",
+                inventroyDTO.getId(),
+                inventroyDTO.getItemType(),
+                inventroyDTO.getItemDescription(),
+                inventroyDTO.getQty(),
+                inventroyDTO.getProdId()
+        );
+    }
+
+
 
     public boolean redusqtyOnInventroyOnItems(ArrayList<ProdMixDto> prodMixDTOS) throws SQLException {
 
@@ -97,6 +113,19 @@ public class InventroyModel {
 
     }
 
+    private boolean savedInventoryOnItemRedu(ProdMixDto prodMixDTO) throws SQLException {
+
+        boolean milkUpdated = SQLUtil.execute("update inventory i join (select In_ID from inventory where Item_Description = 'Milk' and Qty > 0 limit 1) subquery on i.In_ID = subquery.In_ID set i.Qty = i.Qty - ?", prodMixDTO.getMilk());
+        boolean gelatinUpdated = SQLUtil.execute("update inventory i join (select In_ID from inventory where Item_Description = 'Gelat' and Qty > 0 limit 1) subquery on i.In_ID = subquery.In_ID set i.Qty = i.Qty - ?", prodMixDTO.getJeliy());
+        boolean sugarUpdated = SQLUtil.execute("update inventory i join (select In_ID from inventory where Item_Description = 'Sugar' and Qty > 0 limit 1) subquery on i.In_ID = subquery.In_ID set i.Qty = i.Qty - ?", prodMixDTO.getSuguer());
+
+        if (milkUpdated && gelatinUpdated && sugarUpdated) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
 
     public ArrayList<String> getAllAVItems() throws SQLException {
         ArrayList<String> availableItems = new ArrayList<>();
@@ -122,36 +151,23 @@ public class InventroyModel {
 
 
 
-
-
-
-    private boolean savedInventory(InventroyDto inventroyDTO) throws SQLException {
-
-        return SQLUtil.execute(
-                "insert into inventory  values (?,?,?,?,?)",
-                inventroyDTO.getId(),
-                inventroyDTO.getItemType(),
-                inventroyDTO.getItemDescription(),
-                inventroyDTO.getQty(),
-                inventroyDTO.getProdId()
-        );
+    @Override
+    public boolean save(InventroyDto dto) throws SQLException {
+        return false;
     }
 
+    @Override
+    public boolean update(InventroyDto dto) throws SQLException, ClassNotFoundException {
+        return false;
+    }
 
-    private boolean savedInventoryOnItemRedu(ProdMixDto prodMixDTO) throws SQLException {
+    @Override
+    public boolean delete(String empId) throws SQLException {
+        return false;
+    }
 
-        boolean milkUpdated = SQLUtil.execute("update inventory i join (select In_ID from inventory where Item_Description = 'Milk' and Qty > 0 limit 1) subquery on i.In_ID = subquery.In_ID set i.Qty = i.Qty - ?", prodMixDTO.getMilk());
-        boolean gelatinUpdated = SQLUtil.execute("update inventory i join (select In_ID from inventory where Item_Description = 'Gelat' and Qty > 0 limit 1) subquery on i.In_ID = subquery.In_ID set i.Qty = i.Qty - ?", prodMixDTO.getJeliy());
-        boolean sugarUpdated = SQLUtil.execute("update inventory i join (select In_ID from inventory where Item_Description = 'Sugar' and Qty > 0 limit 1) subquery on i.In_ID = subquery.In_ID set i.Qty = i.Qty - ?", prodMixDTO.getSuguer());
-
-        if (milkUpdated && gelatinUpdated && sugarUpdated) {
-            return true;
-        } else {
-            return false;
-        }
-
+    @Override
+    public InventroyDto findByID(String cmbEmpSelected) throws SQLException {
+        return null;
     }
 }
-
-
-

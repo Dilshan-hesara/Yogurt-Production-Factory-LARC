@@ -7,8 +7,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.EmployeeDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.InventroyDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.StockDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.EmployeeDAOImpl;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.InventroyDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.StockDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.*;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.Employee;
@@ -236,10 +238,10 @@ public class PackingCon {
 
 
     String invID;
-    InventroyModel inventroyModel = new InventroyModel();
+    InventroyDAO inventroyModel = new InventroyDAOImpl();
 
     public void loadNextInventryId() throws SQLException {
-        String nextInventryId = inventroyModel.getInventroyId();
+        String nextInventryId = inventroyModel.getNextId();
         invID = nextInventryId;
         System.out.println(nextInventryId);
     }

@@ -1,5 +1,7 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.InventroyDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.InventroyDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdtionDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
@@ -12,7 +14,7 @@ import java.util.ArrayList;
 
 public class ProdtionModel {
 
-    InventroyModel inventoryModel = new InventroyModel();
+    InventroyDAO inventoryModel = new InventroyDAOImpl();
     public String getNextProdtID() throws SQLException {
         ResultSet rst = SQLUtil.execute("select Prod_ID from production order by Prod_ID desc limit 1");
         if (rst.next()){

@@ -12,8 +12,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.InventroyDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.MaterialUsageDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.ResipesDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.InventroyDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.MaterialUsageDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.ResipesDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
@@ -315,10 +317,10 @@ ProdtionModel prodtionModel = new ProdtionModel();
     }
 
     String invID;
-    InventroyModel inventroyModel = new InventroyModel();
+    InventroyDAO inventroyModel = new InventroyDAOImpl();
 
     public void loadNextInventryId() throws SQLException {
-        String nextInventryId = inventroyModel.getInventroyId();
+        String nextInventryId = inventroyModel.getNextId();
         invID = nextInventryId;
         System.out.println(nextInventryId);
     }

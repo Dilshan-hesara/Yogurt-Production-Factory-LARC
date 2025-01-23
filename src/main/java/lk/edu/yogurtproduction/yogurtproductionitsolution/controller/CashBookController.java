@@ -14,8 +14,10 @@ import javafx.stage.Stage;
 
 import javafx.event.ActionEvent;
 
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.InventroyDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.MaterialDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.SupplierDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.InventroyDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.MaterialDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.SupplierDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
@@ -105,7 +107,7 @@ public class CashBookController {
     SupplierDAO suplierModel = new SupplierDAOImpl();
   //  MatiralMoadel matiralModel = new MatiralMoadel();
     CashBookModel cashBookModel = new CashBookModel();
-    InventroyModel inventroyModel = new InventroyModel();
+    InventroyDAO inventroyModel = new InventroyDAOImpl();
 
     @FXML
     public void initialize() throws SQLException {
@@ -319,7 +321,7 @@ public class CashBookController {
 
     String invID;
     public void loadNextInventryId() throws SQLException {
-        String nextInventryId = inventroyModel.getInventroyId();
+        String nextInventryId = inventroyModel.getNextId();
         invID = nextInventryId;
         System.out.println(nextInventryId);
     }
