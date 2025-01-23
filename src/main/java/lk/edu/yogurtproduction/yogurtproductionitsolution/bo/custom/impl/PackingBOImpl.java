@@ -2,12 +2,10 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.impl;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.PackingBO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.DAOFactroy;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.EmployeeDAO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.InventroyDAO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.PackingDAO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.StockDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.*;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.PckingDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdtionDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.Employee;
 
 import java.sql.Connection;
@@ -24,6 +22,7 @@ public class PackingBOImpl implements PackingBO {
 
         EmployeeDAO employeeDAO = (EmployeeDAO) DAOFactroy.getInstance().getDAO(DAOFactroy.DAOType.EMPLOYEE);
 
+        ProductionDAO productionDAO = (ProductionDAO) DAOFactroy.getInstance().getDAO(DAOFactroy.DAOType.PRODTION);
 
     public String getNextId() throws SQLException {
 
@@ -113,5 +112,24 @@ public class PackingBOImpl implements PackingBO {
         return employeeDAO.findByID(cmbEmpSelected);
 
    }
+
+    @Override
+    public ProdtionDto findProdById(String cmbProdSelected) throws SQLException {
+        return productionDAO.findProdById(cmbProdSelected);
+    }
+
+
+    public ArrayList<String> getAllProdtIds() throws SQLException {
+
+        ArrayList<String> prodtIds = new ArrayList<>();
+
+        ArrayList<String> stringArrayList = productionDAO.getAllProdtIds();
+        for (String string : stringArrayList){
+            prodtIds.add(string);
+        }
+    return prodtIds;
+
+    }
+
 
 }

@@ -6,12 +6,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.EmployeeDAO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.InventroyDAO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.StockDAO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.EmployeeDAOImpl;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.InventroyDAOImpl;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.StockDAOImpl;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.BOFactroy;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.PackingBO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.*;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.*;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.*;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.Employee;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.*;
@@ -76,6 +74,14 @@ public class PackingCon {
     String AVqtyProdtName;
 
 
+    PackingBO packingBO = (PackingBO) BOFactroy.getInstance().getBO(BOFactroy.BOType.PACKING);
+
+    InventroyDAO inventroyModel = new InventroyDAOImpl();
+    // EmployeeModel employeeModel = new EmployeeModel();
+    EmployeeDAO employeeModel = new EmployeeDAOImpl();
+    ProductionDAO prodtionModel = new ProductionDAOImpl();
+
+ //   PackingDAO packingDAO = new PackingDAOImpl();
     PackingModel packingModel = new PackingModel();
     @FXML
     void btnAddStock(ActionEvent event) throws SQLException {
@@ -204,7 +210,7 @@ public class PackingCon {
                 inventroyDTOS,
                 stockDTOS
         );
-        boolean isSaved = packingModel.savePacking(pckingDtos);
+        boolean isSaved = packingBO.savePacking(pckingDtos);
         if (isSaved) {
             new Alert(Alert.AlertType.INFORMATION, "Saved successfully!").show();
             clAll();
@@ -238,16 +244,16 @@ public class PackingCon {
 
 
     String invID;
-    InventroyDAO inventroyModel = new InventroyDAOImpl();
+
 
     public void loadNextInventryId() throws SQLException {
-        String nextInventryId = inventroyModel.getNextId();
+        String nextInventryId = packingBO.getNextInvId();
         invID = nextInventryId;
         System.out.println(nextInventryId);
     }
     public void loadInvetroyAvQtyFromSelectProd_ID() throws SQLException {
         String getSelectedProdId = cmbProdId.getSelectionModel().getSelectedItem();
-        String AvalbleQty = String.valueOf(inventroyModel.AvQtyFromSelectProd_ID(getSelectedProdId));
+        String AvalbleQty = String.valueOf(packingBO.AvQtyFromSelectProd_ID(getSelectedProdId));
         lblProdQty.setText(AvalbleQty);
         AVqty = Integer.parseInt(AvalbleQty);
 
@@ -264,7 +270,7 @@ public class PackingCon {
     }
 
     public void loadNextPackingId() throws SQLException {
-        String nextPackId = packingModel.getPackId();
+        String nextPackId = packingBO.getNextId();
         lblPacID.setText(nextPackId);
         System.out.println(nextPackId);
     }
@@ -284,7 +290,7 @@ public class PackingCon {
     @FXML
     void cmbEmpOnAction(ActionEvent event) throws SQLException {
         String cmbEmpSelected = cmbEmpId.getSelectionModel().getSelectedItem();
-        Employee employeeDto = employeeModel.findByID(cmbEmpSelected);
+        Employee employeeDto = packingBO.findByEmployeeID(cmbEmpSelected);
         if (employeeDto != null) {
             lblEmpName.setText(employeeDto.getEmpName());
         }
@@ -296,7 +302,7 @@ public class PackingCon {
     void cmbProdOnAction(ActionEvent event) throws SQLException {
         String cmbProdSelected = cmbProdId.getSelectionModel().getSelectedItem();
         System.out.println(cmbProdSelected);
-        ProdtionDto prodtionDto = prodtionModel.findById(cmbProdSelected);
+        ProdtionDto prodtionDto = packingBO.findProdById(cmbProdSelected);
         if (prodtionDto != null) {
             lblProdtName.setText(prodtionDto.getPro_Name());
             loadInvetroyAvQtyFromSelectProd_ID();
@@ -306,18 +312,15 @@ public class PackingCon {
 
     }
 
-   // EmployeeModel employeeModel = new EmployeeModel();
-    EmployeeDAO employeeModel = new EmployeeDAOImpl();
-    ProdtionModel prodtionModel = new ProdtionModel();
 
     private void loadEmpId() throws SQLException {
-            ArrayList<String> empIds = employeeModel.getAllEmpIds();
+            ArrayList<String> empIds = packingBO.getAllEmpIds();
             ObservableList<String> observableList = FXCollections.observableArrayList(empIds);
             cmbEmpId.setItems(observableList);
         }
 
     private void loadProdtId() throws SQLException {
-        ArrayList<String> prodIds = prodtionModel.getAllProdtIds();
+        ArrayList<String> prodIds = packingBO.getAllProdtIds();
         ObservableList<String> observableList = FXCollections.observableArrayList(prodIds);
         cmbProdId.setItems(observableList);
     }

@@ -2,6 +2,7 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.SuperBO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.PckingDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdtionDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.Employee;
 
 import java.sql.SQLException;
@@ -22,4 +23,8 @@ public interface PackingBO extends SuperBO {
     ArrayList<String> getAllEmpIds() throws SQLException;
 
     Employee findByEmployeeID(String cmbEmpSelected) throws SQLException;
+
+    ProdtionDto findProdById(String cmbProdSelected) throws SQLException;
+
+    ArrayList<String> getAllProdtIds() throws SQLException;
 }
