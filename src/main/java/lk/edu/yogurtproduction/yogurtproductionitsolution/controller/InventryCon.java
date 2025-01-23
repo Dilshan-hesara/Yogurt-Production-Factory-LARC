@@ -16,6 +16,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.BOFactroy;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.InventroyBO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.InventroyDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.InventroyDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
@@ -125,11 +127,13 @@ public class InventryCon implements Initializable {
         }
     }
 
+    InventroyBO inventroyBO =(InventroyBO) BOFactroy.getInstance().getBO(BOFactroy.BOType.INVENTROY);
+
     InventroyDAO inventroyModel = new InventroyDAOImpl();
 
     InventroyModel invModel = new InventroyModel();
     private void loadTble() throws SQLException, ClassNotFoundException {
-        ArrayList<InventroyDto> inventryDTOS = inventroyModel.getAll();
+        ArrayList<InventroyDto> inventryDTOS = inventroyBO.getAll();
 
         ObservableList<InventryTM> inventryTMS = FXCollections.observableArrayList();
 
