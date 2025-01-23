@@ -13,7 +13,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.BOFactroy;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.UserBO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.util.UserUtil;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.util.UserName;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -51,7 +51,7 @@ public class LogingPage{
 
         if (userModel.isValidUsername(username)) {
             if (userModel.isValidUser(username, password)) {
-                UserUtil.setUsername(txtUser.getText());
+                UserName.setUsername(txtUser.getText());
 
                 logpage.getChildren().clear();
 

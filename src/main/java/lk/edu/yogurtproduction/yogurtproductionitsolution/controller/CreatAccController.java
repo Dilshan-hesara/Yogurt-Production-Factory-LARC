@@ -3,7 +3,6 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -14,7 +13,6 @@ import javafx.stage.Stage;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.BOFactroy;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.UserBO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.UserDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.util.UserUtil;
 
 import java.io.IOException;
 import java.sql.SQLException;

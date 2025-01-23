@@ -27,7 +27,7 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.CashBo
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.MaterialUsageDAOImpl;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.util.UserUtil;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.util.UserName;
 import lombok.SneakyThrows;
 
 import java.io.IOException;
@@ -182,9 +182,9 @@ public class DashBoadMain implements Initializable {
 
     String userName;
     void displayUsername() {
-        String username = UserUtil.getUsername();
+        String username = UserName.getUsername();
         txtUser.setText(username);
-        userName = UserUtil.getUsername();
+        userName = UserName.getUsername();
     }
 
 

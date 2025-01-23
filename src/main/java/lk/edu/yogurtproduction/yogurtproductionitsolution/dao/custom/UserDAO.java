@@ -15,8 +15,8 @@ public interface UserDAO extends CrudDAO<UserDto> {
 
     public  boolean createUser(UserDto user) throws SQLException ;
 
-  //  public  boolean execute(String query, Object... params) throws SQLException ;
-        public boolean updatePassword(String username, String newPassword) throws SQLException ;
+    public  boolean execute(String query, Object... params) throws SQLException ;
+    public boolean updatePassword(String username, String newPassword) throws SQLException ;
     public boolean isValidUser(String username, String password) throws SQLException ;
 
     public boolean isValidUsername(String username) throws SQLException ;

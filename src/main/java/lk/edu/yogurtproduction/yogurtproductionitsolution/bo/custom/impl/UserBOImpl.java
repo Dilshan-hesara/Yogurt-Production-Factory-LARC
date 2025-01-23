@@ -18,10 +18,6 @@ public class UserBOImpl implements UserBO {
         return userDAO.createUser(user);
     }
 
-//    @Override
-//    public boolean execute(String query, Object... params) throws SQLException {
-//        return userDAO.execute(query, params);
-//    }
 
     @Override
     public boolean updatePassword(String username, String newPassword) throws SQLException {
@@ -52,5 +48,10 @@ public class UserBOImpl implements UserBO {
     public boolean UpdateUser(String usename, String newpass) throws SQLException {
 
         return userDAO.UpdateUser(usename, newpass);
+    }
+
+    @Override
+    public boolean execute(String query, Object... params) throws SQLException {
+        return userDAO.execute(query, params);
     }
 }

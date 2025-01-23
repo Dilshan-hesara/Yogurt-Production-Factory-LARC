@@ -26,22 +26,7 @@ public class UserDAOImpl implements UserDAO {
         );
 
     }
-//
-//    public  boolean execute(String query, Object... params) throws SQLException {
-//
-//        try (Connection connection = DBConnection.getInstance().getConnection();
-//             PreparedStatement statement = connection.prepareStatement(query)) {
-//
-//            int index = 1;
-//            for (Object param : params) {
-//                statement.setObject(index++, param);
-//            }
-//
-//            int affectedRows = statement.executeUpdate();
-//            return affectedRows > 0;
-//
-//        }
-//    }
+
 
     public boolean updatePassword(String username, String newPassword) throws SQLException {
 
@@ -134,5 +119,22 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public UserDto findByID(String cmbEmpSelected) throws SQLException {
         return null;
+    }
+
+
+    public  boolean execute(String query, Object... params) throws SQLException {
+
+        try (Connection connection = DBConnection.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            int index = 1;
+            for (Object param : params) {
+                statement.setObject(index++, param);
+            }
+
+            int affectedRows = statement.executeUpdate();
+            return affectedRows > 0;
+
+        }
     }
 }
