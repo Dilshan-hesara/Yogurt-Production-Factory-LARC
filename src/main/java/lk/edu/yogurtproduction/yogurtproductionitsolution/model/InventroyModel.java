@@ -125,6 +125,7 @@ public class InventroyModel {
 
 
 
+
     private boolean savedInventory(InventroyDto inventroyDTO) throws SQLException {
 
         return SQLUtil.execute(

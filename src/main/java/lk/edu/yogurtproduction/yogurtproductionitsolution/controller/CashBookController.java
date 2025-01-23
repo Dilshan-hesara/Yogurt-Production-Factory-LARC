@@ -14,9 +14,13 @@ import javafx.stage.Stage;
 
 import javafx.event.ActionEvent;
 
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.BOFactroy;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.CashBookBO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.CashBookDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.InventroyDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.MaterialDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.SupplierDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.CashBookDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.InventroyDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.MaterialDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.SupplierDAOImpl;
@@ -103,14 +107,19 @@ public class CashBookController {
 
     MaterialDAO matiralModel = new MaterialDAOImpl();
 
+    CashBookBO cashBookBO = (CashBookBO) BOFactroy.getInstance().getBO(BOFactroy.BOType.CASHBOOK);
     // SuplierModel suplierModel = new SuplierModel();
-    SupplierDAO suplierModel = new SupplierDAOImpl();
+  //  SupplierDAO suplierModel = new SupplierDAOImpl();
   //  MatiralMoadel matiralModel = new MatiralMoadel();
-    CashBookModel cashBookModel = new CashBookModel();
+    //CashBookModel cashBookModel = new CashBookModel();
+
+   // CashBookDAO cashBookDAO = new CashBookDAOImpl();
+
+
     InventroyDAO inventroyModel = new InventroyDAOImpl();
 
     @FXML
-    public void initialize() throws SQLException {
+    public void initialize() throws SQLException, ClassNotFoundException {
        setCellValues();
         refesh();
         LoadTabel();
@@ -155,7 +164,7 @@ public class CashBookController {
     private Label lblCBN;
 
     private void loadNextCBNOId() throws SQLException {
-        String nextCBNOId = cashBookModel.getNextCBNId();
+        String nextCBNOId = cashBookBO.getNextId();
         lblCBN.setText(nextCBNOId);
         System.out.println(nextCBNOId);
     }
@@ -169,8 +178,8 @@ public class CashBookController {
         colAmo.setCellValueFactory(new PropertyValueFactory<>("amount"));
 
     }
-    public void LoadTabel() throws SQLException {
-        ArrayList<CashBookDto> cashBookDtos = cashBookModel.getAllCustomers();
+    public void LoadTabel() throws SQLException, ClassNotFoundException {
+        ArrayList<CashBookDto> cashBookDtos = cashBookBO.getAll();
 
         ObservableList<CashBookTM> cashBookTMS = FXCollections.observableArrayList();
 
@@ -193,12 +202,12 @@ public class CashBookController {
     }
 
     @FXML
-    void test(ActionEvent event) throws SQLException {
+    void test(ActionEvent event) throws SQLException, ClassNotFoundException {
         LoadTabel();
     }
 
     @FXML
-    void btnPlaceIt(ActionEvent event) throws SQLException {
+    void btnPlaceIt(ActionEvent event) throws SQLException, ClassNotFoundException {
         loadNextInventryId();
         loadNextCBNOId();
 
@@ -302,7 +311,7 @@ public class CashBookController {
 
         );
 
-        boolean isSaved = cashBookModel.saveResept(cashBookDtos);
+        boolean isSaved = cashBookBO.saveResept(cashBookDtos);
         if (isSaved) {
             new Alert(Alert.AlertType.INFORMATION, "Saved successfully!").show();
             refesh();
@@ -313,7 +322,7 @@ public class CashBookController {
     }
 
     public void getAllAmount() throws SQLException {
-        int am = cashBookModel.getAllPayAmount();
+        int am = cashBookBO.getAllPayAmount();
         System.out.println(am);
         lblPayAmount.setText(String.valueOf(am));
     }
@@ -321,7 +330,7 @@ public class CashBookController {
 
     String invID;
     public void loadNextInventryId() throws SQLException {
-        String nextInventryId = inventroyModel.getNextId();
+        String nextInventryId = cashBookBO.getNextId();
         invID = nextInventryId;
         System.out.println(nextInventryId);
     }
@@ -330,13 +339,13 @@ public class CashBookController {
 
 
     private void loadSupplierId() throws SQLException {
-        ArrayList<String> supplierIds = suplierModel.getAllSupIds();
+        ArrayList<String> supplierIds = cashBookBO.getAllSupIds();
         ObservableList<String> observableList = FXCollections.observableArrayList(supplierIds);
         cmbSupId.setItems(observableList);
     }
 
     private void loadItemId() throws SQLException {
-        ArrayList<String>  ItemIds = matiralModel.getAllItemIds();
+        ArrayList<String>  ItemIds = cashBookBO.getAllItemIds();
         ObservableList<String> observableList = FXCollections.observableArrayList(ItemIds);
         cmbItemd.setItems(observableList);
     }
@@ -347,7 +356,7 @@ public class CashBookController {
     void cmbItemOnAction(ActionEvent event) throws SQLException {
         String selectID = (String) cmbItemd.getSelectionModel().getSelectedItem();
 
-        MatirialDto matirialDto = matiralModel.findById(selectID);
+        MatirialDto matirialDto = cashBookBO.findById(selectID);
         if (matirialDto != null) {
 
             lblItemName.setText(matirialDto.getMatName());
@@ -362,7 +371,7 @@ public class CashBookController {
     void cmbSupOnAction(ActionEvent event) throws SQLException {
         String selectID = (String) cmbSupId.getSelectionModel().getSelectedItem();
 
-        SuplierDto suplierDto = suplierModel.findByID(selectID);
+        SuplierDto suplierDto = cashBookBO.findByID(selectID);
         if (suplierDto != null) {
             lblSupplerName.setText(suplierDto.getSupName());
         }
@@ -376,7 +385,7 @@ public class CashBookController {
 
 
 
-    private void refesh() throws SQLException {
+    private void refesh() throws SQLException, ClassNotFoundException {
 
         loadSupplierId();
         loadItemId();

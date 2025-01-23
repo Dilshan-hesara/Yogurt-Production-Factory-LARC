@@ -19,8 +19,10 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.CashBookDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.MaterialUsageDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.StockDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.CashBookDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.MaterialUsageDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.StockDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.CashBookModel;
@@ -128,7 +130,7 @@ public class DashBoadMain implements Initializable {
 
     }
 
-    CashBookModel cashBookModel = new CashBookModel();
+    CashBookDAO cashBookModel = new CashBookDAOImpl();
     private void laodAount() throws SQLException {
         int am = cashBookModel.getAllPayAmount();
         String Am = "LKR."+am;

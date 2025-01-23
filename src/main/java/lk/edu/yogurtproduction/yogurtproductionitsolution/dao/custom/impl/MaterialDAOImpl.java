@@ -1,6 +1,7 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.MaterialDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CashBookDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
@@ -124,7 +125,13 @@ public class MaterialDAOImpl implements MaterialDAO {
 
 
 
-
+    public boolean updatedMatirialReduceQty(CashBookDto cashBookDto) throws SQLException {
+        return SQLUtil.execute(
+                "update material set Qty = Qty - ? where Mat_ID = ?",
+                cashBookDto.getQty(),
+                cashBookDto.getMatID()
+        );
+    }
 
 
 
