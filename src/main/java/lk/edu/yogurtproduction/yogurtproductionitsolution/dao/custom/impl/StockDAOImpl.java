@@ -75,6 +75,7 @@ public class StockDAOImpl implements StockDAO {
 
 
 
+
     public boolean saveStock(ArrayList<StockDto> stockDTOS) throws SQLException {
         for (StockDto stockDTO : stockDTOS) {
             boolean isSaved = savedStock(stockDTO);

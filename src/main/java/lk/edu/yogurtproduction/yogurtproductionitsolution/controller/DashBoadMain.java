@@ -19,6 +19,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.BOFactroy;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.DashBoadMainBO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.StockBO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.CashBookDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.MaterialUsageDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.StockDAO;
@@ -64,20 +67,25 @@ public class DashBoadMain implements Initializable {
     @FXML
     private Label lblbAmount;
 
-    void displayUsername() {
-        String username = UserName.getUsername();
-            txtUser.setText(username);
-            userName = UserName.getUsername();
-        }
 
+    @FXML
+    private Label lblProdAv;
+
+    @FXML
+    private Button btnAccDe;
+
+    DashBoadMainBO dashBoadMainBO = (DashBoadMainBO) BOFactroy.getInstance().getBO(BOFactroy.BOType.DBMD);
+
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:ss a");
+    private SimpleDateFormat daterun = new SimpleDateFormat("MMMM dd, yyyy");
 
     @SneakyThrows
     @Override
-        public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources) {
         
-        loadChartData();
+        loadInventroyChartData();
         startClock();
-        addYogurtStockData();
+        loadStockDataTable();
         displayUsername();
 
         try {
@@ -89,8 +97,6 @@ public class DashBoadMain implements Initializable {
     }
 
 
-    String userName;
-
     public void setUserName(String userName) {
 
         this.userName = userName;
@@ -99,7 +105,6 @@ public class DashBoadMain implements Initializable {
 
     }
 
-
     private void LoadLbl() throws SQLException {
         laodAount();
         laodMatUsage();
@@ -107,20 +112,13 @@ public class DashBoadMain implements Initializable {
  
     }
 
-    @FXML
-    private Label lblProdAv;
-
-    StockDAO stockModel = new StockDAOImpl();
-
     private void loadprod() throws SQLException {
-        int pr = (int) stockModel.getAllProdAvg();
+        int pr = (int) dashBoadMainBO.getAllStockProdAvg();
         String prd = pr +" %";
         lblProdAv.setText(String.valueOf(prd));
     }
 
-    MaterialUsageDAO matirialUsageModel = new MaterialUsageDAOImpl();
 
-    //    MatirialUsageModel matirialUsageModel = new MatirialUsageModel();
     private void laodMatUsage() throws SQLException {
         Double us = (double) matirialUsageModel.getAllUsageAvg();
         String usa = us+" %";
@@ -128,7 +126,6 @@ public class DashBoadMain implements Initializable {
 
     }
 
-    CashBookDAO cashBookModel = new CashBookDAOImpl();
     private void laodAount() throws SQLException {
         int am = cashBookModel.getAllPayAmount();
         String Am = "LKR."+am;
@@ -136,8 +133,7 @@ public class DashBoadMain implements Initializable {
 
     }
 
-    @FXML
-    private Button btnAccDe;
+
 
     public void btnEditAcc(ActionEvent actionEvent) {
 
@@ -171,33 +167,6 @@ public class DashBoadMain implements Initializable {
     }
 
 
-    public void loadChartData() {
-
-        try {
-            String query = "select Item_Type, sum(Qty) as TotalQty from inventory where Item_Type in ('Raw', 'UN Packed', 'END Prodt') group by Item_Type";
-
-            ResultSet rs = SQLUtil.execute(query);
-
-            ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
-
-            while (rs.next()) {
-                String itemType = rs.getString("Item_Type");
-                int totalQty = rs.getInt("TotalQty");
-
-                pieChartData.add(new PieChart.Data(itemType , totalQty));
-            }
-
-            chartProduction.setData(pieChartData);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:ss a");
-    private SimpleDateFormat daterun = new SimpleDateFormat("MMMM dd, yyyy");
-
     private void updateDateLabel() {
 
 
@@ -214,9 +183,15 @@ public class DashBoadMain implements Initializable {
         timeline.play();
     }
 
+    String userName;
+    void displayUsername() {
+        String username = UserName.getUsername();
+        txtUser.setText(username);
+        userName = UserName.getUsername();
+    }
 
 
-    private void addYogurtStockData() {
+    private void loadStockDataTable() {
 
         try {
             String Qury = "SELECT Manfac_date, SUM(Qty) AS total_qty " +
@@ -250,8 +225,32 @@ public class DashBoadMain implements Initializable {
             e.printStackTrace();
         }
     }
+    MaterialUsageDAO matirialUsageModel = new MaterialUsageDAOImpl();
+    CashBookDAO cashBookModel = new CashBookDAOImpl();
 
+    public void loadInventroyChartData() {
 
+        try {
+            String query = "select Item_Type, sum(Qty) as TotalQty from inventory where Item_Type in ('Raw', 'UN Packed', 'END Prodt') group by Item_Type";
+
+            ResultSet rs = SQLUtil.execute(query);
+
+            ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+
+            while (rs.next()) {
+                String itemType = rs.getString("Item_Type");
+                int totalQty = rs.getInt("TotalQty");
+
+                pieChartData.add(new PieChart.Data(itemType , totalQty));
+            }
+
+            chartProduction.setData(pieChartData);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 
 
 }
