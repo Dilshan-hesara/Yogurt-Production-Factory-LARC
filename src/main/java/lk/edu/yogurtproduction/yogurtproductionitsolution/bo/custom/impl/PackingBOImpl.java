@@ -7,6 +7,7 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.PckingDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdtionDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.Employee;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.Packing;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -31,7 +32,7 @@ public class PackingBOImpl implements PackingBO {
     }
     public boolean save(PckingDto pckingDtos) throws SQLException {
 
-        return packingDAO.save(pckingDtos);
+        return packingDAO.save(new Packing(pckingDtos));
 
     }
 
@@ -109,8 +110,8 @@ public class PackingBOImpl implements PackingBO {
   }
 
    public Employee findByEmployeeID(String cmbEmpSelected) throws SQLException {
-        return employeeDAO.findByID(cmbEmpSelected);
 
+        return employeeDAO.findByID(cmbEmpSelected);
    }
 
     @Override

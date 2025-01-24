@@ -5,6 +5,7 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.MaterialBO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.DAOFactroy;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.MaterialDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.Matirial;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
 import java.sql.ResultSet;
@@ -21,19 +22,20 @@ public class MaterialBOImpl implements MaterialBO {
 
     }
 
-    public boolean save(MatirialDto matirialDto) throws SQLException {
 
-        return materialDAO.save(matirialDto);
+    public boolean save(MatirialDto material) throws SQLException {
+
+        return materialDAO.save(new Matirial(material.getMatId(),material.getMatName(),material.getMatQty(),material.getMatPrice()));
 
     }
 
     public ArrayList<MatirialDto> getAll() throws SQLException, ClassNotFoundException {
 
         ArrayList<MatirialDto> matirialDtos = new ArrayList<>();
-        ArrayList<MatirialDto> materials = materialDAO.getAll();
+        ArrayList<Matirial> materials = materialDAO.getAll();
 
-        for (MatirialDto material : materials) {
-            matirialDtos.add(material);
+        for (Matirial material : materials) {
+            matirialDtos.add(new MatirialDto(new Matirial(material.getMatId(),material.getMatName(),material.getMatQty(),material.getMatPrice())));
 
         }
         return matirialDtos;

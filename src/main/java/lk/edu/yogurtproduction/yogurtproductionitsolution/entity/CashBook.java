@@ -7,8 +7,6 @@ import java.util.ArrayList;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @ToString
 
 public class CashBook {

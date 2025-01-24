@@ -1,6 +1,5 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.dto;
 
-import javafx.fxml.FXML;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.Employee;
 import lombok.*;
 @Getter
@@ -23,6 +22,7 @@ public class EmployeeDto {
         this.empNic = employee.getEmpNic();
         this.empEmail = employee.getEmpEmail();
         this.empPhone = employee.getEmpPhone();
+
 
     }
 }

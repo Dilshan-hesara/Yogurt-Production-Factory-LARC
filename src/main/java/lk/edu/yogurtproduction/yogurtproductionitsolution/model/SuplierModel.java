@@ -1,11 +1,8 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 
-import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SuplierDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SupplierDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -32,7 +29,7 @@ public class SuplierModel {
         return "SU001";
     }
 
-    public boolean saveSuplier(SuplierDto suplierDTO) throws SQLException {
+    public boolean saveSuplier(SupplierDto suplierDTO) throws SQLException {
 
 //        Connection connection = DBConnection.getInstance().getConnection();
 //        String sql = "insert into  supplier values (?,?,?,?,?)";
@@ -53,7 +50,7 @@ public class SuplierModel {
 
 
 
-    public boolean updateSuplier(SuplierDto suplierDTO) throws SQLException {
+    public boolean updateSuplier(SupplierDto suplierDTO) throws SQLException {
 
 //        String sql = "update supplier set Sup_Name = ?, Sup_Nic = ?, Sup_Email = ?, Sup_Phone = ? where Sup_ID = ?";
 //
@@ -76,7 +73,7 @@ public class SuplierModel {
               ,suplierDTO.getSupName(),suplierDTO.getSupNic(),suplierDTO.getSupEmail(),suplierDTO.getSupPhone() ,suplierDTO.getSupId());
     }
 
-    public ArrayList<SuplierDto> getAllSuplier() throws SQLException {
+    public ArrayList<SupplierDto> getAllSuplier() throws SQLException {
 //        Connection connection = DBConnection.getInstance().getConnection();
 //        String sql = "select * from supplier";
 //        PreparedStatement statement = connection.prepareStatement(sql);
@@ -96,9 +93,9 @@ public class SuplierModel {
 //        return suplierDtos;
 
         ResultSet rst = SQLUtil.execute("select * from supplier");
-        ArrayList<SuplierDto> suplierList = new ArrayList<>();
+        ArrayList<SupplierDto> suplierList = new ArrayList<>();
         while (rst.next()) {
-            suplierList.add(new SuplierDto(  rst.getString("Sup_ID"),
+            suplierList.add(new SupplierDto(  rst.getString("Sup_ID"),
                     rst.getString("Sup_Name"),
                     rst.getString("Sup_Nic"),
                     rst.getString("Sup_Email"),
@@ -127,12 +124,12 @@ public class SuplierModel {
     }
 
 
-    public SuplierDto findById(String selectID) throws SQLException {
+    public SupplierDto findById(String selectID) throws SQLException {
 
         ResultSet rst = SQLUtil.execute("select * from supplier where Sup_ID=?", selectID);
 
         while (rst.next()) {
-            return new SuplierDto(
+            return new SupplierDto(
                     rst.getString(1),
                     rst.getString(2),
                     rst.getString(3),

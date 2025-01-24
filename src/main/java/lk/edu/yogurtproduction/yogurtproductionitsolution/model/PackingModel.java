@@ -54,56 +54,56 @@ public class PackingModel {
         );
     }
 
-    public boolean savePacking(PckingDto pckingDtos) throws SQLException {
-        Connection connection = DBConnection.getInstance().getConnection();
-        try {
-            connection.setAutoCommit(false);
-
-//            boolean isRecpSaved = SQLUtil.execute(
-//                    "insert into packing values (?, ?, ?, ?, ?, ?, ?,?)",
-//                    pckingDtos.getPac_ID(),
-//                    pckingDtos.getProd_ID(),
-//                    pckingDtos.getPac_Type(),
-//                    pckingDtos.getPac_Desc(),
-//                    pckingDtos.getPac_Date(),
-//                    pckingDtos.getExpire_Date(),
-//                    pckingDtos.getQty(),
-//                    pckingDtos.getEmp_ID()
-//            );
-            boolean isRecpSaved = packingModel.save(pckingDtos);
-
-            if (isRecpSaved) {
-
-
-                    boolean isStockUpdated = stockModel.saveStock(pckingDtos.getStockDTOS());
-                    if (isStockUpdated) {
-                        boolean redusePackedQty = inventoryModel.saveredusPackedQty(pckingDtos);
-                        if (redusePackedQty) {
-                            boolean isInventroyUpdated = inventoryModel.saveInvetory(pckingDtos.getInventroyDTOS());
-                            if (isInventroyUpdated) {
-                                connection.commit();
-                                return true;
-                            }
-
-
-
-                    }
-
-                }
-
-            }
-
-            connection.rollback();
-            return false;
-        } catch(SQLException e){
-            connection.rollback();
-            e.printStackTrace();
-            return false;
-        } finally{
-            connection.setAutoCommit(true);
-        }
-
-    }
+//    public boolean savePacking(PckingDto pckingDtos) throws SQLException {
+//        Connection connection = DBConnection.getInstance().getConnection();
+//        try {
+//            connection.setAutoCommit(false);
+//
+////            boolean isRecpSaved = SQLUtil.execute(
+////                    "insert into packing values (?, ?, ?, ?, ?, ?, ?,?)",
+////                    pckingDtos.getPac_ID(),
+////                    pckingDtos.getProd_ID(),
+////                    pckingDtos.getPac_Type(),
+////                    pckingDtos.getPac_Desc(),
+////                    pckingDtos.getPac_Date(),
+////                    pckingDtos.getExpire_Date(),
+////                    pckingDtos.getQty(),
+////                    pckingDtos.getEmp_ID()
+////            );
+//            boolean isRecpSaved = packingModel.save(pckingDtos);
+//
+//            if (isRecpSaved) {
+//
+//
+//                    boolean isStockUpdated = stockModel.saveStock(pckingDtos.getStockDTOS());
+//                    if (isStockUpdated) {
+//                        boolean redusePackedQty = inventoryModel.saveredusPackedQty(pckingDtos);
+//                        if (redusePackedQty) {
+//                            boolean isInventroyUpdated = inventoryModel.saveInvetory(pckingDtos.getInventroyDTOS());
+//                            if (isInventroyUpdated) {
+//                                connection.commit();
+//                                return true;
+//                            }
+//
+//
+//
+//                    }
+//
+//                }
+//
+//            }
+//
+//            connection.rollback();
+//            return false;
+//        } catch(SQLException e){
+//            connection.rollback();
+//            e.printStackTrace();
+//            return false;
+//        } finally{
+//            connection.setAutoCommit(true);
+//        }
+//
+//    }
 
 
 }

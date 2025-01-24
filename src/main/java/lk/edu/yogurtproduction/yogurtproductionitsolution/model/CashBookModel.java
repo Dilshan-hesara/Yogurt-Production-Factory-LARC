@@ -52,48 +52,48 @@ public class CashBookModel {
         );
     }
 
-    public Boolean saveResept(CashBookDto cashBookDto) throws SQLException {
-
-        Connection connection = DBConnection.getInstance().getConnection();
-
-        try {
-            connection.setAutoCommit(false);
-
-
-                boolean isRecpSaved =cashModel.save(cashBookDto);
-
-
-            if (isRecpSaved) {
-
-                boolean isInventroyUpdated = inventoryModel.saveInvetory(cashBookDto.getInventroyDTOS());
-                if (isInventroyUpdated) {
-
-                    boolean isMatirealUpdated = materialModel.updatedMatirialReduceQty(cashBookDto);
-                    if (isMatirealUpdated) {
-                        connection.commit();
-
-
-                        return true;
-                    }
-
-                    }
-
-                }
-
-
-
-
-            connection.rollback();
-            return false;
-        } catch (SQLException e) {
-            connection.rollback();
-            e.printStackTrace();
-            return false;
-        } finally {
-            connection.setAutoCommit(true);
-        }
-    }
-
+//    public Boolean saveResept(CashBookDto cashBookDto) throws SQLException {
+//
+//        Connection connection = DBConnection.getInstance().getConnection();
+//
+//        try {
+//            connection.setAutoCommit(false);
+//
+//
+//         //       boolean isRecpSaved =cashModel.save(cashBookDto);
+//
+//
+//            if (isRecpSaved) {
+//
+//                boolean isInventroyUpdated = inventoryModel.saveInvetory(cashBookDto.getInventroyDTOS());
+//                if (isInventroyUpdated) {
+//
+//                    boolean isMatirealUpdated = materialModel.updatedMatirialReduceQty(cashBookDto);
+//                    if (isMatirealUpdated) {
+//                        connection.commit();
+//
+//
+//                        return true;
+//                    }
+//
+//                    }
+//
+//                }
+//
+//
+//
+//
+//            connection.rollback();
+//            return false;
+//        } catch (SQLException e) {
+//            connection.rollback();
+//            e.printStackTrace();
+//            return false;
+//        } finally {
+//            connection.setAutoCommit(true);
+//        }
+//    }
+//
 
 //            boolean isRecpSaved = SQLUtil.execute(
 //                    "insert into Cash_Book values (?, ?, ?, ?, ?, ?, ?, ?)",

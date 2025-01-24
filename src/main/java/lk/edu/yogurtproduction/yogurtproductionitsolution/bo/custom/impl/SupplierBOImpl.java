@@ -1,19 +1,13 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.impl;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.SupplierBO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.CrudDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.DAOFactroy;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.SupplierDAO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.SupplierDAOImpl;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SuplierDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.Employee;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SupplierDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.Supplier;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.function.Supplier;
 
 public class SupplierBOImpl implements SupplierBO {
 
@@ -26,26 +20,28 @@ public class SupplierBOImpl implements SupplierBO {
        return supplierDAO.getNextId();
     }
 
-    public boolean save(SuplierDto suplierDTO) throws SQLException {
+    public boolean save(SupplierDto suplierDTO) throws SQLException {
 
-       return supplierDAO.save(suplierDTO);
+        return supplierDAO.save(new Supplier(suplierDTO.getSupId(),suplierDTO.getSupName(),suplierDTO.getSupNic(),suplierDTO.getSupEmail(),suplierDTO.getSupPhone()));
   }
 
 
 
-    public boolean update(SuplierDto suplierDTO) throws SQLException, ClassNotFoundException {
+    public boolean update(SupplierDto suplierDTO) throws SQLException, ClassNotFoundException {
 
-      return   supplierDAO.update(suplierDTO);
-  }
 
-    public ArrayList<SuplierDto> getAll() throws SQLException, ClassNotFoundException {
+        return supplierDAO.update(new Supplier(suplierDTO.getSupId(),suplierDTO.getSupName(),suplierDTO.getSupNic(),suplierDTO.getSupEmail(),suplierDTO.getSupPhone()));
+    }
 
-        ArrayList<SuplierDto> suplierDTOArrayList = new ArrayList<>();
+    public ArrayList<SupplierDto> getAll() throws SQLException, ClassNotFoundException {
 
-        ArrayList<SuplierDto> supplierList = supplierDAO.getAll();
+        ArrayList<SupplierDto> suplierDTOArrayList = new ArrayList<>();
 
-        for (SuplierDto suplierDTO : supplierList) {
-            suplierDTOArrayList.add(suplierDTO);
+        ArrayList<Supplier>suplierDTOList = supplierDAO.getAll();
+
+        for (Supplier suplierDTO : suplierDTOList) {
+            suplierDTOArrayList.add(new SupplierDto(new Supplier(suplierDTO.getSupId(),suplierDTO.getSupName(),suplierDTO.getSupNic(),suplierDTO.getSupEmail(),suplierDTO.getSupPhone())));
+
         }
         return suplierDTOArrayList;
     }

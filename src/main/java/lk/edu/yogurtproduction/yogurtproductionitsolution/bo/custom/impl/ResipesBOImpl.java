@@ -5,6 +5,7 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.DAOFactroy;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.ResipesDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.ResipesDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdMixDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.Resipe;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
 import java.sql.ResultSet;
@@ -17,20 +18,29 @@ public class ResipesBOImpl implements ResipesBO {
 
     public boolean save(ProdMixDto prodMixDto) throws SQLException {
 
-        return resipesDAO.save(prodMixDto);
+        return resipesDAO.save(new Resipe(
+                prodMixDto.getProdName(),
+                prodMixDto.getMilk(),
+                prodMixDto.getSuguer(),
+                prodMixDto.getJeliy()
+        ));
 
     }
-
 
 
 
     public ArrayList<ProdMixDto> getAll() throws SQLException, ClassNotFoundException {
 
         ArrayList<ProdMixDto> prodMixDtos = new ArrayList<>();
-        ArrayList<ProdMixDto> prodMixDtoArrayList =resipesDAO.getAll();
+        ArrayList<Resipe> prodMixDtoArrayList =resipesDAO.getAll();
 
-        for (ProdMixDto prodMixDto : prodMixDtoArrayList) {
-            prodMixDtos.add(prodMixDto);
+        for (Resipe resipe : prodMixDtoArrayList) {
+            prodMixDtos.add(new ProdMixDto(new Resipe(
+                    resipe.getProdName(),
+                    resipe.getMilk(),
+                    resipe.getSuguer(),
+                    resipe.getJeliy()
+            )));
         }
 
         return prodMixDtos;

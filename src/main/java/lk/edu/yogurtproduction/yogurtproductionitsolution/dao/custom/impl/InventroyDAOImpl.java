@@ -1,9 +1,8 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.InventroyDAO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.InventroyDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.PckingDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdMixDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.*;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.Inventroy;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
 import java.sql.ResultSet;
@@ -26,13 +25,13 @@ public class InventroyDAOImpl implements InventroyDAO {
         return "INV001";
     }
 
-    public ArrayList<InventroyDto> getAll() throws SQLException {
+    public ArrayList<Inventroy> getAll() throws SQLException {
         ResultSet rst = SQLUtil.execute("select * from inventory");
 
-        ArrayList<InventroyDto> inventroyDTOS = new ArrayList<>();
+        ArrayList<Inventroy> inventroyDTOS = new ArrayList<>();
 
         while (rst.next()) {
-            InventroyDto inventroyDTO = new InventroyDto(
+            Inventroy inventroyDTO = new Inventroy(
                     rst.getString(1),
                     rst.getString(2),
                     rst.getString(3),
@@ -152,12 +151,12 @@ public class InventroyDAOImpl implements InventroyDAO {
 
 
     @Override
-    public boolean save(InventroyDto dto) throws SQLException {
+    public boolean save(Inventroy dto) throws SQLException {
         return false;
     }
 
     @Override
-    public boolean update(InventroyDto dto) throws SQLException, ClassNotFoundException {
+    public boolean update(Inventroy dto) throws SQLException, ClassNotFoundException {
         return false;
     }
 
@@ -167,7 +166,8 @@ public class InventroyDAOImpl implements InventroyDAO {
     }
 
     @Override
-    public InventroyDto findByID(String cmbEmpSelected) throws SQLException {
+    public Inventroy findByID(String cmbEmpSelected) throws SQLException {
         return null;
     }
+
 }

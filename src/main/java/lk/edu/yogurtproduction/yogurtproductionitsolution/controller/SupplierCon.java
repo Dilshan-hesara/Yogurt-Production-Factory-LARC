@@ -15,10 +15,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.BOFactroy;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.SupplierBO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.SupplierDAO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.SupplierDAOImpl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SuplierDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SupplierDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.EmployeeTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.SuplierTM;
 import net.sf.jasperreports.engine.*;
@@ -94,10 +92,10 @@ public class SupplierCon implements Initializable {
     }
 
     void loadSuplierTable() throws Exception {
-        ArrayList<SuplierDto>suplierDTOS =  suplierModel.getAll();
+        ArrayList<SupplierDto>suplierDTOS =  suplierModel.getAll();
         ObservableList<SuplierTM> suplierTMS = FXCollections.observableArrayList();
 
-        for(SuplierDto supDto : suplierDTOS) {
+        for(SupplierDto supDto : suplierDTOS) {
             SuplierTM suplierTM = new SuplierTM(
                     supDto.getSupId(),
                     supDto.getSupName(),

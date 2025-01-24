@@ -1,7 +1,8 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.SupplierDAO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SuplierDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SupplierDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.Supplier;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
 import java.sql.ResultSet;
@@ -32,7 +33,7 @@ public class SupplierDAOImpl implements SupplierDAO {
         return "SU001";
     }
 
-    public boolean save(SuplierDto suplierDTO) throws SQLException {
+    public boolean save(Supplier suplierDTO) throws SQLException {
 
 //        Connection connection = DBConnection.getInstance().getConnection();
 //        String sql = "insert into  supplier values (?,?,?,?,?)";
@@ -53,7 +54,7 @@ public class SupplierDAOImpl implements SupplierDAO {
 
 
 
-    public boolean update(SuplierDto suplierDTO) throws SQLException {
+    public boolean update(Supplier suplierDTO) throws SQLException {
 
 //        String sql = "update supplier set Sup_Name = ?, Sup_Nic = ?, Sup_Email = ?, Sup_Phone = ? where Sup_ID = ?";
 //
@@ -76,7 +77,7 @@ public class SupplierDAOImpl implements SupplierDAO {
                 ,suplierDTO.getSupName(),suplierDTO.getSupNic(),suplierDTO.getSupEmail(),suplierDTO.getSupPhone() ,suplierDTO.getSupId());
     }
 
-    public ArrayList<SuplierDto> getAll() throws SQLException {
+    public ArrayList<Supplier> getAll() throws SQLException {
 //        Connection connection = DBConnection.getInstance().getConnection();
 //        String sql = "select * from supplier";
 //        PreparedStatement statement = connection.prepareStatement(sql);
@@ -96,9 +97,9 @@ public class SupplierDAOImpl implements SupplierDAO {
 //        return suplierDtos;
 
         ResultSet rst = SQLUtil.execute("select * from supplier");
-        ArrayList<SuplierDto> suplierList = new ArrayList<>();
+        ArrayList<Supplier> suplierList = new ArrayList<>();
         while (rst.next()) {
-            suplierList.add(new SuplierDto(  rst.getString("Sup_ID"),
+            suplierList.add(new Supplier(  rst.getString("Sup_ID"),
                     rst.getString("Sup_Name"),
                     rst.getString("Sup_Nic"),
                     rst.getString("Sup_Email"),
@@ -113,12 +114,14 @@ public class SupplierDAOImpl implements SupplierDAO {
 
     }
 
+
+
     @Override
-    public SuplierDto findByID(String cmbEmpSelected) throws SQLException {
-        ResultSet rst = SQLUtil.execute("select * from supplier where Sup_ID=?", cmbEmpSelected);
+    public Supplier findByID(String cmbSupSelected) throws SQLException {
+        ResultSet rst = SQLUtil.execute("select * from supplier where Sup_ID=?", cmbSupSelected);
 
         while (rst.next()) {
-            return new SuplierDto(
+            return new Supplier(
                     rst.getString(1),
                     rst.getString(2),
                     rst.getString(3),

@@ -3,7 +3,7 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.SuperBO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CashBookDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SuplierDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.Supplier;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public interface CashBookBO extends SuperBO {
 
     ArrayList<String> getAllSupIds() throws SQLException;
 
-    SuplierDto findByID(String selectID) throws SQLException;
+    Supplier findByID(String selectID) throws SQLException;
 
     ArrayList<String> getAllItemIds() throws SQLException;
 

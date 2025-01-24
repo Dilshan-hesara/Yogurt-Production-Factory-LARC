@@ -1,5 +1,6 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.dto;
 
+import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.Inventroy;
 import lombok.*;
 
 @Getter
@@ -17,4 +18,12 @@ public class InventroyDto {
     private String prodId;
 
 
+    public InventroyDto(Inventroy inventroy) {
+        this.id = inventroy.getId();
+        this.itemType = inventroy.getItemType();
+        this.itemDescription = inventroy.getItemDescription();
+        this.qty = inventroy.getQty();
+        this.prodId = inventroy.getProdId();
+
+    }
 }

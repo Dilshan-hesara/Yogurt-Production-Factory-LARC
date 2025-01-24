@@ -1,7 +1,8 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.PackingDAO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.PckingDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.Packing;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
 import java.sql.ResultSet;
@@ -27,18 +28,18 @@ public class PackingDAOImpl implements PackingDAO {
 
 
     }
-    public boolean save(PckingDto pckingDtos) throws SQLException {
+    public boolean save(Packing pckingDtos) throws SQLException {
 
         return SQLUtil.execute(
                 "insert into packing values (?, ?, ?, ?, ?, ?, ?,?)",
                 pckingDtos.getPac_ID(),
                 pckingDtos.getProd_ID(),
+                pckingDtos.getEmp_ID(),
                 pckingDtos.getPac_Type(),
                 pckingDtos.getPac_Desc(),
                 pckingDtos.getPac_Date(),
                 pckingDtos.getExpire_Date(),
-                pckingDtos.getQty(),
-                pckingDtos.getEmp_ID()
+                pckingDtos.getQty()
         );
     }
 
@@ -63,12 +64,12 @@ public class PackingDAOImpl implements PackingDAO {
 
 
     @Override
-    public ArrayList<PckingDto> getAll() throws SQLException, ClassNotFoundException {
+    public ArrayList<Packing> getAll() throws SQLException, ClassNotFoundException {
         return null;
     }
 
     @Override
-    public boolean update(PckingDto dto) throws SQLException, ClassNotFoundException {
+    public boolean update(Packing dto) throws SQLException, ClassNotFoundException {
         return false;
     }
 
@@ -78,7 +79,9 @@ public class PackingDAOImpl implements PackingDAO {
     }
 
     @Override
-    public PckingDto findByID(String cmbEmpSelected) throws SQLException {
+    public Packing findByID(String cmbEmpSelected) throws SQLException {
         return null;
     }
+
+
 }

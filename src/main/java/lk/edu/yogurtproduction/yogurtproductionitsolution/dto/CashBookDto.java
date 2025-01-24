@@ -1,6 +1,7 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.dto;
 
 
+import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.CashBook;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -37,6 +38,19 @@ public class CashBookDto {
         this.amount = amount;
         this.date = date;
 
+
+    }
+
+    public CashBookDto(CashBook cashBook) {
+        this.CBNo = cashBook.getCBNo();
+        this.SupId = cashBook.getSupId();
+        this.matID = cashBook.getMatID();
+        this.inID = cashBook.getInID();
+        this.desc = cashBook.getDesc();
+        this.qty = cashBook.getQty();
+        this.amount = cashBook.getAmount();
+        this.date = cashBook.getDate();
+        this.inventroyDTOS = new ArrayList<>();
 
     }
 }

@@ -4,6 +4,7 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.MaterialUsag
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.DAOFactroy;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.MaterialUsageDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialUsageDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.MatirialUsage;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
 import java.sql.ResultSet;
@@ -18,12 +19,18 @@ public class MaterialUsageBOImpl implements MaterialUsageBO {
     public ArrayList<MatirialUsageDto> getAll() throws SQLException, ClassNotFoundException {
 
         ArrayList<MatirialUsageDto> matirialUsageDtos = new ArrayList<>();
-        ArrayList<MatirialUsageDto> matirialUsageDtoArrayList = materialUsageDAO.getAll();
+        ArrayList<MatirialUsage> matirialUsageDtoArrayList = materialUsageDAO.getAll();
 
-        for (MatirialUsageDto matirialUsageDto : matirialUsageDtoArrayList) {
-            matirialUsageDtos.add(matirialUsageDto);
+        for (MatirialUsage matirialUsageDto : matirialUsageDtoArrayList) {
+            matirialUsageDtos.add(new MatirialUsageDto(new MatirialUsage(  matirialUsageDto.getMatUs_ID(),
+                    matirialUsageDto.getProd_ID(),
+                    matirialUsageDto.getMat_Milk(),
+                    matirialUsageDto.getMat_Suguer(),
+                    matirialUsageDto.getMat_Gelatin())));
         }
 
         return matirialUsageDtos;
     }
+
+
 }

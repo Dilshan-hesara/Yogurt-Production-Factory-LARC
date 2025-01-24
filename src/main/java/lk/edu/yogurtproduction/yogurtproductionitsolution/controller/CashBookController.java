@@ -20,7 +20,8 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CashBookDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.InventroyDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SuplierDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SupplierDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.Supplier;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.CashBookTM;
 
 import net.sf.jasperreports.engine.*;
@@ -337,7 +338,7 @@ public class CashBookController {
     void cmbSupOnAction(ActionEvent event) throws SQLException {
         String selectID = (String) cmbSupId.getSelectionModel().getSelectedItem();
 
-        SuplierDto suplierDto = cashBookBO.findByID(selectID);
+        Supplier suplierDto = cashBookBO.findByID(selectID);
         if (suplierDto != null) {
             lblSupplerName.setText(suplierDto.getSupName());
         }

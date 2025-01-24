@@ -3,7 +3,9 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.UserDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CreteAccDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.UserDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.User;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
 import java.sql.Connection;
@@ -14,18 +16,6 @@ import java.util.ArrayList;
 
 public class UserDAOImpl implements UserDAO {
 
-    public  boolean createUser(UserDto user) throws SQLException {
-
-        return SQLUtil.execute(
-
-                "insert into user values (?, ?, ?)",
-                user.getUsername(),
-                user.getEmail(),
-                user.getPassword()
-
-        );
-
-    }
 
 
     public boolean updatePassword(String username, String newPassword) throws SQLException {
@@ -90,9 +80,22 @@ public class UserDAOImpl implements UserDAO {
 
     }
 
+    public  boolean createUser(UserDto user) throws SQLException {
+
+        return SQLUtil.execute(
+
+                "insert into user values (?, ?, ?)",
+                user.getUsername(),
+                user.getEmail(),
+                user.getPassword()
+
+        );
+
+    }
+
 
     @Override
-    public ArrayList<UserDto> getAll() throws SQLException, ClassNotFoundException {
+    public ArrayList<User> getAll() throws SQLException, ClassNotFoundException {
         return null;
     }
 
@@ -102,12 +105,12 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public boolean save(UserDto dto) throws SQLException {
+    public boolean save(User dto) throws SQLException {
         return false;
     }
 
     @Override
-    public boolean update(UserDto dto) throws SQLException, ClassNotFoundException {
+    public boolean update(User dto) throws SQLException, ClassNotFoundException {
         return false;
     }
 
@@ -117,7 +120,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public UserDto findByID(String cmbEmpSelected) throws SQLException {
+    public User findByID(String cmbEmpSelected) throws SQLException {
         return null;
     }
 

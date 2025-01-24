@@ -9,6 +9,5 @@ import java.util.ArrayList;
 public interface MaterialUsageBO extends SuperBO {
 
 
-
     public ArrayList<MatirialUsageDto> getAll() throws SQLException, ClassNotFoundException;
 }

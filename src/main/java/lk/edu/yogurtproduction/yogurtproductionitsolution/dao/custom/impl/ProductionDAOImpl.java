@@ -1,7 +1,9 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.ProductionDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdtionDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.Prodtion;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
 import java.sql.ResultSet;
@@ -22,14 +24,14 @@ public class ProductionDAOImpl implements ProductionDAO {
         return  "P001";
     }
 
-    public ArrayList<ProdtionDto> getAll() throws SQLException {
+    public ArrayList<Prodtion> getAll() throws SQLException {
 
         ResultSet rst = SQLUtil.execute("select * from production");
 
-        ArrayList<ProdtionDto> prodtionDTOS = new ArrayList<>();
+        ArrayList<Prodtion> prodtionDTOS = new ArrayList<>();
 
         while (rst.next()) {
-            ProdtionDto prodtionDTO = new ProdtionDto(
+            Prodtion prodtionDTO = new Prodtion(
                     rst.getString(1),
                     rst.getString(2),
                     rst.getInt(3),
@@ -40,7 +42,7 @@ public class ProductionDAOImpl implements ProductionDAO {
         return prodtionDTOS;
     }
 
-    public boolean save(ProdtionDto prodtionDto) throws SQLException {
+    public boolean save(Prodtion prodtionDto) throws SQLException {
 
         return SQLUtil.execute(
                 "insert into production values (?,?,?,?)",
@@ -77,7 +79,6 @@ public class ProductionDAOImpl implements ProductionDAO {
                     rst.getString(2),
                     rst.getDouble(3),
                     rst.getString(4)
-
             );
 
 
@@ -106,7 +107,7 @@ public class ProductionDAOImpl implements ProductionDAO {
 
 
     @Override
-    public boolean update(ProdtionDto dto) throws SQLException, ClassNotFoundException {
+    public boolean update(Prodtion dto) throws SQLException, ClassNotFoundException {
         return false;
     }
 
@@ -116,7 +117,9 @@ public class ProductionDAOImpl implements ProductionDAO {
     }
 
     @Override
-    public ProdtionDto findByID(String cmbEmpSelected) throws SQLException {
+    public Prodtion findByID(String cmbEmpSelected) throws SQLException {
         return null;
     }
+
+
 }

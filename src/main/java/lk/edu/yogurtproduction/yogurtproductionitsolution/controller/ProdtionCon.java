@@ -22,6 +22,7 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.InventroyDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialUsageDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdMixDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdtionDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.Resipe;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.ProdtionTM;
 
 import net.sf.jasperreports.engine.*;
@@ -343,7 +344,7 @@ public class ProdtionCon {
     void cmbProdtOnAction(ActionEvent event) throws SQLException {
 
         String selectProd = cmbProdt.getSelectionModel().getSelectedItem();
-        ProdMixDto prodMixDto = prodMixModel.findByID(selectProd);
+        Resipe prodMixDto = prodMixModel.findByID(selectProd);
 
         if (prodMixDto != null) {
 

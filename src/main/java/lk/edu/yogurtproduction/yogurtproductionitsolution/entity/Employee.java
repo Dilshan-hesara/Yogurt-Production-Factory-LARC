@@ -1,7 +1,6 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.entity;
 
 import lombok.*;
-
 @Getter
 @Setter
 @AllArgsConstructor
@@ -14,4 +13,7 @@ public class Employee {
     private String empNic;
     private String empEmail;
     private String empPhone;
+
+
+
 }

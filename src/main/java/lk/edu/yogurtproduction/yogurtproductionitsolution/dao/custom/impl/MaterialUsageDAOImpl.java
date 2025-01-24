@@ -1,7 +1,9 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.MaterialUsageDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialUsageDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.MatirialUsage;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
 import java.sql.ResultSet;
@@ -23,13 +25,18 @@ public class MaterialUsageDAOImpl implements MaterialUsageDAO {
         return "MATU001";
     }
 
-    public ArrayList<MatirialUsageDto> getAll() throws SQLException {
+    @Override
+    public boolean save(MatirialUsage dto) throws SQLException {
+        return false;
+    }
+
+    public ArrayList<MatirialUsage> getAll() throws SQLException {
         ResultSet rst = SQLUtil.execute("select * from material_usage");
 
-        ArrayList<MatirialUsageDto> matirialUsageDTOS = new ArrayList<>();
+        ArrayList<MatirialUsage> matirialUsageDTOS = new ArrayList<>();
 
         while (rst.next()) {
-            MatirialUsageDto matirialUsageDTO = new MatirialUsageDto(
+            MatirialUsage matirialUsageDTO = new MatirialUsage(
                     rst.getString(1),
                     rst.getString(2),
                     rst.getString(3),
@@ -57,6 +64,7 @@ public class MaterialUsageDAOImpl implements MaterialUsageDAO {
     }
 
 
+
     public boolean save(MatirialUsageDto matirialUsageDTO) throws SQLException {
 
         return   SQLUtil.execute(
@@ -73,7 +81,7 @@ public class MaterialUsageDAOImpl implements MaterialUsageDAO {
 
 
     @Override
-    public boolean update(MatirialUsageDto dto) throws SQLException, ClassNotFoundException {
+    public boolean update(MatirialUsage dto) throws SQLException, ClassNotFoundException {
         return false;
     }
 
@@ -83,9 +91,10 @@ public class MaterialUsageDAOImpl implements MaterialUsageDAO {
     }
 
     @Override
-    public MatirialUsageDto findByID(String cmbEmpSelected) throws SQLException {
+    public MatirialUsage findByID(String cmbEmpSelected) throws SQLException {
         return null;
     }
+
 
     @Override
     public boolean UMatUage(ArrayList<MatirialUsageDto> matirialUsageDTOS) throws SQLException {

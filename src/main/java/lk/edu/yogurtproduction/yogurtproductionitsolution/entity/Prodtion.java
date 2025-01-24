@@ -6,8 +6,6 @@ import java.util.ArrayList;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @ToString
 
 public class Prodtion {
@@ -18,7 +16,7 @@ public class Prodtion {
 
 
     private ArrayList<Inventroy> inventroyDTOS;
-    private ArrayList<ProdMix> prodMixDTOS;
+    private ArrayList<Resipe> prodMixDTOS;
     private ArrayList<MatirialUsage> matirialUsageDTOS;
 
 
@@ -30,5 +28,6 @@ public class Prodtion {
         this.Prod_Qty = qty;
         this.Prod_Name = prodName;
     }
+
 
 }

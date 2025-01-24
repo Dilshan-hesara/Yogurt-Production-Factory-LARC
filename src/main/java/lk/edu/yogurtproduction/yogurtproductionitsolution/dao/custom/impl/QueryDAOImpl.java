@@ -5,8 +5,9 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.QueryDAO;
 import java.sql.SQLException;
 
 public class QueryDAOImpl implements QueryDAO {
+
     @Override
-    public void findOrdersByOrderDerailID() throws SQLException, ClassNotFoundException {
+    public void findsByProdDerailID() throws SQLException, ClassNotFoundException {
 
     }
 }

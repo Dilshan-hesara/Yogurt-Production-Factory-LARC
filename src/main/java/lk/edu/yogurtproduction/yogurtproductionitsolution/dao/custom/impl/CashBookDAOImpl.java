@@ -1,7 +1,8 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.CashBookDAO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CashBookDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.CashBook;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
 import java.sql.ResultSet;
@@ -24,14 +25,14 @@ public class CashBookDAOImpl implements CashBookDAO {
 
     }
 
-    public ArrayList<CashBookDto> getAll() throws SQLException {
+    public ArrayList<CashBook> getAll() throws SQLException {
 
         ResultSet rst = SQLUtil.execute("select * from Cash_Book");
 
-        ArrayList<CashBookDto> cashBookDTOS = new ArrayList<>();
+        ArrayList<CashBook> cashBookDTOS = new ArrayList<>();
 
         while (rst.next()) {
-            CashBookDto cashBookDTO = new CashBookDto(
+            CashBook cashBookDTO = new CashBook(
                     rst.getString(1),
                     rst.getString(2),
                     rst.getString(3),
@@ -43,14 +44,14 @@ public class CashBookDAOImpl implements CashBookDAO {
 
             );
 
-            ;
+
 
             cashBookDTOS.add(cashBookDTO);
         }
         return cashBookDTOS;
     }
 
-    public boolean save(CashBookDto cashBookDto) throws SQLException {
+    public boolean save(CashBook cashBookDto) throws SQLException {
 
         return SQLUtil.execute(
                 "insert into Cash_Book values (?, ?, ?, ?, ?, ?, ?, ?)",
@@ -92,7 +93,7 @@ public class CashBookDAOImpl implements CashBookDAO {
 
 
     @Override
-    public boolean update(CashBookDto dto) throws SQLException, ClassNotFoundException {
+    public boolean update(CashBook dto) throws SQLException, ClassNotFoundException {
         return false;
     }
 
@@ -102,7 +103,9 @@ public class CashBookDAOImpl implements CashBookDAO {
     }
 
     @Override
-    public CashBookDto findByID(String cmbEmpSelected) throws SQLException {
+    public CashBook findByID(String cmbEmpSelected) throws SQLException {
         return null;
     }
+
+
 }

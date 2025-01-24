@@ -2,7 +2,9 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.MaterialDAO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CashBookDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.Matirial;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
 import java.sql.ResultSet;
@@ -34,50 +36,23 @@ public class MaterialDAOImpl implements MaterialDAO {
         return "MT001";
     }
 
-    public boolean save(MatirialDto matirialDto) throws SQLException {
+    public boolean save(Matirial matirialDto) throws SQLException {
 
-//        Connection connection = DBConnection.getInstance().getConnection();
-//        String sql = "insert into material values (?,?,?,?)";
-//        PreparedStatement pst = connection.prepareStatement(sql);
-//        pst.setObject(1,matirialDto.getMatId());
-//        pst.setObject(2,matirialDto.getMatName());
-//        pst.setObject(3,matirialDto.getMatQty());
-//        pst.setObject(4,matirialDto.getMatPrice());
-//
-//        int result = pst.executeUpdate();
-//        boolean isSaved = result>0;
-//        return isSaved;
+
 
         return SQLUtil.execute("insert into material values (?,?,?,?)",
                 matirialDto.getMatId(),matirialDto.getMatName(),matirialDto.getMatQty(),matirialDto.getMatPrice());
 
     }
 
-    public ArrayList<MatirialDto> getAll() throws SQLException {
-//        Connection connection = DBConnection.getInstance().getConnection();
-//        String sql = "select * from material";
-//        PreparedStatement statement = connection.prepareStatement(sql);
-//        ResultSet rst = statement.executeQuery();
-//
-//        ArrayList<MatirialDto>  matirialDtos = new ArrayList<>();
-//
-//        while (rst.next()) {
-//            MatirialDto matirialDto = new MatirialDto(
-//                    rst.getString("Mat_ID"),
-//                    rst.getString("Mat_Name"),
-//                    rst.getInt("Qty"),
-//                    rst.getInt("Price")
-//            );
-//            matirialDtos.add(matirialDto);
-//
-//        }
-//        return matirialDtos;
+    public ArrayList<Matirial> getAll() throws SQLException {
+
 
         ResultSet rst = SQLUtil.execute("select * from material");
-        ArrayList<MatirialDto> matirialDtos = new ArrayList<>();
+        ArrayList<Matirial> matirialDtos = new ArrayList<>();
 
         while (rst.next()) {
-            MatirialDto matirialDto = new MatirialDto(
+            Matirial matirialDto = new Matirial(
                     rst.getString("Mat_ID"),
                     rst.getString("Mat_Name"),
                     rst.getInt("Qty"),
@@ -137,7 +112,7 @@ public class MaterialDAOImpl implements MaterialDAO {
 
 
     @Override
-    public boolean update(MatirialDto dto) throws SQLException, ClassNotFoundException {
+    public boolean update(Matirial dto) throws SQLException, ClassNotFoundException {
         return false;
     }
 
@@ -147,7 +122,9 @@ public class MaterialDAOImpl implements MaterialDAO {
     }
 
     @Override
-    public MatirialDto findByID(String cmbEmpSelected) throws SQLException {
+    public Matirial findByID(String cmbEmpSelected) throws SQLException {
         return null;
     }
+
+
 }

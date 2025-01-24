@@ -9,11 +9,10 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.SupplierDAO
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CashBookDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SuplierDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.CashBook;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.Supplier;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -40,9 +39,18 @@ public class CashBookBOImpl implements CashBookBO {
     public ArrayList<CashBookDto> getAll() throws SQLException, ClassNotFoundException {
 
         ArrayList<CashBookDto> cashBookDtos = new ArrayList<>();
-        ArrayList<CashBookDto> cashBookDtoArrayList = cashBookDAO.getAll();
-        for (CashBookDto cashBookDto : cashBookDtoArrayList) {
-            cashBookDtos.add(cashBookDto);
+        ArrayList<CashBook> cashBookDtoArrayList = cashBookDAO.getAll();
+        for (CashBook cashBookDto : cashBookDtoArrayList) {
+            cashBookDtos.add(new CashBookDto(new CashBook(
+                    cashBookDto.getCBNo(),
+                    cashBookDto.getSupId(),
+                    cashBookDto.getMatID(),
+                    cashBookDto.getInID(),
+                    cashBookDto.getDesc(),
+                    cashBookDto.getQty(),
+                    cashBookDto.getAmount(),
+                    cashBookDto.getDate()
+            )));
         }
 
         return cashBookDtos;
@@ -50,7 +58,16 @@ public class CashBookBOImpl implements CashBookBO {
 
     public boolean save(CashBookDto cashBookDto) throws SQLException {
 
-       return cashBookDAO.save(cashBookDto);
+       return cashBookDAO.save (new CashBook(
+               cashBookDto.getCBNo(),
+               cashBookDto.getSupId(),
+               cashBookDto.getMatID(),
+               cashBookDto.getInID(),
+               cashBookDto.getDesc(),
+               cashBookDto.getQty(),
+               cashBookDto.getAmount(),
+               cashBookDto.getDate()
+       ));
     }
 
 
@@ -105,7 +122,7 @@ public class CashBookBOImpl implements CashBookBO {
        return supplierDAO.getAllSupIds();
 
     }
-    public SuplierDto findByID(String selectID) throws SQLException {
+    public Supplier findByID(String selectID) throws SQLException {
 
         return supplierDAO.findByID(selectID);
     }

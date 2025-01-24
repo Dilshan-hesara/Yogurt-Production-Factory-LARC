@@ -80,6 +80,15 @@ create table Production(
 
 );
 
+create table Production(
+
+   Prod_ID varchar(50) primary key,
+   Pro_Name varchar(100),
+   Qty decimal(10,1),
+   Prod_Name varchar(200)
+
+);
+
 
 
 create table Material_Usage(

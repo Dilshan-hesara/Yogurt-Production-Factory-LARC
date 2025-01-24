@@ -1,6 +1,7 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.EmployeeDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.Employee;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 

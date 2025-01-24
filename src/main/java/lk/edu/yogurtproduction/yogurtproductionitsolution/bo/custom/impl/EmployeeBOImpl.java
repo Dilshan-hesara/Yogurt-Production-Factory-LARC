@@ -23,17 +23,18 @@ public class EmployeeBOImpl implements EmployeeBO {
 
 
     public boolean save(EmployeeDto employeeDto) throws SQLException {
-       // employeeDAO.save(new EmployeeDto(   employeeDto.getEmpId(),employeeDto.getEmpName(),employeeDto.getEmpNic(),employeeDto.getEmpEmail(),employeeDto.getEmpPhone()));
+       return employeeDAO.save(new Employee(   employeeDto.getEmpId(),employeeDto.getEmpName(),employeeDto.getEmpNic(),employeeDto.getEmpEmail(),employeeDto.getEmpPhone()));
 
-        employeeDAO.save(new Employee(employeeDto.getEmpId(),employeeDto.getEmpName(),employeeDto.getEmpNic(),employeeDto.getEmpEmail(),employeeDto.getEmpPhone()));
-        return true;
+   //    return employeeDAO.save(employeeDto);
 
     }
 
 
     public boolean update(EmployeeDto employeeDto) throws SQLException, ClassNotFoundException{
 
-       return employeeDAO.update(new Employee(employeeDto.getEmpId(),employeeDto.getEmpName(),employeeDto.getEmpNic(),employeeDto.getEmpEmail(),employeeDto.getEmpPhone()));
+      return employeeDAO.update(new Employee(employeeDto.getEmpId(),employeeDto.getEmpName(),employeeDto.getEmpNic(),employeeDto.getEmpEmail(),employeeDto.getEmpPhone()));
+
+    //    return employeeDAO.update(employeeDto);
     }
 
     public ArrayList<EmployeeDto> getAll() throws SQLException, ClassNotFoundException {
@@ -42,6 +43,8 @@ public class EmployeeBOImpl implements EmployeeBO {
         ArrayList<Employee> employes = employeeDAO.getAll();
         for (Employee employeeDto : employes) {
             employeeDTOs.add(new EmployeeDto(new Employee(employeeDto.getEmpId(),employeeDto.getEmpName(),employeeDto.getEmpNic(),employeeDto.getEmpEmail(),employeeDto.getEmpPhone())));
+
+           // employeeDTOs.add(employeeDto);
         }
         return employeeDTOs;
 

@@ -1,14 +1,14 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.impl;
 
+import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.MaterialUsageBO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.ProductionBO;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.DAOFactroy;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.*;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdtionDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.Prodtion;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -32,16 +32,25 @@ public class ProductionBOImpl implements ProductionBO {
     public ArrayList<ProdtionDto> getAll() throws SQLException, ClassNotFoundException {
 
         ArrayList<ProdtionDto> prodtionDtos = new ArrayList<>();
-        ArrayList<ProdtionDto> prodtionDtoArrayList = productionDAO.getAll();
-        for (ProdtionDto prodtionDto : prodtionDtoArrayList) {
-            prodtionDtos.add(prodtionDto);
+        ArrayList<Prodtion> prodtionDtoArrayList = productionDAO.getAll();
+        for (Prodtion prodtion : prodtionDtoArrayList) {
+            prodtionDtos.add(new ProdtionDto(new Prodtion(
+                    prodtion.getProd_ID(),
+                    prodtion.getPro_Name(),
+                    prodtion.getProd_Qty(),
+                    prodtion.getProd_Name()
+            )));
         }
         return prodtionDtos;
     }
 
     public boolean save(ProdtionDto prodtionDto) throws SQLException {
 
-     return productionDAO.save(prodtionDto);
+     return productionDAO.save(new Prodtion(  prodtionDto.getProd_ID(),
+             prodtionDto.getPro_Name(),
+             prodtionDto.getProd_Qty(),
+             prodtionDto.getProd_Name()
+     ));
     }
 
 
@@ -81,6 +90,9 @@ public class ProductionBOImpl implements ProductionBO {
         }
 
     }
+
+    MaterialUsageBO materialUsage =new MaterialUsageBOImpl();
+
 
     public String getNextMatId() throws SQLException {
 

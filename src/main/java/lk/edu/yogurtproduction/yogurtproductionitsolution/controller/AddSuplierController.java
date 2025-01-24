@@ -8,10 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.BOFactroy;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.SupplierBO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.impl.SupplierBOImpl;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.SupplierDAO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.SupplierDAOImpl;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SuplierDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SupplierDto;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -118,7 +115,7 @@ public class AddSuplierController implements Initializable {
 
         if (isValidName && isValidNic && isValidEmail && isValidPhone) {
 
-            SuplierDto suplierDTO = new SuplierDto(
+            SupplierDto suplierDTO = new SupplierDto(
                     SupId,
                     Name,
                     Nic,

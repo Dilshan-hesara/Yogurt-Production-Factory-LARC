@@ -1,5 +1,6 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.dto;
 
+import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.Prodtion;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -31,4 +32,15 @@ public class ProdtionDto {
         this.Prod_Name = prodName;
     }
 
+
+    public ProdtionDto(Prodtion prodtion) {
+        this.Prod_ID = prodtion.getProd_ID();
+        this.Pro_Name = prodtion.getPro_Name();
+        this.Prod_Qty = prodtion.getProd_Qty();
+        this.Prod_Name = prodtion.getProd_Name();
+        this.inventroyDTOS = new ArrayList<>();
+        this.prodMixDTOS = new ArrayList<>();
+        this.matirialUsageDTOS = new ArrayList<>();
+
+    }
 }

@@ -1,7 +1,8 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.ResipesDAO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdMixDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.Resipe;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
 import java.sql.ResultSet;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 public class ResipesDAOImpl implements ResipesDAO {
 
 
-    public boolean save(ProdMixDto prodMixDto) throws SQLException {
+    public boolean save(Resipe prodMixDto) throws SQLException {
 
         boolean isSaved =  SQLUtil.execute(
                 "insert into production_mix_recip values (?,?,?,?)",
@@ -27,14 +28,14 @@ public class ResipesDAOImpl implements ResipesDAO {
 
 
 
-    public ArrayList<ProdMixDto> getAll() throws SQLException {
+    public ArrayList<Resipe> getAll() throws SQLException {
 
         ResultSet rst = SQLUtil.execute("select * from production_mix_recip");
 
-        ArrayList<ProdMixDto> prodMixDTOS = new ArrayList<>();
+        ArrayList<Resipe> prodMixDTOS = new ArrayList<>();
 
         while (rst.next()) {
-            ProdMixDto prodMixDTO = new ProdMixDto(
+            Resipe prodMixDTO = new Resipe(
                     rst.getString(1),
                     rst.getInt(2),
                     rst.getInt(3),
@@ -46,7 +47,6 @@ public class ResipesDAOImpl implements ResipesDAO {
 
 
     }
-
 
 
     @Override
@@ -67,12 +67,12 @@ public class ResipesDAOImpl implements ResipesDAO {
 
 
 
-    public ProdMixDto findByID(String selectProd) throws SQLException {
+    public Resipe findByID(String selectProd) throws SQLException {
 
         ResultSet rst = SQLUtil.execute("select * from production_mix_recip where Prod_Name=?", selectProd);
 
         if (rst.next()) {
-            return new ProdMixDto(
+            return new Resipe(
                     rst.getString(1),
                     rst.getInt(2),
                     rst.getInt(3),
@@ -104,7 +104,7 @@ public class ResipesDAOImpl implements ResipesDAO {
     }
 
     @Override
-    public boolean update(ProdMixDto dto) throws SQLException, ClassNotFoundException {
+    public boolean update(Resipe dto) throws SQLException, ClassNotFoundException {
         return false;
     }
 

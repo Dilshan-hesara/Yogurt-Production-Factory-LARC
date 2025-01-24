@@ -8,9 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.BOFactroy;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.SupplierBO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.SupplierDAO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.SupplierDAOImpl;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SuplierDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SupplierDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.view.tdm.SuplierTM;
 
 public class UpdateSuplier {
@@ -106,7 +104,7 @@ public class UpdateSuplier {
         if (isValidName && isValidNic && isValidEmail && isValidPhone) {
 
 
-            SuplierDto suplierDto = new SuplierDto(
+            SupplierDto suplierDto = new SupplierDto(
                     supId,
                     name,
                     nic,

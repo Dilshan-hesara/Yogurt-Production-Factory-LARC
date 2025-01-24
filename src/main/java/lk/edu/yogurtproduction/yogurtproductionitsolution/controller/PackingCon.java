@@ -8,11 +8,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.BOFactroy;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.bo.custom.PackingBO;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.*;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl.*;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.*;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.Employee;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.*;
 
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -292,6 +289,7 @@ public class PackingCon {
     void cmbProdOnAction(ActionEvent event) throws SQLException {
         String cmbProdSelected = cmbProdId.getSelectionModel().getSelectedItem();
         System.out.println(cmbProdSelected);
+
         ProdtionDto prodtionDto = packingBO.findProdById(cmbProdSelected);
         if (prodtionDto != null) {
             lblProdtName.setText(prodtionDto.getPro_Name());

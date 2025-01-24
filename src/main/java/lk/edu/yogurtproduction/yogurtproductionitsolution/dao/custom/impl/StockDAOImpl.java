@@ -1,7 +1,9 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.impl;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dao.custom.StockDAO;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.StockDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.entity.Stock;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.SQLUtil;
 
 import java.sql.ResultSet;
@@ -43,13 +45,13 @@ public class StockDAOImpl implements StockDAO {
 
     }
 
-    public ArrayList<StockDto> getAll() throws SQLException {
+    public ArrayList<Stock> getAll() throws SQLException {
         ResultSet rst = SQLUtil.execute("select * from Stock");
 
-        ArrayList<StockDto> stockDTOS = new ArrayList<>();
+        ArrayList<Stock> stockDTOS = new ArrayList<>();
 
         while (rst.next()) {
-            StockDto stockDTO = new StockDto(
+            Stock stockDTO = new Stock(
                     rst.getString(1),
                     rst.getString(2),
                     rst.getString(3),
@@ -90,12 +92,12 @@ public class StockDAOImpl implements StockDAO {
 
 
     @Override
-    public boolean save(StockDto dto) throws SQLException {
+    public boolean save(Stock dto) throws SQLException {
         return false;
     }
 
     @Override
-    public boolean update(StockDto dto) throws SQLException, ClassNotFoundException {
+    public boolean update(Stock dto) throws SQLException, ClassNotFoundException {
         return false;
     }
 
@@ -105,7 +107,9 @@ public class StockDAOImpl implements StockDAO {
     }
 
     @Override
-    public StockDto findByID(String cmbEmpSelected) throws SQLException {
+    public Stock findByID(String cmbEmpSelected) throws SQLException {
         return null;
     }
+
+
 }
