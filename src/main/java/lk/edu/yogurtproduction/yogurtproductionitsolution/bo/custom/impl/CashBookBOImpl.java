@@ -147,4 +147,9 @@ public class CashBookBOImpl implements CashBookBO {
 
     }
 
+    @Override
+    public String getNextInvId() throws SQLException {
+        return inventroyDAO.getNextId();
+    }
+
 }

@@ -266,6 +266,8 @@ public class CashBookController {
         );
 
         inventroyDTOS.add(inventroyDTO);
+        System.out.println(inventroyDTO);
+        System.out.println(inID);
 
         CashBookDto cashBookDtos = new CashBookDto(
                 CBNo,
@@ -300,7 +302,7 @@ public class CashBookController {
 
     String invID;
     public void loadNextInventryId() throws SQLException {
-        String nextInventryId = cashBookBO.getNextId();
+        String nextInventryId = cashBookBO.getNextInvId();
         invID = nextInventryId;
         System.out.println(nextInventryId);
     }

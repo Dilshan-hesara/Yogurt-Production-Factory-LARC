@@ -28,4 +28,6 @@ public interface CashBookBO extends SuperBO {
     ArrayList<String> getAllItemIds() throws SQLException;
 
     MatirialDto findById(String selectID) throws SQLException;
+
+    String getNextInvId() throws SQLException;
 }
