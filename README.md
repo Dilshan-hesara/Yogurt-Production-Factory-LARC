@@ -2,6 +2,9 @@ Yogurt-Production-Factory LARC
 
 [Yogurt-Production-Factory-LARC](https://github.com/Dilshan-hesara/Yogurt-Production-Factory-LARC)
 
+[Yogurt-Production-Factory-MVC](https://github.com/Dilshan-hesara/Yogurt-Production-Factory/tree/master)
+
+
 
 MKD Yogurt Factory Production Management System
 📌 Project Overview
